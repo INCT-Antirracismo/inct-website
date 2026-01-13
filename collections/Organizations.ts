@@ -1,6 +1,12 @@
-import { CollectionConfig } from 'payload';
+import {
+  authenticated,
+  authenticatedOrPublished,
+  isEditor
+} from '@/app/access';
+import { CollectionConfig, Field } from 'payload';
 import {
   descriptionField,
+  imageField,
   nameField,
   slugField,
   urlField
@@ -9,22 +15,73 @@ import {
 export const Organizations: CollectionConfig = {
   slug: 'organizations',
   labels: { singular: 'Organização', plural: 'Organizações' },
+  access: {
+    create: authenticated,
+    delete: isEditor,
+    read: authenticatedOrPublished,
+    update: authenticated
+  },
   admin: {
     useAsTitle: 'name',
     description:
-      'Instituições ou organizações como universidades, grupos de pesquisa, instituições de fomento, etc.'
+      'Instituições ou organizações como universidades, grupos de pesquisa, instituições de fomento, etc.',
+    group: 'Institucional'
   },
   fields: [
     slugField,
-    nameField,
+    {
+      ...nameField,
+      admin: {
+        description:
+          'O nome completo da organização. Ex.: Conselho Nacional de Desenvolvimento Científico e Tecnológico'
+      }
+    } as Field,
     {
       name: 'acronym',
       label: 'Sigla / Abreviação',
       type: 'text',
       admin: { description: 'Abreviação para o nome da organização. Ex.: CNPq' }
     },
-    { name: 'logo', type: 'upload', relationTo: 'media' },
     descriptionField,
-    urlField
+    {
+      name: 'type',
+      label: 'Tipo de organização',
+      type: 'relationship',
+      relationTo: 'definedTerms',
+      filterOptions: { additionalType: { in: ['organizationType'] } },
+      required: true
+    },
+    { ...imageField, label: 'Logo', name: 'logo' } as Field,
+    urlField,
+    {
+      name: 'memberOf',
+      label: 'Faz parte de:',
+      admin: {
+        description:
+          'Utilize esse campo caso a organização seja parte de uma instituição maior, como ao adicionar um departamento de uma faculdade. Uma faculdade, por sua vez, pode ser parte de uma universidade.'
+      },
+      type: 'relationship',
+      relationTo: 'organizations'
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          label: 'Localização',
+          name: 'geo',
+          required: true,
+          type: 'point',
+
+          admin: {
+            components: {
+              Field: '@/components/payload/ui/location#LocationField'
+            },
+            description:
+              'Você provavelmente não quer mexer nos campos de latitude e longitude...'
+          }
+        },
+        { label: 'Endereço', name: 'address', required: true, type: 'text' }
+      ]
+    }
   ]
 };

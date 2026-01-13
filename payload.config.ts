@@ -8,13 +8,40 @@ import { Media } from './collections/Media';
 import { Organizations } from './collections/Organizations';
 import { DefinedTerms } from './collections/DefinedTerms';
 import { Persons } from './collections/Persons';
+import { en } from '@payloadcms/translations/languages/en';
+import { pt } from '@payloadcms/translations/languages/pt';
+import { Nav } from './collections/Nav';
+import { ResearchProjects } from './collections/ResearchProjects';
+import { resendAdapter } from '@payloadcms/email-resend';
+import { Files } from './collections/Files';
+import { Publications } from './collections/Publications';
+import { Pages } from './collections/Pages';
+import { Posts } from './collections/Posts';
+import { Footer } from './collections/Footer';
+import { Events } from './collections/Events';
 
 export default buildConfig({
+  i18n: {
+    fallbackLanguage: 'pt', // default
+    supportedLanguages: { en, pt }
+  },
   admin: {
+    autoRefresh: true,
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: 'viniciusofp@gmail.com',
+            password: 'digiteumasenhasegura',
+            prefillOnly: true
+          }
+        : false,
     components: {
+      beforeDashboard: ['@/components/payload/BeforeDashboard'],
       graphics: {
-        Icon: '@/components/payload/PayloadIcon'
-      }
+        Icon: '@/components/payload/PayloadIcon',
+        Logo: '@/components/payload/PayloadLogo'
+      },
+      Nav: '@/components/payload/Nav#Nav'
     },
     meta: {
       title: 'Painel de administração',
@@ -30,24 +57,31 @@ export default buildConfig({
     }
   },
   editor: lexicalEditor(),
-
-  // Define and configure your collections in this array
-  collections: [Organizations, Persons, Users, Places, DefinedTerms, Media],
-
-  // Your Payload secret - should be a complex and secure string, unguessable
+  globals: [Nav, Footer],
+  collections: [
+    ResearchProjects,
+    Publications,
+    Organizations,
+    Persons,
+    Pages,
+    Posts,
+    Events,
+    Media,
+    Files,
+    DefinedTerms,
+    Users
+  ],
   secret: process.env.PAYLOAD_SECRET || '',
-  // Whichever Database Adapter you're using should go here
-  // Mongoose is shown as an example, but you can also use Postgres
   db: postgresAdapter({
-    // Postgres-specific arguments go here.
-    // `pool` is required.
     pool: {
       connectionString: process.env.DATABASE_URI
     }
   }),
+  email: resendAdapter({
+    defaultFromAddress: 'onboarding@resend.dev',
+    defaultFromName: 'Site INCT Antirracismo',
+    apiKey: process.env.RESEND_API_KEY || ''
+  }),
   // If you want to resize images, crop, set focal point, etc.
-  // make sure to install it and pass it to the config.
-  // This is optional - if you don't need to do these things,
-  // you don't need it!
   sharp
 });

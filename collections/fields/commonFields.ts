@@ -11,8 +11,28 @@ export const slugField: Field = payloadSlugField({ fieldToUse: 'name' });
 
 export const descriptionField: Field = {
   name: 'description',
-  label: 'Descrição',
-  type: 'textarea'
+  label: 'Descrição curta',
+  type: 'textarea',
+  maxLength: 320,
+  admin: {
+    description: 'Adicione uma descrição curta do item.',
+    components: {
+      Field: '@/components/payload/ui/MaxLengthTextArea#MaxLengthTextAreaField'
+    },
+    rows: 3
+  }
+};
+
+export const imageField: Field = {
+  name: 'image',
+  label: 'Imagem',
+  type: 'upload',
+  relationTo: 'media',
+  admin: {
+    components: {
+      Cell: '@/components/payload/ui/AvatarCell#AvatarCellField'
+    }
+  }
 };
 
 export const urlField: Field = {
@@ -32,4 +52,87 @@ export const urlField: Field = {
       Boolean(url.protocol === 'http:' || url.protocol === 'https:') || errorMsg
     );
   }
+};
+
+export const socialMediaField: Field = {
+  label: 'Redes Sociais',
+  labels: { singular: 'Rede Social', plural: 'Redes Sociais' },
+  name: 'socialMedia',
+  type: 'array',
+  fields: [
+    { ...urlField, label: 'URL' },
+    {
+      name: 'type',
+      label: 'Rede',
+      type: 'select',
+      options: [
+        { label: 'Instagram', value: 'instagram' },
+        { label: 'Youtube', value: 'youtube' },
+        { label: 'Site Pessoal', value: 'personalWebsite' },
+        { label: 'Facebook', value: 'facebook' },
+        { label: 'Linkedin', value: 'linkedin' },
+        { label: 'TikTok', value: 'tiktok' },
+        { label: 'Substack', value: 'substack' },
+        { label: 'Twitter / X', value: 'twitter' },
+        { label: 'Bluesky', value: 'bluesky' }
+      ]
+    }
+  ]
+};
+
+export const linkField: Field = {
+  name: 'link',
+  type: 'group',
+  fields: [
+    {
+      name: 'linkType',
+      label: 'Tipo de link',
+      type: 'select',
+      options: [
+        { value: 'external', label: 'Link Externo' },
+        { value: 'internal', label: 'Link Interno' }
+      ],
+      defaultValue: 'external'
+    },
+    {
+      ...urlField,
+      admin: {
+        condition: (data, siblingData, { blockData, path, user }) => {
+          if (siblingData.linkType === 'external') {
+            return true;
+          }
+          return false;
+        }
+      },
+      required: true
+    } as Field,
+    {
+      name: 'internalContent',
+      label: 'Conteúdo Interno',
+      type: 'relationship',
+      relationTo: [
+        'persons',
+        'posts',
+        'pages',
+        'researchProjects',
+        'events',
+        'organizations'
+      ],
+      admin: {
+        condition: (data, siblingData, { blockData, path, user }) => {
+          if (siblingData.linkType === 'internal') {
+            return true;
+          }
+          return false;
+        }
+      },
+      required: true
+    },
+    {
+      name: 'targetBlank',
+      type: 'checkbox',
+      label: 'Abrir em uma nova guia',
+      defaultValue: true
+    }
+  ]
 };

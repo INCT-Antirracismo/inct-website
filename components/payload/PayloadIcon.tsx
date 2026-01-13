@@ -3,5 +3,7 @@
 export type PayloadIconProps = {};
 
 export default function PayloadIcon(props: PayloadIconProps) {
-  return <img src="/icon.png" alt="Logo INCT Antirracismo" />;
+  return (
+    <img className="w-full" src="/icon.png" alt="Logo INCT Antirracismo" />
+  );
 }

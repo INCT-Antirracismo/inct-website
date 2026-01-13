@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -41,6 +42,44 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-sun-50: #fffaeb;
+  --color-sun-100: #feefc7;
+  --color-sun-200: #fcde8b;
+  --color-sun-300: #fbc74e;
+  --color-sun-400: #f9ab17;
+  --color-sun-500: #f38f0d;
+  --color-sun-600: #d76908;
+  --color-sun-700: #b3480a;
+  --color-sun-800: #91370f;
+  --color-sun-900: #772e10;
+  --color-sun-950: #451603;
+  --color-sun: var(--color-sun-400);
+  --color-trinidad-50: #fef6ee;
+  --color-trinidad-100: #feebd6;
+  --color-trinidad-200: #fcd3ac;
+  --color-trinidad-300: #f9b378;
+  --color-trinidad-400: #f68941;
+  --color-trinidad-500: #f2681d;
+  --color-trinidad-600: #df4d12;
+  --color-trinidad-700: #bd3a11;
+  --color-trinidad-800: #962f16;
+  --color-trinidad-900: #792915;
+  --color-trinidad-950: #411209;
+  --color-trinidad: var(--color-trinidad-600);
+  --color-deep-sea-green-50: #effefb;
+  --color-deep-sea-green-100: #cafdf4;
+  --color-deep-sea-green-200: #95faea;
+  --color-deep-sea-green-300: #58f0de;
+  --color-deep-sea-green-400: #26dbcb;
+  --color-deep-sea-green-500: #0dbfb2;
+  --color-deep-sea-green-600: #079a93;
+  --color-deep-sea-green-700: #0b7a76;
+  --color-deep-sea-green-800: #0d5c5a;
+  --color-deep-sea-green-900: #11504e;
+  --color-deep-sea-green-950: #023031;
+  --color-deep-sea-green: var(--color-deep-sea-green-800);
+  --color-brown: #492611;
+  --color-dark-blue: #191231;
 }
 
 :root {
@@ -51,9 +90,9 @@
   --card-foreground: oklch(0.147 0.004 49.25);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.216 0.006 56.043);
+  --primary: var(--color-trinidad);
   --primary-foreground: oklch(0.985 0.001 106.423);
-  --secondary: oklch(0.97 0.001 106.424);
+  --secondary: oklch(92.363% 0.0212 106.891);
   --secondary-foreground: oklch(0.216 0.006 56.043);
   --muted: oklch(0.97 0.001 106.424);
   --muted-foreground: oklch(0.553 0.013 58.071);
@@ -85,8 +124,7 @@
   --card-foreground: oklch(0.985 0.001 106.423);
   --popover: oklch(0.216 0.006 56.043);
   --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.923 0.003 48.717);
-  --primary-foreground: oklch(0.216 0.006 56.043);
+
   --secondary: oklch(0.268 0.007 34.298);
   --secondary-foreground: oklch(0.985 0.001 106.423);
   --muted: oklch(0.268 0.007 34.298);
@@ -118,5 +156,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media all and (min-width: 64rem) {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }

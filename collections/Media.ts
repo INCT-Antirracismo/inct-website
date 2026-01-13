@@ -1,8 +1,16 @@
+import { authenticated, authenticatedOrPublished } from '@/app/access';
 import type { CollectionConfig } from 'payload';
 
 export const Media: CollectionConfig = {
-  labels: { singular: 'Mídia', plural: 'Mídias' },
+  labels: { singular: 'Imagem', plural: 'Imagens' },
   slug: 'media',
+  access: {
+    create: authenticated,
+    delete: authenticated,
+    read: authenticatedOrPublished,
+    update: authenticated
+  },
+  admin: { group: 'Arquivos' },
   upload: {
     staticDir: 'media',
     imageSizes: [

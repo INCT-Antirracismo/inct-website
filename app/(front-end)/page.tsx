@@ -1,39 +1,57 @@
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+'use server';
 
-export default function Home() {
+import { getPayload } from 'payload';
+import config from '@payload-config';
+
+const payload = await getPayload({ config });
+import DefaultCTA from '@/components/blocks/DefaultCTA';
+import Link from 'next/link';
+import { createDynamicContentURL } from '@/lib/utils';
+
+export default async function Home() {
+  const data = await payload.find({
+    collection: 'pages'
+  });
+  const pages = data.docs;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-stone-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-5 md:px-16 bg-white dark:bg-black sm:items-start gap-8">
-        <div className="flex flex-col gap-6">
-          <h1 className="max-w-full text-[10vw] leading-[0.9]  md:text-7xl md:leading-16 tracking-tight text-stone-800 dark:text-zinc-50 text-balance font-extrabold">
-            Comunicação +
-            <br /> dados +
-            <br /> design +
-            <br /> programação+
-          </h1>
-          <p className="max-w-md w-full text-lg md:text-xl leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <Button>The Hardest Button to Button</Button>
-        </div>
-      </main>
-    </div>
+    <>
+      <div className="container mx-auto py-12 prose">
+        <h1>INCT Antirracismo</h1>
+        <h2>Coleções</h2>
+        <ul>
+          <li>
+            <Link href={'/equipe'}>Lista de pessoas</Link>
+          </li>
+          <li>
+            <Link href={'/organizations'}>Lista de organizações</Link>
+          </li>
+          <li>
+            <Link href={'/projetos-de-pesquisa'}>
+              Lista de projetos de pesquisa
+            </Link>
+          </li>
+          <li>
+            <Link href={'/publicacoes'}>Lista de publicações</Link>
+          </li>
+          <li>
+            <Link href={'/eventos'}>Lista de eventos</Link>
+          </li>
+          <li>
+            <Link href={'/novidades'}>Lista de novidades</Link>
+          </li>
+        </ul>
+        <h2>Páginas</h2>
+        <ul>
+          {pages.map((page) => (
+            <li key={`${page.id}_pagina`}>
+              <Link href={createDynamicContentURL(page, 'pages')}>
+                {page.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
