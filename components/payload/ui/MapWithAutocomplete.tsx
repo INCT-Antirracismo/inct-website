@@ -76,7 +76,7 @@ const MapWithAutocomplete = ({
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
     const place = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyDtiQaJQ60x80iQ8gPckZkSVfwdHvWLKOI&result_type=street_address`
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${googleMapsApiKey}&result_type=street_address`
     )
       .then((res) => res.json())
       .then((res) => res.results[0]);

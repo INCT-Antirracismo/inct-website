@@ -1,57 +1,25 @@
-'use server';
+export type IndexProps = {};
 
-import { getPayload } from 'payload';
-import config from '@payload-config';
-
-const payload = await getPayload({ config });
-import DefaultCTA from '@/components/blocks/DefaultCTA';
-import Link from 'next/link';
-import { createDynamicContentURL } from '@/lib/utils';
-
-export default async function Home() {
-  const data = await payload.find({
-    collection: 'pages'
-  });
-  const pages = data.docs;
-
+export default async function Index(props: IndexProps) {
   return (
-    <>
-      <div className="container mx-auto py-12 prose">
-        <h1>INCT Antirracismo</h1>
-        <h2>Coleções</h2>
-        <ul>
-          <li>
-            <Link href={'/equipe'}>Lista de pessoas</Link>
-          </li>
-          <li>
-            <Link href={'/organizations'}>Lista de organizações</Link>
-          </li>
-          <li>
-            <Link href={'/projetos-de-pesquisa'}>
-              Lista de projetos de pesquisa
-            </Link>
-          </li>
-          <li>
-            <Link href={'/publicacoes'}>Lista de publicações</Link>
-          </li>
-          <li>
-            <Link href={'/eventos'}>Lista de eventos</Link>
-          </li>
-          <li>
-            <Link href={'/novidades'}>Lista de novidades</Link>
-          </li>
-        </ul>
-        <h2>Páginas</h2>
-        <ul>
-          {pages.map((page) => (
-            <li key={`${page.id}_pagina`}>
-              <Link href={createDynamicContentURL(page, 'pages')}>
-                {page.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+    <div className="min-h-screen w-full flex items-center justify-center p-6 bg-sun text-brown">
+      <div className="text-right">
+        <p className="text-xl md:text-2xl lg:text-3xl">Vem ai o</p>
+        <h1 className="text-5xl md:text-5xl lg:text-7xl font-black mt-2 mb-6 text-black">
+          INCT Antirracismo
+        </h1>
+        <p className="text-xl md:text-2xl lg:text-3xl text-balance">
+          Uma{' '}
+          <span className="font-bold">
+            educação
+            <br /> transformadora
+          </span>
+          <br />
+          em movimento pela
+          <br />
+          <span className="font-bold">América Latina</span>.
+        </p>
       </div>
-    </>
+    </div>
   );
 }
