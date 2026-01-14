@@ -7,7 +7,16 @@ export const nameField: Field = {
   type: 'text'
 };
 
-export const slugField: Field = payloadSlugField({ fieldToUse: 'name' });
+const psf = payloadSlugField({ fieldToUse: 'name' });
+
+export const slugField: Field = {
+  ...psf,
+  admin: {
+    ...psf.admin,
+    description:
+      'A slug é uma versão do "Nome" somente em letras minúsculas e sem caracteres especiais. Ela é usada como  identificador único do conteúdo legível para humanos, principalmente para a construção de URLs.'
+  }
+} as Field;
 
 export const descriptionField: Field = {
   name: 'description',

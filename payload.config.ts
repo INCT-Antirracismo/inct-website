@@ -3,7 +3,6 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { Users } from './collections/Users';
-import { Places } from './collections/Places';
 import { Media } from './collections/Media';
 import { Organizations } from './collections/Organizations';
 import { DefinedTerms } from './collections/DefinedTerms';

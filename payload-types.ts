@@ -161,6 +161,10 @@ export interface ResearchProject {
    */
   description?: string | null;
   /**
+   * Em qual situação se encontra o projeto de pesquisa?
+   */
+  status: number | DefinedTerm;
+  /**
    * Esse campo serve apenas para listar os membros. Para editar a relação da pessoa com o projeto de pesquisa, edite no documento da pessoa.
    */
   members?: {
@@ -168,7 +172,16 @@ export interface ResearchProject {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  funder?: (number | Organization)[] | null;
+  relations?:
+    | {
+        relationType: (number | DefinedTerm)[];
+        relationTo: {
+          relationTo: 'organizations';
+          value: number | Organization;
+        };
+        id?: string | null;
+      }[]
+    | null;
   body?: {
     root: {
       type: string;
@@ -188,8 +201,28 @@ export interface ResearchProject {
   createdAt: string;
 }
 /**
- * Professores, alunos, palestrantes, etc.
+ * Coleção de termos definidos para uso no cadastro de conteúdos no site. É uma forma de definir, por exemplo, a lista de Tags disponíveis para uma notícia, ou os possíveis vínculos de uma pessoa com uma Organização.
  *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "definedTerms".
+ */
+export interface DefinedTerm {
+  id: number;
+  name: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  /**
+   * Adicione uma descrição curta do item.
+   */
+  description?: string | null;
+  additionalType: 'keyword' | 'occupation' | 'organizationType' | 'publicationType' | 'status' | 'inctGroup' | 'tag';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "persons".
  */
@@ -246,8 +279,9 @@ export interface Person {
   /**
    * Qual a posição dentro da estrutura deste INCT?
    */
-  jobTitle: (number | DefinedTerm)[];
-  memberOf?:
+  inctPosition: (number | DefinedTerm)[];
+  inctGroup?: (number | DefinedTerm)[] | null;
+  researchProjects?:
     | {
         relationType: (number | DefinedTerm)[];
         researchProject: {
@@ -316,28 +350,6 @@ export interface Media {
   };
 }
 /**
- * Coleção de termos definidos.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "definedTerms".
- */
-export interface DefinedTerm {
-  id: number;
-  name: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  /**
-   * Adicione uma descrição curta do item.
-   */
-  description?: string | null;
-  additionalType: 'keyword' | 'occupation' | 'organizationType';
-  updatedAt: string;
-  createdAt: string;
-}
-/**
  * Instituições ou organizações como universidades, grupos de pesquisa, instituições de fomento, etc.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -362,7 +374,13 @@ export interface Organization {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
+  /**
+   * Do que se trata essa organização?
+   */
   type: number | DefinedTerm;
+  /**
+   * Sempre arquivos .png sem fundo ou então versões com fundo branco.
+   */
   logo?: (number | null) | Media;
   url?: string | null;
   /**
@@ -375,8 +393,8 @@ export interface Organization {
    * @minItems 2
    * @maxItems 2
    */
-  geo: [number, number];
-  address: string;
+  geo?: [number, number] | null;
+  address?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -398,8 +416,70 @@ export interface Publication {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
+  /**
+   * Do que se trata essa publicação?
+   */
+  type: number | DefinedTerm;
+  image?: (number | null) | Media;
+  file?: (number | null) | File;
+  /**
+   * Pessoas do INCT, com cadastro no site, que trabalharam nesta publicação.
+   */
+  authors?:
+    | {
+        relationType: (number | DefinedTerm)[];
+        relationTo:
+          | {
+              relationTo: 'organizations';
+              value: number | Organization;
+            }
+          | {
+              relationTo: 'persons';
+              value: number | Person;
+            };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Demais autorias da publicação.
+   */
+  otherAuthors?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "files".
+ */
+export interface File {
+  id: number;
+  alt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2420,25 +2500,6 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "files".
- */
-export interface File {
-  id: number;
-  alt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -2582,8 +2643,15 @@ export interface ResearchProjectsSelect<T extends boolean = true> {
   slug?: T;
   name?: T;
   description?: T;
+  status?: T;
   members?: T;
-  funder?: T;
+  relations?:
+    | T
+    | {
+        relationType?: T;
+        relationTo?: T;
+        id?: T;
+      };
   body?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2597,6 +2665,18 @@ export interface PublicationsSelect<T extends boolean = true> {
   generateSlug?: T;
   slug?: T;
   description?: T;
+  type?: T;
+  image?: T;
+  file?: T;
+  authors?:
+    | T
+    | {
+        relationType?: T;
+        relationTo?: T;
+        id?: T;
+      };
+  otherAuthors?: T;
+  body?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2640,8 +2720,9 @@ export interface PersonsSelect<T extends boolean = true> {
         id?: T;
       };
   body?: T;
-  jobTitle?: T;
-  memberOf?:
+  inctPosition?: T;
+  inctGroup?: T;
+  researchProjects?:
     | T
     | {
         relationType?: T;

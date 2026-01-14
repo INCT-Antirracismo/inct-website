@@ -13,7 +13,8 @@ export const DefinedTerms: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    description: 'Coleção de termos definidos.',
+    description:
+      'Coleção de termos definidos para uso no cadastro de conteúdos no site. É uma forma de definir, por exemplo, a lista de Tags disponíveis para uma notícia, ou os possíveis vínculos de uma pessoa com uma Organização.',
     group: 'Configuração',
     defaultColumns: ['name', 'additionalType', 'description']
   },
@@ -22,13 +23,17 @@ export const DefinedTerms: CollectionConfig = {
     slugField,
     descriptionField,
     {
-      label: 'Categoria do termo',
+      label: 'Categoria do Termo',
       name: 'additionalType',
       type: 'select',
       options: [
         { label: 'Palavra-chave', value: 'keyword' },
         { label: 'Ocupação / Cargo', value: 'occupation' },
-        { label: 'Tipo de organização', value: 'organizationType' }
+        { label: 'Tipo de Organização', value: 'organizationType' },
+        { label: 'Tipo de Publicação', value: 'publicationType' },
+        { label: 'Situação', value: 'status' },
+        { label: 'Núcleo do INCT', value: 'inctGroup' },
+        { label: 'Tag', value: 'tag' }
       ],
       required: true,
       admin: {

@@ -25,11 +25,22 @@ export const ResearchProjects: CollectionConfig = {
     nameField,
     descriptionField,
     {
+      name: 'status',
+      label: 'Situação',
+      type: 'relationship',
+      relationTo: 'definedTerms',
+      filterOptions: { additionalType: { in: ['status'] } },
+      required: true,
+      admin: {
+        description: 'Em qual situação se encontra o projeto de pesquisa?'
+      }
+    },
+    {
       label: 'Membros',
       name: 'members',
       type: 'join',
       collection: 'persons',
-      on: 'memberOf.researchProject',
+      on: 'researchProjects.researchProject',
       admin: {
         defaultColumns: ['image', 'name', 'description'],
         description:
@@ -37,12 +48,32 @@ export const ResearchProjects: CollectionConfig = {
       }
     },
     {
-      name: 'funder',
-      label: 'Financiador/es',
-      type: 'relationship',
-      relationTo: 'organizations',
-      hasMany: true
+      name: 'relations',
+      label: 'Organizações Envolvidas',
+      labels: {
+        singular: 'Organização Envolvida',
+        plural: 'Organizações Envolvidas'
+      },
+      type: 'array',
+      fields: [
+        {
+          name: 'relationType',
+          label: 'Vínculo',
+          type: 'relationship',
+          relationTo: 'definedTerms',
+          filterOptions: { additionalType: { in: ['occupation'] } },
+          hasMany: true,
+          required: true
+        },
+        {
+          name: 'relationTo',
+          label: 'Organização',
+          type: 'relationship',
+          relationTo: ['organizations'],
+          required: true
+        }
+      ]
     },
-    { name: 'body', label: 'Sobre', type: 'richText' }
+    { name: 'body', label: 'Outras Informações', type: 'richText' }
   ]
 };

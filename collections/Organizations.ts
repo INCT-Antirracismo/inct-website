@@ -49,9 +49,19 @@ export const Organizations: CollectionConfig = {
       type: 'relationship',
       relationTo: 'definedTerms',
       filterOptions: { additionalType: { in: ['organizationType'] } },
-      required: true
+      required: true,
+      admin: { description: 'Do que se trata essa organização? ' }
     },
-    { ...imageField, label: 'Logo', name: 'logo' } as Field,
+    {
+      ...imageField,
+      label: 'Logo',
+      name: 'logo',
+      admin: {
+        ...imageField.admin,
+        description:
+          'Sempre arquivos .png sem fundo ou então versões com fundo branco.'
+      }
+    } as Field,
     urlField,
     {
       name: 'memberOf',
@@ -69,7 +79,6 @@ export const Organizations: CollectionConfig = {
         {
           label: 'Localização',
           name: 'geo',
-          required: true,
           type: 'point',
 
           admin: {
@@ -80,7 +89,7 @@ export const Organizations: CollectionConfig = {
               'Você provavelmente não quer mexer nos campos de latitude e longitude...'
           }
         },
-        { label: 'Endereço', name: 'address', required: true, type: 'text' }
+        { label: 'Endereço', name: 'address', type: 'text' }
       ]
     }
   ]

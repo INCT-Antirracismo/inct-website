@@ -15,7 +15,7 @@ import {
 
 export const Persons: CollectionConfig = {
   slug: 'persons',
-  labels: { singular: 'Pesquisadora', plural: 'Pesquisadoras' },
+  labels: { singular: 'Pessoa', plural: 'Pessoas' },
   access: {
     create: authenticated,
     delete: isEditor,
@@ -24,8 +24,7 @@ export const Persons: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    description: 'Professores, alunos, palestrantes, etc.',
-    defaultColumns: ['image', 'name', 'jobTitle', 'description'],
+    defaultColumns: ['name', 'jobTitle', 'description'],
     group: 'Institucional'
   },
   fields: [
@@ -48,7 +47,7 @@ export const Persons: CollectionConfig = {
 
     { name: 'body', label: 'Sobre', type: 'richText' },
     {
-      name: 'jobTitle',
+      name: 'inctPosition',
       label: 'Vínculos com o INCT Antirracismo',
       admin: { description: 'Qual a posição dentro da estrutura deste INCT?' },
       hasMany: true,
@@ -58,7 +57,15 @@ export const Persons: CollectionConfig = {
       required: true
     },
     {
-      name: 'memberOf',
+      name: 'inctGroup',
+      label: 'Núcleo no INCT',
+      type: 'relationship',
+      hasMany: true,
+      relationTo: 'definedTerms',
+      filterOptions: { additionalType: { in: ['inctGroup'] } }
+    },
+    {
+      name: 'researchProjects',
       label: 'Projetos de Pesquisa',
       labels: {
         singular: 'Projeto de Pesquisa',
@@ -77,7 +84,7 @@ export const Persons: CollectionConfig = {
         },
         {
           name: 'researchProject',
-          label: 'Projeto de pesquisa',
+          label: 'Projeto de Pesquisa',
           type: 'relationship',
           relationTo: ['researchProjects'],
           required: true
