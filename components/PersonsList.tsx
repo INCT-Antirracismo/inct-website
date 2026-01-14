@@ -82,7 +82,7 @@ export default function PersonsList({
               )}
               <div className="">
                 <p className="text-[10px] uppercase tracking-wider text-primary font-medium">
-                  {find(doc.memberOf, function (o) {
+                  {find(doc.researchProjects, function (o) {
                     return (
                       (o.researchProject.value as ResearchProject).id ===
                       researchProjectID
