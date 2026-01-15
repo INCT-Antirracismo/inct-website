@@ -91,7 +91,7 @@ const MapWithAutocomplete = ({
   };
 
   return (
-    <div className="relative h-[360px] w-full mb-16">
+    <div className="relative h-[360px]  w-full">
       {isLoaded && (
         <>
           <Autocomplete
@@ -104,18 +104,20 @@ const MapWithAutocomplete = ({
               className="w-full bg-white border border-[rgb(221,221,221)]  mb-2 rounded p-3"
             />
           </Autocomplete>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            onLoad={onLoadMap}
-            zoom={10}
-          >
-            <Marker
-              position={{ lat, lng }}
-              draggable
-              onDragEnd={handleDragEnd}
-            />
-          </GoogleMap>
+          <div className="relative rounded overflow-hidden border border-slate-200">
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              onLoad={onLoadMap}
+              zoom={10}
+            >
+              <Marker
+                position={{ lat, lng }}
+                draggable
+                onDragEnd={handleDragEnd}
+              />
+            </GoogleMap>
+          </div>
         </>
       )}
     </div>

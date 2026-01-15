@@ -36,6 +36,15 @@ export const ResearchProjects: CollectionConfig = {
       }
     },
     {
+      name: 'type',
+      label: 'Tipo de Projeto',
+      type: 'relationship',
+      relationTo: 'definedTerms',
+      filterOptions: { additionalType: { in: ['researchProjectType'] } },
+      required: true,
+      admin: { description: 'Do que se trata esse projeto? ' }
+    },
+    {
       label: 'Membros',
       name: 'members',
       type: 'join',

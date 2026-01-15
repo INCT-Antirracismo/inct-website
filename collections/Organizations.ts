@@ -7,6 +7,7 @@ import { CollectionConfig, Field } from 'payload';
 import {
   descriptionField,
   imageField,
+  locationField,
   nameField,
   slugField,
   urlField
@@ -73,24 +74,7 @@ export const Organizations: CollectionConfig = {
       type: 'relationship',
       relationTo: 'organizations'
     },
-    {
-      type: 'row',
-      fields: [
-        {
-          label: 'Localização',
-          name: 'geo',
-          type: 'point',
-
-          admin: {
-            components: {
-              Field: '@/components/payload/ui/location#LocationField'
-            },
-            description:
-              'Você provavelmente não quer mexer nos campos de latitude e longitude...'
-          }
-        },
-        { label: 'Endereço', name: 'address', type: 'text' }
-      ]
-    }
+    { label: 'Endereço', name: 'address', type: 'text' },
+    locationField
   ]
 };

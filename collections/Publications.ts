@@ -38,15 +38,31 @@ export const Publications: CollectionConfig = {
       required: true,
       admin: { description: 'Do que se trata essa publicação? ' }
     },
+    {
+      name: 'datePublished',
+      label: 'Data de Publicação',
+      type: 'date',
+      admin: {
+        description: 'Data de publicação. Será exibido apenas o mês e ano.'
+      }
+    },
     { ...imageField, label: 'Imagem de Capa' } as Field,
     {
-      name: 'file',
-      label: 'Arquivo',
-      type: 'upload',
-      relationTo: 'files'
+      name: 'files',
+      label: 'Arquivos',
+      labels: { singular: 'Arquivo', plural: 'Arquivos' },
+      type: 'array',
+      fields: [
+        {
+          name: 'file',
+          label: 'Arquivo',
+          type: 'upload',
+          relationTo: 'files'
+        }
+      ]
     },
     {
-      name: 'authors',
+      name: 'author',
       label: 'Autorias (INCT)',
       labels: {
         singular: 'Autoria',
@@ -69,15 +85,15 @@ export const Publications: CollectionConfig = {
         },
         {
           name: 'relationTo',
-          label: 'Pessoa ou Organização',
+          label: 'Pessoa',
           type: 'relationship',
-          relationTo: ['organizations', 'persons'],
+          relationTo: ['persons'],
           required: true
         }
       ]
     },
     {
-      name: 'otherAuthors',
+      name: 'creditText',
       type: 'textarea',
       label: 'Demais autores',
       admin: { description: 'Demais autorias da publicação.' }

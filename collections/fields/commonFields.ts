@@ -145,3 +145,17 @@ export const linkField: Field = {
     }
   ]
 };
+
+export const locationField: Field = {
+  label: 'Localização',
+  name: 'geo',
+  type: 'point',
+
+  admin: {
+    components: {
+      Field: '@/components/payload/ui/location#LocationField'
+    },
+    description:
+      'Você provavelmente não quer mexer nos campos de latitude e longitude...'
+  }
+};

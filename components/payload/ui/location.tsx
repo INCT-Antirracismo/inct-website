@@ -14,8 +14,9 @@ export const LocationField: PointFieldClientComponent = (props) => {
     setValue([place.lng, place.lat]);
   };
   return (
-    <div className="">
-      <p className="opacity-80 mb-2">
+    <div className="pb-16">
+      <PointField {...props} />
+      <p className="opacity-80 mt-2 mb-3 font-semibold">
         Busque o lugar no campo abaixo ou mova o marcador no mapa.
       </p>
       <MapWithAutocomplete
@@ -25,7 +26,6 @@ export const LocationField: PointFieldClientComponent = (props) => {
         lng={value ? value[0] : 0}
         handleChange={handleChange}
       />
-      <PointField {...props} />
     </div>
   );
 };

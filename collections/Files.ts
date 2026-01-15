@@ -17,7 +17,20 @@ export const Files: CollectionConfig = {
   fields: [
     {
       name: 'alt',
-      type: 'text'
+      type: 'text',
+      label: 'Nome do arquivo (ALT)',
+      admin: {
+        description: 'Coloque o nome do arquivo e/ou uma descrição curta.'
+      },
+      required: true
+    },
+    {
+      name: 'author',
+      type: 'text',
+      label: 'Créditos',
+      admin: {
+        description: 'Coloque a fonte do arquivo.'
+      }
     }
   ]
 };

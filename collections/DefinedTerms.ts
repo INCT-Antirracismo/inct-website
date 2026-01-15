@@ -31,6 +31,7 @@ export const DefinedTerms: CollectionConfig = {
         { label: 'Ocupação / Cargo', value: 'occupation' },
         { label: 'Tipo de Organização', value: 'organizationType' },
         { label: 'Tipo de Publicação', value: 'publicationType' },
+        { label: 'Tipo de Projeto', value: 'researchProjectType' },
         { label: 'Situação', value: 'status' },
         { label: 'Núcleo do INCT', value: 'inctGroup' },
         { label: 'Tag', value: 'tag' }

@@ -10,7 +10,7 @@ export const Media: CollectionConfig = {
     read: authenticatedOrPublished,
     update: authenticated
   },
-  admin: { group: 'Arquivos' },
+  admin: { group: 'Arquivos', useAsTitle: 'alt' },
   upload: {
     staticDir: 'media',
     imageSizes: [
@@ -43,7 +43,20 @@ export const Media: CollectionConfig = {
   fields: [
     {
       name: 'alt',
-      type: 'text'
+      type: 'text',
+      label: 'Legenda (ALT)',
+      admin: {
+        description: 'Coloque o nome da foto e/ou uma descrição curta.'
+      },
+      required: true
+    },
+    {
+      name: 'author',
+      type: 'text',
+      label: 'Créditos',
+      admin: {
+        description: 'Coloque a fonte da imagem.'
+      }
     }
   ]
 };
