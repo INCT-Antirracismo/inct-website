@@ -3,7 +3,8 @@ import {
   descriptionField,
   imageField,
   nameField,
-  slugField
+  slugField,
+  urlField
 } from './fields/commonFields';
 import {
   authenticated,
@@ -38,6 +39,7 @@ export const Publications: CollectionConfig = {
       required: true,
       admin: { description: 'Do que se trata essa publicação? ' }
     },
+    urlField,
     {
       name: 'datePublished',
       label: 'Data de Publicação',

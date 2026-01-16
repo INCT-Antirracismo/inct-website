@@ -4,7 +4,12 @@ import {
   isEditor
 } from '@/app/access';
 import { CollectionConfig } from 'payload';
-import { descriptionField, nameField, slugField } from './fields/commonFields';
+import {
+  descriptionField,
+  nameField,
+  slugField,
+  urlField
+} from './fields/commonFields';
 
 export const ResearchProjects: CollectionConfig = {
   slug: 'researchProjects',
@@ -35,6 +40,7 @@ export const ResearchProjects: CollectionConfig = {
         description: 'Em qual situação se encontra o projeto de pesquisa?'
       }
     },
+    urlField,
     {
       name: 'type',
       label: 'Tipo de Projeto',
