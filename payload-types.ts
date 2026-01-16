@@ -303,7 +303,7 @@ export interface Person {
         id?: string | null;
       }[]
     | null;
-  relations?:
+  memberOf?:
     | {
         relationType: (number | DefinedTerm)[];
         relationTo: {
@@ -2874,7 +2874,7 @@ export interface PersonsSelect<T extends boolean = true> {
         researchProject?: T;
         id?: T;
       };
-  relations?:
+  memberOf?:
     | T
     | {
         relationType?: T;

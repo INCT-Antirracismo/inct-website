@@ -92,7 +92,7 @@ export const Persons: CollectionConfig = {
       ]
     },
     {
-      name: 'relations',
+      name: 'memberOf',
       label: 'Vínculos com outras instituições',
       labels: {
         singular: 'Vínculo com outra instituição',
