@@ -164,6 +164,7 @@ export interface ResearchProject {
    * Em qual situação se encontra o projeto de pesquisa?
    */
   status: number | DefinedTerm;
+  url?: string | null;
   /**
    * Do que se trata esse projeto?
    */
@@ -439,6 +440,7 @@ export interface Publication {
    * Do que se trata essa publicação?
    */
   type: number | DefinedTerm;
+  url?: string | null;
   /**
    * Data de publicação. Será exibido apenas o mês e ano.
    */
@@ -2782,6 +2784,7 @@ export interface ResearchProjectsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
   status?: T;
+  url?: T;
   type?: T;
   members?: T;
   relations?:
@@ -2805,6 +2808,7 @@ export interface PublicationsSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   type?: T;
+  url?: T;
   datePublished?: T;
   image?: T;
   files?:

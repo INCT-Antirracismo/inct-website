@@ -4,7 +4,8 @@ import {
   imageField,
   locationField,
   nameField,
-  slugField
+  slugField,
+  urlField
 } from './fields/commonFields';
 import { authenticated, authenticatedOrPublished } from '@/app/access';
 import { richTextBlock } from './fields/blocks/richTextBlock';
@@ -85,6 +86,7 @@ export const Events: CollectionConfig = {
         }
       ]
     },
+    urlField,
     { label: 'Endereço', name: 'address', type: 'text' },
     locationField,
     {
