@@ -30,6 +30,8 @@ import { Nav as Nav_6a3490dcdf999345f7d9ebf36f3d3644 } from '@/components/payloa
 import { default as default_37cdd159ba7901abba227544c6c443f0 } from '@/components/payload/PayloadIcon'
 import { default as default_0e21f83e12caace6a4c6897ff7bb86fd } from '@/components/payload/PayloadLogo'
 import { default as default_1d4974d972a1a1fde4b7983de3c39f4c } from '@/components/payload/BeforeDashboard'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { CollectionCards as CollectionCards_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 
 export const importMap = {
   "@payloadcms/ui#SlugField": SlugField_3817bf644402e67bfe6577f60ef982de,
@@ -63,5 +65,7 @@ export const importMap = {
   "@/components/payload/Nav#Nav": Nav_6a3490dcdf999345f7d9ebf36f3d3644,
   "@/components/payload/PayloadIcon#default": default_37cdd159ba7901abba227544c6c443f0,
   "@/components/payload/PayloadLogo#default": default_0e21f83e12caace6a4c6897ff7bb86fd,
-  "@/components/payload/BeforeDashboard#default": default_1d4974d972a1a1fde4b7983de3c39f4c
+  "@/components/payload/BeforeDashboard#default": default_1d4974d972a1a1fde4b7983de3c39f4c,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "@payloadcms/ui/rsc#CollectionCards": CollectionCards_ab83ff7e88da8d3530831f296ec4756a
 }

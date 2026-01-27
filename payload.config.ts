@@ -1,4 +1,6 @@
 import sharp from 'sharp';
+import { s3Storage } from '@payloadcms/storage-s3';
+
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
@@ -20,6 +22,22 @@ import { Footer } from './collections/Footer';
 import { Events } from './collections/Events';
 
 export default buildConfig({
+  plugins: [
+    s3Storage({
+      collections: {
+        media: true
+      },
+      bucket: process.env.S3_BUCKET || '',
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || ''
+        },
+        region: process.env.S3_REGION
+        // ... Other S3 configuration
+      }
+    })
+  ],
   i18n: {
     fallbackLanguage: 'pt', // default
     supportedLanguages: { en, pt }
