@@ -2598,6 +2598,7 @@ export interface Event {
     | null;
   startDate?: string | null;
   endDate?: string | null;
+  url?: string | null;
   address?: string | null;
   /**
    * Você provavelmente não quer mexer nos campos de latitude e longitude...
@@ -2990,6 +2991,7 @@ export interface EventsSelect<T extends boolean = true> {
       };
   startDate?: T;
   endDate?: T;
+  url?: T;
   address?: T;
   geo?: T;
   files?:
