@@ -42,7 +42,8 @@ export const Persons: CollectionConfig = {
     } as Field,
     { ...imageField, label: 'Foto' } as Field,
     { name: 'email', type: 'email', label: 'E-mail' },
-    { ...urlField, label: 'URL do Lattes' } as Field,
+    { ...urlField, label: 'URL do Lattes', name: 'lattesUrl' } as Field,
+    { ...urlField, label: 'URL do Orcid', name: 'orcidUrl' } as Field,
     socialMediaField,
 
     { name: 'body', label: 'Sobre', type: 'richText' },

@@ -7,6 +7,7 @@ const payload = await getPayload({ config });
 import DefaultCTA from '@/components/blocks/DefaultCTA';
 import Link from 'next/link';
 import { createDynamicContentURL } from '@/lib/utils';
+import { Media } from '@/collections/Media';
 
 export default async function Home() {
   const data = await payload.find({

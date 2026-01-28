@@ -254,7 +254,8 @@ export interface Person {
   description?: string | null;
   image?: (number | null) | Media;
   email?: string | null;
-  url?: string | null;
+  lattesUrl?: string | null;
+  orcidUrl?: string | null;
   socialMedia?:
     | {
         url?: string | null;
@@ -351,7 +352,7 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    card?: {
+    third?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -359,7 +360,15 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    tablet?: {
+    half?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    full?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -2861,7 +2870,8 @@ export interface PersonsSelect<T extends boolean = true> {
   description?: T;
   image?: T;
   email?: T;
-  url?: T;
+  lattesUrl?: T;
+  orcidUrl?: T;
   socialMedia?:
     | T
     | {
@@ -3046,7 +3056,7 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-        card?:
+        third?:
           | T
           | {
               url?: T;
@@ -3056,7 +3066,17 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-        tablet?:
+        half?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        full?:
           | T
           | {
               url?: T;

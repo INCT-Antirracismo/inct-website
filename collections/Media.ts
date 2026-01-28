@@ -10,30 +10,29 @@ export const Media: CollectionConfig = {
     read: authenticatedOrPublished,
     update: authenticated
   },
-  admin: { group: 'Arquivos', useAsTitle: 'alt' },
+  admin: { group: 'Arquivos' },
   upload: {
     staticDir: 'media',
     imageSizes: [
       {
         name: 'thumbnail',
         width: 400,
-        height: 300,
+        height: 400,
         position: 'centre'
       },
       {
-        name: 'card',
-        width: 768,
-        height: 1024,
+        name: 'third',
+        width: 640,
         position: 'centre'
       },
       {
-        name: 'tablet',
-        width: 1024,
-        // By specifying `undefined` or leaving a height undefined,
-        // the image will be sized to a certain width,
-        // but it will retain its original aspect ratio
-        // and calculate a height automatically.
-        height: undefined,
+        name: 'half',
+        width: 960,
+        position: 'centre'
+      },
+      {
+        name: 'full',
+        width: 1920,
         position: 'centre'
       }
     ],

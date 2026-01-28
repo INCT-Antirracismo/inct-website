@@ -54,11 +54,13 @@ export const urlField: Field = {
     try {
       url = new URL(value);
     } catch (_) {
-      return errorMsg;
+      if (value) return errorMsg;
     }
 
     return (
-      Boolean(url.protocol === 'http:' || url.protocol === 'https:') || errorMsg
+      Boolean(
+        url?.protocol === 'http:' || url?.protocol === 'https:' || !value
+      ) || errorMsg
     );
   }
 };
