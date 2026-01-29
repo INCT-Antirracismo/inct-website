@@ -16,9 +16,9 @@ import { createDynamicContentURL } from '@/lib/utils';
 import { find } from 'lodash';
 
 export type PersonsListProps = {
-  docs: (number | Person)[] | undefined;
+  docs: (string | Person)[] | undefined;
   collectionSlug: CollectionSlug;
-  researchProjectID: number | string;
+  researchProjectID: string | string;
 };
 
 export default function PersonsList({
@@ -29,7 +29,7 @@ export default function PersonsList({
   if (!docs || docs.length < 1) return null;
   const [data, setData] = useState<Person[]>();
   useEffect(() => {
-    if (isNaN(docs[0] as number)) {
+    if (!(typeof docs[0] === 'string')) {
       setData(docs as Person[]);
     } else {
       fetchData();
