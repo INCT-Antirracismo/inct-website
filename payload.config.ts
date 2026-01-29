@@ -3,23 +3,25 @@ import { s3Storage } from '@payloadcms/storage-s3';
 
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
-import { postgresAdapter } from '@payloadcms/db-postgres';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { resendAdapter } from '@payloadcms/email-resend';
+
 import { Users } from './collections/Users';
 import { Media } from './collections/Media';
 import { Organizations } from './collections/Organizations';
 import { DefinedTerms } from './collections/DefinedTerms';
 import { Persons } from './collections/Persons';
-import { en } from '@payloadcms/translations/languages/en';
-import { pt } from '@payloadcms/translations/languages/pt';
 import { Nav } from './collections/Nav';
 import { ResearchProjects } from './collections/ResearchProjects';
-import { resendAdapter } from '@payloadcms/email-resend';
 import { Files } from './collections/Files';
 import { Publications } from './collections/Publications';
 import { Pages } from './collections/Pages';
 import { Posts } from './collections/Posts';
 import { Footer } from './collections/Footer';
 import { Events } from './collections/Events';
+
+import { en } from '@payloadcms/translations/languages/en';
+import { pt } from '@payloadcms/translations/languages/pt';
 
 export default buildConfig({
   plugins: [
@@ -89,13 +91,10 @@ export default buildConfig({
     Users
   ],
   secret: process.env.PAYLOAD_SECRET || '',
-  db: postgresAdapter({
-    pool: {
-      connectionString:
-        process.env.NODE_ENV === 'production'
-          ? process.env.DATABASE_URI
-          : process.env.DATABASE_URI_DEV
-    }
+  db: mongooseAdapter({
+    // Mongoose-specific arguments go here.
+    // URL is required.
+    url: process.env.DATABASE_URL || ''
   }),
   email: resendAdapter({
     defaultFromAddress: 'onboarding@resend.dev',

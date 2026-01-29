@@ -106,7 +106,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   fallbackLocale: null;
   globals: {
@@ -149,7 +149,7 @@ export interface UserAuthOperations {
  * via the `definition` "researchProjects".
  */
 export interface ResearchProject {
-  id: number;
+  id: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -163,26 +163,26 @@ export interface ResearchProject {
   /**
    * Em qual situação se encontra o projeto de pesquisa?
    */
-  status: number | DefinedTerm;
+  status: string | DefinedTerm;
   url?: string | null;
   /**
    * Do que se trata esse projeto?
    */
-  type: number | DefinedTerm;
+  type: string | DefinedTerm;
   /**
    * Esse campo serve apenas para listar os membros. Para editar a relação da pessoa com o projeto de pesquisa, edite no documento da pessoa.
    */
   members?: {
-    docs?: (number | Person)[];
+    docs?: (string | Person)[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
   relations?:
     | {
-        relationType: (number | DefinedTerm)[];
+        relationType: (string | DefinedTerm)[];
         relationTo: {
           relationTo: 'organizations';
-          value: number | Organization;
+          value: string | Organization;
         };
         id?: string | null;
       }[]
@@ -212,7 +212,7 @@ export interface ResearchProject {
  * via the `definition` "definedTerms".
  */
 export interface DefinedTerm {
-  id: number;
+  id: string;
   name: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -240,7 +240,7 @@ export interface DefinedTerm {
  * via the `definition` "persons".
  */
 export interface Person {
-  id: number;
+  id: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -252,7 +252,7 @@ export interface Person {
    * Bio curta da pessoa.
    */
   description?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   email?: string | null;
   lattesUrl?: string | null;
   orcidUrl?: string | null;
@@ -293,24 +293,24 @@ export interface Person {
   /**
    * Qual a posição dentro da estrutura deste INCT?
    */
-  inctPosition: (number | DefinedTerm)[];
-  inctGroup?: (number | DefinedTerm)[] | null;
+  inctPosition: (string | DefinedTerm)[];
+  inctGroup?: (string | DefinedTerm)[] | null;
   researchProjects?:
     | {
-        relationType: (number | DefinedTerm)[];
+        relationType: (string | DefinedTerm)[];
         researchProject: {
           relationTo: 'researchProjects';
-          value: number | ResearchProject;
+          value: string | ResearchProject;
         };
         id?: string | null;
       }[]
     | null;
   memberOf?:
     | {
-        relationType: (number | DefinedTerm)[];
+        relationType: (string | DefinedTerm)[];
         relationTo: {
           relationTo: 'organizations';
-          value: number | Organization;
+          value: string | Organization;
         };
         id?: string | null;
       }[]
@@ -323,7 +323,7 @@ export interface Person {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   /**
    * Coloque o nome da foto e/ou uma descrição curta.
    */
@@ -385,7 +385,7 @@ export interface Media {
  * via the `definition` "organizations".
  */
 export interface Organization {
-  id: number;
+  id: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -406,16 +406,16 @@ export interface Organization {
   /**
    * Do que se trata essa organização?
    */
-  type: number | DefinedTerm;
+  type: string | DefinedTerm;
   /**
    * Sempre arquivos .png sem fundo ou então versões com fundo branco.
    */
-  logo?: (number | null) | Media;
+  logo?: (string | null) | Media;
   url?: string | null;
   /**
    * Utilize esse campo caso a organização seja parte de uma instituição maior, como ao adicionar um departamento de uma faculdade. Uma faculdade, por sua vez, pode ser parte de uma universidade.
    */
-  memberOf?: (number | null) | Organization;
+  memberOf?: (string | null) | Organization;
   address?: string | null;
   /**
    * Você provavelmente não quer mexer nos campos de latitude e longitude...
@@ -434,7 +434,7 @@ export interface Organization {
  * via the `definition` "publications".
  */
 export interface Publication {
-  id: number;
+  id: string;
   name: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -448,16 +448,16 @@ export interface Publication {
   /**
    * Do que se trata essa publicação?
    */
-  type: number | DefinedTerm;
+  type: string | DefinedTerm;
   url?: string | null;
   /**
    * Data de publicação. Será exibido apenas o mês e ano.
    */
   datePublished?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   files?:
     | {
-        file?: (number | null) | File;
+        file?: (string | null) | File;
         id?: string | null;
       }[]
     | null;
@@ -466,10 +466,10 @@ export interface Publication {
    */
   author?:
     | {
-        relationType: (number | DefinedTerm)[];
+        relationType: (string | DefinedTerm)[];
         relationTo: {
           relationTo: 'persons';
-          value: number | Person;
+          value: string | Person;
         };
         id?: string | null;
       }[]
@@ -501,7 +501,7 @@ export interface Publication {
  * via the `definition` "files".
  */
 export interface File {
-  id: number;
+  id: string;
   /**
    * Coloque o nome do arquivo e/ou uma descrição curta.
    */
@@ -527,7 +527,7 @@ export interface File {
  * via the `definition` "pages".
  */
 export interface Page {
-  id: number;
+  id: string;
   name: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -538,14 +538,14 @@ export interface Page {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   content?:
     | (
         | {
             imagePosition?: ('none' | 'right' | 'left' | 'background') | null;
             fullScreen?: boolean | null;
             variant?: ('light' | 'dark') | null;
-            image?: (number | null) | Media;
+            image?: (string | null) | Media;
             title: string;
             subtitle?: string | null;
             label?: string | null;
@@ -2468,27 +2468,27 @@ export interface Page {
                     internalContent?:
                       | ({
                           relationTo: 'persons';
-                          value: number | Person;
+                          value: string | Person;
                         } | null)
                       | ({
                           relationTo: 'posts';
-                          value: number | Post;
+                          value: string | Post;
                         } | null)
                       | ({
                           relationTo: 'pages';
-                          value: number | Page;
+                          value: string | Page;
                         } | null)
                       | ({
                           relationTo: 'researchProjects';
-                          value: number | ResearchProject;
+                          value: string | ResearchProject;
                         } | null)
                       | ({
                           relationTo: 'events';
-                          value: number | Event;
+                          value: string | Event;
                         } | null)
                       | ({
                           relationTo: 'organizations';
-                          value: number | Organization;
+                          value: string | Organization;
                         } | null);
                     targetBlank?: boolean | null;
                   };
@@ -2529,7 +2529,7 @@ export interface Page {
  * via the `definition` "posts".
  */
 export interface Post {
-  id: number;
+  id: string;
   name: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -2540,9 +2540,9 @@ export interface Post {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   imageOrientation?: ('landscape' | 'portrait') | null;
-  author?: (number | Person)[] | null;
+  author?: (string | Person)[] | null;
   content?:
     | {
         body?: {
@@ -2565,7 +2565,7 @@ export interface Post {
         blockType: 'richTextBlock';
       }[]
     | null;
-  tags?: (number | null) | DefinedTerm;
+  tags?: (string | null) | DefinedTerm;
   updatedAt: string;
   createdAt: string;
 }
@@ -2574,7 +2574,7 @@ export interface Post {
  * via the `definition` "events".
  */
 export interface Event {
-  id: number;
+  id: string;
   name: string;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -2585,22 +2585,22 @@ export interface Event {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   imageOrientation?: ('landscape' | 'portrait') | null;
   /**
    * Pessoas e instituições responsáveis pelo evento.
    */
   author?:
     | {
-        relationType: (number | DefinedTerm)[];
+        relationType: (string | DefinedTerm)[];
         relationTo:
           | {
               relationTo: 'organizations';
-              value: number | Organization;
+              value: string | Organization;
             }
           | {
               relationTo: 'persons';
-              value: number | Person;
+              value: string | Person;
             };
         id?: string | null;
       }[]
@@ -2618,7 +2618,7 @@ export interface Event {
   geo?: [number, number] | null;
   files?:
     | {
-        file?: (number | null) | File;
+        file?: (string | null) | File;
         id?: string | null;
       }[]
     | null;
@@ -2644,7 +2644,7 @@ export interface Event {
         blockType: 'richTextBlock';
       }[]
     | null;
-  tags?: (number | null) | DefinedTerm;
+  tags?: (string | null) | DefinedTerm;
   updatedAt: string;
   createdAt: string;
 }
@@ -2653,7 +2653,7 @@ export interface Event {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   name: string;
   role: 'admin' | 'editor' | 'author';
   updatedAt: string;
@@ -2679,7 +2679,7 @@ export interface User {
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: number;
+  id: string;
   key: string;
   data:
     | {
@@ -2696,56 +2696,56 @@ export interface PayloadKv {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'researchProjects';
-        value: number | ResearchProject;
+        value: string | ResearchProject;
       } | null)
     | ({
         relationTo: 'publications';
-        value: number | Publication;
+        value: string | Publication;
       } | null)
     | ({
         relationTo: 'organizations';
-        value: number | Organization;
+        value: string | Organization;
       } | null)
     | ({
         relationTo: 'persons';
-        value: number | Person;
+        value: string | Person;
       } | null)
     | ({
         relationTo: 'pages';
-        value: number | Page;
+        value: string | Page;
       } | null)
     | ({
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       } | null)
     | ({
         relationTo: 'events';
-        value: number | Event;
+        value: string | Event;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'files';
-        value: number | File;
+        value: string | File;
       } | null)
     | ({
         relationTo: 'definedTerms';
-        value: number | DefinedTerm;
+        value: string | DefinedTerm;
       } | null)
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -2755,10 +2755,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -2778,7 +2778,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -3189,9 +3189,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * via the `definition` "nav".
  */
 export interface Nav {
-  id: number;
+  id: string;
   items: {
-    page: number | Person;
+    page: string | Person;
     id?: string | null;
   }[];
   updatedAt?: string | null;
@@ -3202,7 +3202,7 @@ export interface Nav {
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: number;
+  id: string;
   name: string;
   updatedAt?: string | null;
   createdAt?: string | null;

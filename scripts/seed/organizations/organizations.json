@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "universidade-federal-da-bahia",
+    "name": "Universidade Federal da Bahia",
+    "acronym": "UFBA",
+    "description": "A Universidade Federal da Bahia é uma universidade pública federal brasileira sediada em Salvador, uma das mais importantes instituições de ensino superior do Nordeste.",
+    "url": "https://ufba.br/",
+    "address": "Av. Reitor Miguel Calmon, Salvador - BA, Brasil"
+  },
+  {
+    "slug": "centro-federal-de-educacao-tecnologica-do-rio-de-janeiro",
+    "name": "Centro Federal de Educação Tecnológica Celso Suckow da Fonseca",
+    "acronym": "CEFET/RJ",
+    "description": "Instituição pública federal de educação profissional, científica e tecnológica ligada ao Ministério da Educação.",
+    "url": "https://www.cefet-rj.br/",
+    "address": "Rua São Cristóvão, 210, Rio de Janeiro - RJ, Brasil"
+  },
+  {
+    "slug": "universidade-federal-de-minas-gerais",
+    "name": "Universidade Federal de Minas Gerais",
+    "acronym": "UFMG",
+    "description": "Universidade pública federal brasileira com tradição em ensino, pesquisa e extensão, localizada em Belo Horizonte, Minas Gerais.",
+    "url": "https://www.ufmg.br/",
+    "address": "Av. Antônio Carlos, 6627, Belo Horizonte - MG, Brasil"
+  },
+  {
+    "slug": "universidade-federal-do-estado-do-rio-de-janeiro",
+    "name": "Universidade Federal do Estado do Rio de Janeiro",
+    "acronym": "UNIRIO",
+    "description": "Universidade pública federal brasileira com foco em ensino, pesquisa e extensão em diversas áreas, sediada no Rio de Janeiro.",
+    "url": "https://www.unirio.br/",
+    "address": "Rua São José, 63 - Centro, Rio de Janeiro - RJ, Brasil"
+  },
+  {
+    "slug": "instituto-federal-de-sao-paulo",
+    "name": "Instituto Federal de Educação, Ciência e Tecnologia de São Paulo",
+    "acronym": "IFSP",
+    "description": "Instituto público federal de educação profissional, científica e tecnológica, com vários campi no estado de São Paulo.",
+    "url": "https://www.ifsp.edu.br/",
+    "address": "Av. Comendador Martín Francisco, 770, São Paulo - SP, Brasil"
+  },
+  {
+    "slug": "universidade-estadual-de-sao-paulo",
+    "name": "Universidade Estadual Paulista",
+    "acronym": "UNESP",
+    "description": "Universidade pública estadual brasileira com campi espalhados por diversas cidades do estado de São Paulo.",
+    "url": "https://www.unesp.br/",
+    "address": "Av. Eng. Luiz Edmundo Carrijo Coube, 14-01, Botucatu - SP, Brasil"
+  },
+  {
+    "slug": "universidade-federal-do-acre",
+    "name": "Universidade Federal do Acre",
+    "acronym": "UFAC",
+    "description": "Universidade pública federal brasileira localizada no estado do Acre, com atuação em ensino, pesquisa e extensão.",
+    "url": "https://www.ufac.br/",
+    "address": "Rodovia BR-364, Km 4, Rio Branco - AC, Brasil"
+  },
+  {
+    "slug": "universidade-federal-do-para",
+    "name": "Universidade Federal do Pará",
+    "acronym": "UFPA",
+    "description": "Universidade pública federal brasileira com sede em Belém e presença em várias cidades do estado do Pará.",
+    "url": "https://www.ufpa.br/",
+    "address": "Av. Augusto Corrêa, 01, Belém - PA, Brasil"
+  },
+  {
+    "slug": "universidade-estadual-do-ceara",
+    "name": "Universidade Estadual do Ceará",
+    "acronym": "UECE",
+    "description": "Universidade pública estadual brasileira sediada em Fortaleza, com atuação em ensino, pesquisa e extensão.",
+    "url": "https://www.uece.br/",
+    "address": "Av. Paranjana, 1701, Fortaleza - CE, Brasil"
+  },
+  {
+    "slug": "universidade-federal-de-goias",
+    "name": "Universidade Federal de Goiás",
+    "acronym": "UFG",
+    "description": "Universidade pública federal brasileira com campi em Goiânia e outras cidades de Goiás.",
+    "url": "https://www.ufg.br/",
+    "address": "Av. Universitária, 1445, Goiânia - GO, Brasil"
+  },
+  {
+    "slug": "universidade-federal-de-matogrosso",
+    "name": "Universidade Federal de Mato Grosso",
+    "acronym": "UNEMAT",
+    "description": "Universidade pública federal brasileira com foco em ensino, pesquisa e extensão, localizada em Mato Grosso.",
+    "url": "https://www.unemat.br/",
+    "address": "Rod. MT-140 Km 02, Tangará da Serra - MT, Brasil"
+  },
+  {
+    "slug": "universidade-estadual-do-piaui",
+    "name": "Universidade Estadual do Piauí",
+    "acronym": "UESPI",
+    "description": "Universidade pública estadual brasileira localizada no estado do Piauí.",
+    "url": "https://www.uespi.br/",
+    "address": "Av. Miguel Rosa, 1560, Teresina - PI, Brasil"
+  },
+  {
+    "slug": "universidad-de-la-republica",
+    "name": "Universidad de la República",
+    "acronym": "UDELAR",
+    "description": "A Universidad de la República é a maior e mais importante universidade pública do Uruguai, com ampla atuação em ensino e pesquisa.",
+    "url": "https://udelar.edu.uy/",
+    "address": "Montevideo, Uruguay"
+  },
+  {
+    "slug": "facultad-latinoamericana-de-ciencias-sociales",
+    "name": "Facultad Latinoamericana de Ciencias Sociales",
+    "acronym": "FLACSO",
+    "description": "Instituição internacional de educação e pesquisa em ciências sociais com atuação em vários países da América Latina.",
+    "url": "https://www.flacso.org/",
+    "address": "Sede regional (Argentina) – CABA, Argentina"
+  },
+  {
+    "slug": "centro-de-investigaciones-y-estudios-superiores-en-antropologia-social",
+    "name": "Centro de Investigaciones y Estudios Superiores en Antropología Social",
+    "acronym": "CIESAS",
+    "description": "Instituto de pesquisa acadêmica mexicano focado em ciências sociais e antropologia.",
+    "url": "https://www.ciesas.edu.mx/",
+    "address": "México"
+  },
+  {
+    "slug": "universidad-surcolombiana",
+    "name": "Universidad Surcolombiana",
+    "acronym": "USCO",
+    "description": "Universidade colombiana pública com foco em ensino, pesquisa e extensão em várias áreas do conhecimento.",
+    "url": "https://www.usco.edu.co/",
+    "address": "Colômbia"
+  },
+  {
+    "slug": "theatro-municipal-do-rio-de-janeiro",
+    "name": "Theatro Municipal do Rio de Janeiro",
+    "acronym": null,
+    "description": "Instituição cultural histórica no Rio de Janeiro com atuação artística e espaços educativos, ocasionalmente colaborando com pesquisa e ensino artístico.",
+    "url": "https://www.theatromunicipal.rio/",
+    "address": "Praça Floriano, s/n – Centro, Rio de Janeiro - RJ, Brasil"
+  }
+]
