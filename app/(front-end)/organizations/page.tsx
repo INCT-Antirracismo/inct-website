@@ -25,7 +25,7 @@ export default async function OrganizationsPage(props: OrganizationsPageProps) {
           </div>
         );
       })}
-      <Link href={'/'}>Página Inicial</Link>
+      <Link href={'/sitemap'}>Página Inicial</Link>
     </div>
   );
 }

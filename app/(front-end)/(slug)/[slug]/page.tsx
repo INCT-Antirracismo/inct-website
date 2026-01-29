@@ -17,7 +17,7 @@ export default async function PagePage({ params }: PagePageProps) {
       <div className="container mx-auto py-12 prose">
         <h1>{doc.name}</h1>
         <p className="lead">{doc.description}</p>
-        <Link href={'/'}>Página Inicial</Link>
+        <Link href={'/sitemap'}>Página Inicial</Link>
       </div>
       {doc.content?.map((block, index) => {
         if (block.blockType === 'defaultCTABlock') {
