@@ -11,7 +11,7 @@ export async function getDocBySlug(
   const data = await payload.find({
     collection: collectionSlug,
     where: { slug: { equals: slug } },
-    depth: 0,
+    depth: 2,
     pagination: false,
     limit: 1
   });

@@ -10,7 +10,8 @@ import './globals.css';
 
 const geistSans = Nunito_Sans({
   variable: '--font-geist-sans',
-  subsets: ['latin']
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800']
 });
 
 const geistMono = Geist_Mono({
