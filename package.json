@@ -10,7 +10,7 @@
     "lint": "eslint",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "saveOrganizations": "payload run ./scripts/saveOrganizations.ts"
+    "seedPersons": "payload run ./scripts/seed/persons/index.ts"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.73.0",
@@ -25,12 +25,14 @@
     "@radix-ui/react-radio-group": "^1.3.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@react-google-maps/api": "^2.20.8",
+    "bottleneck": "^2.19.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "graphql": "^16.12.0",
     "lodash": "^4.17.23",
     "lucide-react": "^0.552.0",
     "next": "16.1.1",
+    "openai": "^6.18.0",
     "payload": "^3.73.0",
     "qs-esm": "^7.0.3",
     "react": "19.2.1",

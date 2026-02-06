@@ -22,7 +22,7 @@ export const descriptionField: Field = {
   name: 'description',
   label: 'Descrição curta',
   type: 'textarea',
-  maxLength: 320,
+  maxLength: 500,
   admin: {
     description: 'Adicione uma descrição curta do item.',
     components: {

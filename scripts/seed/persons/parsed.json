@@ -1,0 +1,443 @@
+[
+  {
+    "name": "Anna Maria Canavarro Benite",
+    "slug": "anna-maria-canavarro-benite",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f3526206"
+        }
+      }
+    ],
+    "description": "Ensino de Química com foco em Currículos de Ciências e Suas Tecnologias Negrorreferenciados | Ensino de Ciências de Matriz Africana e da Diáspora | Interculturalidade | Mulheres Negras nas CT | Políticas de Ações Afirmativas",
+    "email": "anitabenite@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/8433607360245647",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Anny Ocoró Loango",
+    "slug": "anny-ocoro-loango",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f3526216"
+        }
+      }
+    ],
+    "description": "Afrodescendentes E Políticas Educacionais Com Perspectiva Étnico-Racial | Interseccional E De Gênero",
+    "email": "aocoro@flacso.org.ar",
+    "pronouns": "Feminino",
+    "orcidUrl": "https://orcid.org/0000-0001-5814-2368"
+  },
+  {
+    "name": "Branca Fabrício",
+    "slug": "branca-fabricio",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697a92ddc5825584fcdc15d7"
+        }
+      }
+    ],
+    "description": "Processos de Trajetórias Textuais | Circulação dos Discursos em Tempos de Globalização | Performatividades Identitárias (Gênero, Sexualidade e Raça) em Práticas de Letramentos Online-Offline | Cartografias de Comunicabilidade | Processos Metapragmáticos",
+    "email": "brancaff@letras.ufrj.br",
+    "lattesUrl": "http://lattes.cnpq.br/6686961506243048",
+    "pronouns": "Masculino"
+  },
+  {
+    "name": "Claudiana Nogueira Alencar",
+    "slug": "claudiana-nogueira-alencar",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f3526202"
+        }
+      }
+    ],
+    "description": "Livro, Leitura e Literatura | Gramáticas Culturais e Jogos de Linguagem na Arte e Cultura de Coletivos Culturais Juvenis da Periferia | Vivências Cenopoéticas | Práticas dos Saraus | Mediações de Leitura | Bibliotecas Livres | Escrita de Mulheres na Literatura Periférica | Gramáticas de Resistência das Poetas da Periferia | Bibliotecas de Iniciativa Popular | Pragmática Cultural | Estudos Críticos da Linguagem | Educação Popular | Pedagogia Crítica e Decolonial | Aprendizagem Cooperativa | Letramentos Literários",
+    "email": "claudiana.alencar@uece.br",
+    "lattesUrl": "http://lattes.cnpq.br/5612560998826098",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Flavia Rodrigues Lima da Rocha",
+    "slug": "flavia-rodrigues-lima-da-rocha",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f35261fa"
+        }
+      }
+    ],
+    "description": "Educação Antirracista | Relações Étnico-Raciais | História e Cultura Africana, Afro-Brasileira e Indígena | Formação Inicial e Continuada de Docentes | Pesquisa em Discriminação Racial | Educação Transformadora, Antirracismo, Interseccionalidade e Justiça Social na América Latina",
+    "email": "flavia.rocha@ufac.br",
+    "lattesUrl": "http://lattes.cnpq.br/6741665707188813",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Jesuíno Arvelino Pinto",
+    "slug": "jesuino-arvelino-pinto",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f352620a"
+        }
+      }
+    ],
+    "description": "Literature And History | Literature And Politics | Post Colonialism | Children's And Youth Literature | Literature And Social Life | Portuguese Language Literatures | Literature And Teaching | Narrative Theory And Criticism",
+    "email": "jesuino.pinto@unemat.br",
+    "lattesUrl": "http://lattes.cnpq.br/2044195183122422",
+    "pronouns": "Masculino"
+  },
+  {
+    "name": "Jonas Henrique de Oliveira",
+    "slug": "jonas-henrique-de-oliveira",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f352620e"
+        }
+      }
+    ],
+    "description": "Juventude | Violência | Teoria Antropológica | Teoria Sociológica | Sociologia Urbana | Relações Raciais | Gênero | Masculinidade | Práticas Policiais | Justiça | Cultura no Brasil",
+    "email": "jonashenrique@phb.uespi.br",
+    "lattesUrl": "https://lattes.cnpq.br/0097641648561551",
+    "pronouns": "Masculino"
+  },
+  {
+    "name": "Karina Boggio",
+    "slug": "karina-boggio",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f3526212"
+        }
+      }
+    ],
+    "description": "Procesos Migratorios y Relaciones Interculturales en Contextos Urbanos | Psicología de la Salud | Acceso a la Salud de Migrantes | Barreras Psicosocioculturales | Inequidades en Salud | Interculturalidad Crítica | Inclusión Social en Diversidad Étnico-Nacional y Étnico-Racial | Trabajo y Educación | Reconfiguraciones del Espacio Doméstico y la Intimidad | Investigación, Extensión y Enseñanza | Enfoque Interseccional | Migraciones, Maternidades Migrantes y Salud",
+    "email": "kariboggio@psico.edu.uy",
+    "pronouns": "Feminino",
+    "orcidUrl": "https://orcid.org/0000-0002-4504-0669"
+  },
+  {
+    "name": "Lina Rosa Berrio Palomo",
+    "slug": "lina-rosa-berrio-palomo",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f352621a"
+        }
+      }
+    ],
+    "description": "Antropología Médica | Salud Reproductiva | Pueblos Indígenas | Antropología Feminista",
+    "email": "linaberrio@gmail.com",
+    "pronouns": "Feminino",
+    "orcidUrl": "https://orcid.org/0000-0002-4504-0669"
+  },
+  {
+    "name": "Maria Amália Oliveira",
+    "slug": "maria-amalia-oliveira",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697a92ddc5825584fcdc15d7"
+        }
+      }
+    ],
+    "description": "Patrimônio | Memória | Alimentação | Populações Tradicionais",
+    "email": "maria.oliveira@unirio.br",
+    "lattesUrl": "http://lattes.cnpq.br/6526337310731511"
+  },
+  {
+    "name": "Maria Laura Pardo",
+    "slug": "maria-laura-pardo",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f3526216"
+        }
+      }
+    ],
+    "description": "Análisis Crítico del Discurso | Estudio del Discurso Político y Legal de Argentina | Discurso sobre Personas en Situación de Pobreza y Vulnerabilidad | Perspectiva Discursiva de la Problemática de la Pobreza",
+    "email": "pardo.linguistica@gmail.com",
+    "pronouns": "Feminino",
+    "orcidUrl": "https://orcid.org/0000-0002-8064-5401"
+  },
+  {
+    "name": "Marília Guimarães Pinheiro",
+    "slug": "marilia-guimaraes-pinheiro",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f35261f2"
+        }
+      }
+    ],
+    "description": "Informática na Administração de Empresas | Diversidade nas Empresas | Gestão de Recursos Humanos | Tecnologia da Informação | Sistemas de Ensino à Distância",
+    "email": "mariliapinheiro@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/5564141620197737",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Martha Cecilia Mosquera Urrutia",
+    "slug": "martha-cecilia-mosquera-urrutia",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f352621e"
+        }
+      }
+    ],
+    "description": "Formación de Profesores | Inclusión y Promoción de la Diversidad Étnica y Cultural | Desarrollo del Pensamiento Matemático | Justicia Curricular | Educación Antirracista",
+    "email": "martha.mosquera@usco.edu.com",
+    "pronouns": "Feminino",
+    "orcidUrl": "http://orcid.org/0000-0003-0091-1034"
+  },
+  {
+    "name": "Natalino Neves da Silva",
+    "slug": "natalino-neves-da-silva",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb4e2d3e647f35261c4"
+        }
+      }
+    ],
+    "description": "Experiências Subjetivas e Sociopolíticas Afrodiaspóricas | Educação-Cultura | Políticas Educacionais | Formação de Professoras(es) | Educação e Relações Étnico-Raciais | Juventudes Negras | Educação de Jovens, Adultos e Idosos | Ensino Médio | Educação Superior | Movimentos Sociais e Educação",
+    "email": "natalinoufmg@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/8701722710780673",
+    "pronouns": "Masculino"
+  },
+  {
+    "name": "Nilma Lino Gomes",
+    "slug": "nilma-lino-gomes",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb4e2d3e647f35261c4"
+        }
+      }
+    ],
+    "description": "Diversidade, Cultura e Educação | Relações Étnico-Raciais e Educação | Formação de Professores e Diversidade Étnico-Racial | Direitos Humanos | Políticas Educacionais | Desigualdades Sociais e Raciais | Movimentos Sociais e Educação | Atuação do Movimento Negro Brasileiro",
+    "email": "nilmalinogomes@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/7444449891704854",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Paulo Melgaço Silva Junior",
+    "slug": "paulo-melgaco-silva-junior",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb6e2d3e647f3526222"
+        }
+      }
+    ],
+    "description": "Currículo | Cotidiano Escolar | Educação Fundamental | Orientação Sexual | Sexualidades | Masculinidades | Artes | Dança",
+    "email": "pmelgaco6@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/8573001420943301",
+    "pronouns": "Masculino"
+  },
+  [
+    {
+      "name": "Rodrigo Pereira da Rocha Rosistolato",
+      "slug": "rodrigo-pereira-da-rocha-rosistolato",
+      "memberOf": [
+        {
+          "relationType": [
+            "697a9230c5825584fcdc1571",
+            "697bac0eec695eb47b365dc1"
+          ],
+          "relationTo": {
+            "relationTo": "organizations",
+            "value": "697a92ddc5825584fcdc15d7"
+          }
+        }
+      ],
+      "description": "Desigualdades Educacionais | Estigmas E Rótulos Na Educação Básica | Estratégias Familiares | Projetos De Escolarização Nas Camadas Populares Das Cidades Do Rio De Janeiro, Petrópolis E Duque De Caxias",
+      "email": "rodrigo.rosistolato@gmail.com",
+      "lattesUrl": "http://lattes.cnpq.br/0733727866956524",
+      "pronouns": "Masculino"
+    },
+    {
+      "name": "Rosicler Lemos da Silva",
+      "slug": "rosicler-lemos-da-silva",
+      "memberOf": [
+        {
+          "relationType": [
+            "697a9230c5825584fcdc1571",
+            "697bac0eec695eb47b365dc1"
+          ],
+          "relationTo": {
+            "relationTo": "organizations",
+            "value": "697cdeb5e2d3e647f35261f6"
+          }
+        }
+      ],
+      "description": "Trabalho Profissional Da/o/e Assistente Social | Relações Étnico-Raciais | Política De Assistência Social",
+      "email": "rosicler.silva@unesp.br",
+      "lattesUrl": "http://lattes.cnpq.br/5594905759255192",
+      "pronouns": "Feminino"
+    }
+  ],
+  {
+    "name": "Samuel Silva Rodrigues de Oliveira",
+    "slug": "samuel-silva-rodrigues-de-oliveira",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cc83ab61f4c51fa9b50f0"
+        }
+      }
+    ],
+    "description": "História do Tempo Presente | Memória e Movimentos Sociais | Formação dos Espaços Urbanos | Favelas | Lutas e Sociabilidades Negras | Culturas Operárias | Visualidades",
+    "email": "samu_oliveira@yahoo.com.br",
+    "lattesUrl": "http://lattes.cnpq.br/1492578610570434",
+    "pronouns": "Masculino"
+  },
+  {
+    "name": "Shirley Aparecida de Miranda",
+    "slug": "shirley-aparecida-de-miranda",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb4e2d3e647f35261c4"
+        }
+      }
+    ],
+    "description": "Políticas Educacionais | Diversidade Étnico-Racial e Cultural | Educação Indígena | Educação Quilombola | Raça | Descolonização de Processos Educativos",
+    "email": "mirandashirley48@gmail.com",
+    "lattesUrl": "http://lattes.cnpq.br/3847776763284981",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Tânia Aretuza Ambrizi Gebara",
+    "slug": "tania-aretuza-ambrizi-gebara",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb4e2d3e647f35261c4"
+        }
+      }
+    ],
+    "description": "Educação | Educação Infantil | Formação Docente | Relações Étnico-Raciais | Educação Inclusiva | Infâncias e Educação Infantil",
+    "email": "tgebara@ufmg.br",
+    "lattesUrl": "http://lattes.cnpq.br/8976489157503310",
+    "pronouns": "Feminino"
+  },
+  {
+    "name": "Wilma de Nazaré Baía Coelho",
+    "slug": "wilma-de-nazare-baia-coelho",
+    "memberOf": [
+      {
+        "relationType": [
+          "697a9230c5825584fcdc1571",
+          "697bac0eec695eb47b365dc1"
+        ],
+        "relationTo": {
+          "relationTo": "organizations",
+          "value": "697cdeb5e2d3e647f35261fe"
+        }
+      }
+    ],
+    "description": "Formação de Professores(as) | Educação Básica | Educação para as Relações Étnico-Raciais",
+    "email": "wilmacoelho@yahoo.com.br",
+    "lattesUrl": "http://lattes.cnpq.br/1035616337472088",
+    "pronouns": "Feminino"
+  }
+]

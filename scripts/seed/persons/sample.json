@@ -1,0 +1,269 @@
+{
+  "createdAt": "2026-01-28T21:26:30.482Z",
+  "updatedAt": "2026-01-29T19:52:49.753Z",
+  "generateSlug": false,
+  "slug": "glenda-cristina-valim-de-melo",
+  "name": "Glenda Cristina Valim de Melo",
+  "socialMedia": [
+    {
+      "url": "https://www.instagram.com/glenda_valimdemelo/",
+      "type": "instagram",
+      "id": "697a95e8646a8f26b1e129b0"
+    }
+  ],
+  "inctPosition": ["697a7f02c5825584fcdc1489", "697bac0eec695eb47b365dc1"],
+  "researchProjects": [
+    {
+      "relationType": ["697a95dbc5825584fcdc189e"],
+      "relationTo": {
+        "relationTo": "researchProjects",
+        "value": "697a958cc5825584fcdc17bf"
+      },
+      "id": "697a95ca646a8f26b1e129ae"
+    }
+  ],
+  "memberOf": [
+    {
+      "relationType": ["697a9230c5825584fcdc1571"],
+      "relationTo": {
+        "relationTo": "organizations",
+        "value": "697a92ddc5825584fcdc15d7"
+      },
+      "id": "697a9223a94f3eb10d8cdbea"
+    },
+    {
+      "relationType": ["697bac1eec695eb47b365dd0"],
+      "relationTo": {
+        "relationTo": "organizations",
+        "value": "697a955dc5825584fcdc179d"
+      },
+      "id": "697bac420857820aec237efd"
+    }
+  ],
+  "description": "Performatividade, discurso, raça e Interseccionalidade; discurso, raça e mídia; discurso sobre a  obstétrica da mulher negra na mídia; formação de professores de inglês, raça e ensino de língua inglesa.",
+  "email": "glendamelo@letras.ufrj.br",
+  "image": "697a9156c5825584fcdc150a",
+  "lattesUrl": "http://lattes.cnpq.br/6215257502502767",
+  "pronouns": "Feminino",
+  "inctGroup": ["697a91edc5825584fcdc1543"],
+  "body": {
+    "root": {
+      "children": [
+        {
+          "children": [
+            {
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "Professora Permanente do Programa Interdisciplinar de Pós-Graduação em Linguística Aplicada, na Universidade Federal do Rio de Janeiro (UFRJ) e do Departamento de Letras anglo-germânicas na mesma instituição.",
+              "type": "text",
+              "version": 1
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Tem doutorado em Linguística Aplicada e Estudos da Linguagem pela Pontifícia Universidade Católica de São Paulo e Pós-doutorado em Linguística Aplicada pelo o Programa Interdisciplinar de Pós-Graduação em Linguística Aplicada, na Universidade Federal do Rio de Janeiro (UFRJ).",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 1
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "É pesquisadora produtividade CNPq desde 2020 e foi pesquisadora Jovem Cientista FAPERJ desde 2019 a 2024. Coordena o grupo de pesquisa Performatividades, Raça e Interseccionalidades (PRINT/CNPq).",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 2
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "É vice-coordenadora do INCT/CNPq \"Educação transformadora: antirracismo, interseccionalidade e justiça social na América Latina\".",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 3
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Participou como secretária da gestão voluntária da Associação de Linguística Aplicada do Brasil (ALAB) de 2015 a 2017. Foi, também, vice-presidenta da ALAB, na qual atuou, especialmente, na comunicação, mídias e articulação de políticas científicas.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 4
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Fez parte ainda da Diretoria da Associação de Investigadores(as) Afrolatino-americanos(as) e Caribenhos(as) - AINALC, de 2018 a 2024, de forma voluntária.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 5
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Compôs grupos de trabalho sobre políticas de ações afirmativas e participar da comissão de heteroidentificação na UNIRIO, onde atuou de 2015 a 2024 como docente.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 6
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Ela é membra do GT Práticas identitárias da Associação Nacional de Pós graduação e Pesquisa em Letras e Linguística (ANPOLL) e da Associação Brasileira de Pesquisadores Negros (ABPN).",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 7
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Faz parte da gestão voluntária do Fórum de Ciências Humanas, Sociais, Sociais Aplicadas, Linguística, Letras e Artes no biênio de 2024/2026 e o representa no Comitê de Comitê de Ciências Humanas e Sociais, no Ministério de Ciência e Tecnologia.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 8
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "A docente é integrante do Comitê de Assessoramento de Letras e Linguística do CNPq. ",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "type": "listitem",
+              "version": 1,
+              "value": 9
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "list",
+          "version": 1,
+          "listType": "bullet",
+          "start": 1,
+          "tag": "ul"
+        }
+      ],
+      "direction": null,
+      "format": "",
+      "indent": 0,
+      "type": "root",
+      "version": 1
+    }
+  },
+  "orcidUrl": "https://orcid.org/0000-0002-1878-5710",
+  "publications": {
+    "docs": ["697a97dbc5825584fcdc19b4"],
+    "hasNextPage": false
+  },
+  "id": "697a7f06c5825584fcdc149a"
+}
