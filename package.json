@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types"
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "saveOrganizations": "payload run ./scripts/saveOrganizations.ts"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.73.0",

@@ -84,7 +84,7 @@ export const Persons: CollectionConfig = {
           required: true
         },
         {
-          name: 'researchProject',
+          name: 'relationTo',
           label: 'Projeto de Pesquisa',
           type: 'relationship',
           relationTo: ['researchProjects'],
@@ -118,6 +118,13 @@ export const Persons: CollectionConfig = {
           required: true
         }
       ]
+    },
+    {
+      name: 'publications',
+      label: 'Autorias',
+      type: 'join',
+      collection: 'publications',
+      on: 'author.relationTo'
     }
   ]
 };

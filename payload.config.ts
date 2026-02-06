@@ -49,8 +49,8 @@ export default buildConfig({
     autoLogin:
       process.env.NODE_ENV === 'development'
         ? {
-            email: 'viniciusofp@gmail.com',
-            password: 'digiteumasenhasegura',
+            email: process.env.DEV_EMAIL || '',
+            password: process.env.DEV_PASS || '',
             prefillOnly: true
           }
         : false,

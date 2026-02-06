@@ -1,21 +1,5 @@
 [
   {
-    "slug": "universidade-federal-da-bahia",
-    "name": "Universidade Federal da Bahia",
-    "acronym": "UFBA",
-    "description": "A Universidade Federal da Bahia é uma universidade pública federal brasileira sediada em Salvador, uma das mais importantes instituições de ensino superior do Nordeste.",
-    "url": "https://ufba.br/",
-    "address": "Av. Reitor Miguel Calmon, Salvador - BA, Brasil"
-  },
-  {
-    "slug": "centro-federal-de-educacao-tecnologica-do-rio-de-janeiro",
-    "name": "Centro Federal de Educação Tecnológica Celso Suckow da Fonseca",
-    "acronym": "CEFET/RJ",
-    "description": "Instituição pública federal de educação profissional, científica e tecnológica ligada ao Ministério da Educação.",
-    "url": "https://www.cefet-rj.br/",
-    "address": "Rua São Cristóvão, 210, Rio de Janeiro - RJ, Brasil"
-  },
-  {
     "slug": "universidade-federal-de-minas-gerais",
     "name": "Universidade Federal de Minas Gerais",
     "acronym": "UFMG",

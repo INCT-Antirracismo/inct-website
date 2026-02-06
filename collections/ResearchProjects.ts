@@ -55,7 +55,7 @@ export const ResearchProjects: CollectionConfig = {
       name: 'members',
       type: 'join',
       collection: 'persons',
-      on: 'researchProjects.researchProject',
+      on: 'researchProjects.relationTo',
       admin: {
         defaultColumns: ['image', 'name', 'description'],
         description:

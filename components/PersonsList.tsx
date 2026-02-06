@@ -84,7 +84,7 @@ export default function PersonsList({
                 <p className="text-[10px] uppercase tracking-wider text-primary font-medium">
                   {find(doc.researchProjects, function (o) {
                     return (
-                      (o.researchProject.value as ResearchProject).id ===
+                      (o.relationTo.value as ResearchProject).id ===
                       researchProjectID
                     );
                   })

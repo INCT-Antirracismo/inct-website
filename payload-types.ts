@@ -87,6 +87,9 @@ export interface Config {
     researchProjects: {
       members: 'persons';
     };
+    persons: {
+      publications: 'publications';
+    };
   };
   collectionsSelect: {
     researchProjects: ResearchProjectsSelect<false> | ResearchProjectsSelect<true>;
@@ -219,6 +222,8 @@ export interface DefinedTerm {
    */
   generateSlug?: boolean | null;
   slug: string;
+  nameFemale?: string | null;
+  nameMale?: string | null;
   /**
    * Adicione uma descrição curta do item.
    */
@@ -298,7 +303,7 @@ export interface Person {
   researchProjects?:
     | {
         relationType: (string | DefinedTerm)[];
-        researchProject: {
+        relationTo: {
           relationTo: 'researchProjects';
           value: string | ResearchProject;
         };
@@ -315,6 +320,11 @@ export interface Person {
         id?: string | null;
       }[]
     | null;
+  publications?: {
+    docs?: (string | Publication)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -445,6 +455,7 @@ export interface Publication {
    * Adicione uma descrição curta do item.
    */
   description?: string | null;
+  citation?: string | null;
   /**
    * Do que se trata essa publicação?
    */
@@ -2817,6 +2828,7 @@ export interface PublicationsSelect<T extends boolean = true> {
   generateSlug?: T;
   slug?: T;
   description?: T;
+  citation?: T;
   type?: T;
   url?: T;
   datePublished?: T;
@@ -2886,7 +2898,7 @@ export interface PersonsSelect<T extends boolean = true> {
     | T
     | {
         relationType?: T;
-        researchProject?: T;
+        relationTo?: T;
         id?: T;
       };
   memberOf?:
@@ -2896,6 +2908,7 @@ export interface PersonsSelect<T extends boolean = true> {
         relationTo?: T;
         id?: T;
       };
+  publications?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -3115,6 +3128,8 @@ export interface DefinedTermsSelect<T extends boolean = true> {
   name?: T;
   generateSlug?: T;
   slug?: T;
+  nameFemale?: T;
+  nameMale?: T;
   description?: T;
   additionalType?: T;
   updatedAt?: T;

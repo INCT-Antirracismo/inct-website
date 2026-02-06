@@ -21,6 +21,13 @@ export const DefinedTerms: CollectionConfig = {
   fields: [
     nameField,
     slugField,
+    {
+      type: 'row',
+      fields: [
+        { type: 'text', name: 'nameFemale', label: 'Nome no Feminino' },
+        { type: 'text', name: 'nameMale', label: 'Nome no Masculino' }
+      ]
+    },
     descriptionField,
     {
       label: 'Categoria do Termo',

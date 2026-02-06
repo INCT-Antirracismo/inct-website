@@ -30,6 +30,7 @@ export const Publications: CollectionConfig = {
     nameField,
     slugField,
     descriptionField,
+    { name: 'citation', type: 'textarea', label: 'Citação' },
     {
       name: 'type',
       label: 'Tipo de publicação',
