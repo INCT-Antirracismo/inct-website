@@ -24,7 +24,14 @@ export const Publications: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     description: 'Coleção de termos definidos.',
-    group: 'Institucional'
+    group: 'Institucional',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/payload/ui/BeforeControls#VisitContent'
+        ]
+      }
+    }
   },
   fields: [
     nameField,

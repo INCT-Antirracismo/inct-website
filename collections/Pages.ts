@@ -8,6 +8,7 @@ import {
   slugField
 } from './fields/commonFields';
 import { richTextBlock } from './fields/blocks/richTextBlock';
+import { contentList } from './fields/blocks/contentList';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -20,7 +21,14 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    group: 'Website'
+    group: 'Website',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/payload/ui/BeforeControls#VisitContent'
+        ]
+      }
+    }
   },
   fields: [
     nameField,
@@ -32,7 +40,7 @@ export const Pages: CollectionConfig = {
       label: 'Conteúdo',
       labels: { singular: 'Bloco', plural: 'Bloco' },
       type: 'blocks',
-      blocks: [defaultCTABlock, richTextBlock]
+      blocks: [defaultCTABlock, richTextBlock, contentList]
     }
   ]
 };

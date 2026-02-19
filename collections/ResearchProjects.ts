@@ -23,7 +23,14 @@ export const ResearchProjects: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     description: '',
-    group: 'Institucional'
+    group: 'Institucional',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/payload/ui/BeforeControls#VisitContent'
+        ]
+      }
+    }
   },
   fields: [
     slugField,

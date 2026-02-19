@@ -19,7 +19,7 @@ export type DefaultCTAProps = {
   image?: any | null;
   imagePosition?: 'none' | 'left' | 'right' | 'background' | null;
   content?: any | null;
-  fullScreen?: boolean | null;
+  height?: 'auto' | 'full' | '80' | null;
 };
 
 export default function DefaultCTA({
@@ -31,13 +31,13 @@ export default function DefaultCTA({
   buttons,
   image,
   content,
-  fullScreen
+  height
 }: DefaultCTAProps) {
   return (
     <div
       className={cn(
-        'bg-stone-50 font-sans dark:bg-black mx-2 border-x border-t border-dashed',
-        variant === 'dark' && 'bg-sun-100 '
+        'bg-stone-50 font-sans dark:bg-black',
+        variant === 'dark' && 'bg-trinidad text-white '
       )}
     >
       <main
@@ -46,12 +46,12 @@ export default function DefaultCTA({
           !image || imagePosition === 'background' || imagePosition === 'none'
             ? ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!'
             : '',
-          imagePosition === 'background' && 'dark bg-brown'
+          imagePosition === 'background' && 'dark bg-trinidad'
         )}
       >
         {imagePosition === 'background' && (
           <div
-            className="absolute bg-cover bg-center w-full h-full z-1 opacity-80 saturate-0 mix-blend-multiply"
+            className="absolute bg-cover bg-center w-full h-full z-1 opacity-80"
             style={{
               backgroundImage:
                 imagePosition === 'background' ? `url('${image.url}')` : 'none'
@@ -60,23 +60,25 @@ export default function DefaultCTA({
         )}
         <div
           className={cn(
-            ' flex items-center justify-center relative z-2',
+            ' flex items-center justify-center relative z-2 py-16 md:py-24 lg:py-32',
             imagePosition === 'left' && 'order-2',
-            fullScreen ? 'min-h-screen' : 'py-16 md:py-24 lg:py-32'
+            height === 'full' && 'min-h-screen',
+            height === '80' && 'min-h-[80svh]'
           )}
         >
           <div className={cn('flex flex-col px-6 md:px-8')}>
             <p
               className={cn(
-                'uppercase text-xs sm:text-sm xl:text-base tracking-wide font-medium mb-2 text-muted-foreground dark:text-stone-200',
-                variant === 'dark' && 'text-stone-600'
+                'uppercase text-xs sm:text-sm xl:text-base tracking-wide font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
+                variant === 'dark' && 'text-sun-300'
               )}
             >
               {label}
             </p>
             <h1
               className={cn(
-                'max-w-3xl text-2xl leading-[1.2]! md:text-3xl lg:text-4xl lg:max-w-4xl  tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-extrabold'
+                'max-w-3xl text-2xl leading-[1.2]! sm:text-3xl lg:text-4xl lg:max-w-4xl xl:text-5xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-extrabold',
+                variant === 'dark' && 'text-trinidad-100'
               )}
             >
               {title}
@@ -84,7 +86,8 @@ export default function DefaultCTA({
             {subtitle ? (
               <p
                 className={cn(
-                  'max-w-prose w-full text-base text-balance leading-6.5 sm:text-lg md:text-xl md:leading-8 text-stone-700 dark:text-zinc-100 mt-5'
+                  'max-w-prose w-full text-base text-balance leading-6.5 sm:text-lg md:text-xl xl:text-2xl md:leading-8 text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5',
+                  variant === 'dark' && 'text-stone-100'
                 )}
               >
                 {subtitle}
@@ -107,7 +110,7 @@ export default function DefaultCTA({
                     url = button.link.url;
                   } else {
                     url = createDynamicContentURL(
-                      button.link.internalContent.value,
+                      button.link.internalContent.value.slug,
                       button.link.internalContent.relationTo
                     );
                   }
@@ -138,13 +141,14 @@ export default function DefaultCTA({
             className={cn(
               'w-1/4 md:w-1/2  shrink-0 flex justify-center md:p-4 sticky top-0 md:static lg:p-8 ',
               imagePosition === 'left' && 'order-1',
-              fullScreen ? 'h-svh' : ''
+              height === 'full' && 'h-svh',
+              height === '80' && 'h-[80svh]'
             )}
           >
             <div
               className={cn(
                 'relative  w-full h-full flex items-center justify-center grow overflow-hidden',
-                fullScreen
+                height === 'full' || height === '80'
                   ? ''
                   : 'md:aspect-square md:max-h-[60svh] md:min-h-96'
               )}

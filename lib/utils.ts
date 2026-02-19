@@ -15,37 +15,27 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function createDynamicContentURL(
-  document:
-    | Person
-    | Page
-    | ResearchProject
-    | Post
-    | Event
-    | Organization
-    | Publication,
-  collection: string
-) {
+export function createDynamicContentURL(slug: string, collection: string) {
   if (collection === 'persons') {
-    return `/pessoas/${document.slug}`;
+    return `/pessoas/${slug}`;
   }
   if (collection === 'researchProjects') {
-    return `/projetos-de-pesquisa/${document.slug}`;
+    return `/projetos-de-pesquisa/${slug}`;
   }
   if (collection === 'publications') {
-    return `/publicacoes/${document.slug}`;
+    return `/publicacoes/${slug}`;
   }
   if (collection === 'events') {
-    return `/eventos/${document.slug}`;
+    return `/eventos/${slug}`;
   }
   if (collection === 'posts') {
-    return `/novidades/${document.slug}`;
+    return `/novidades/${slug}`;
   }
   if (collection === 'pages') {
-    return `/${document.slug}`;
+    return `/${slug}`;
   }
 
-  return `/${collection}/${document.slug}`;
+  return `/${collection}/${slug}`;
 }
 
 export const applyPronounsToDefinedTerm = (

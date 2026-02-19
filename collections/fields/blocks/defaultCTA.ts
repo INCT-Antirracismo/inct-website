@@ -1,5 +1,5 @@
 import { Block, Field } from 'payload';
-import { imageField, linkField, urlField } from '../commonFields';
+import { buttonsField, imageField, linkField, urlField } from '../commonFields';
 import { LUCIDE_ICONS } from '@/lib/lucide-icons';
 import { array } from 'payload/shared';
 
@@ -23,9 +23,15 @@ export const defaultCTABlock: Block = {
           defaultValue: 'none'
         },
         {
-          name: 'fullScreen',
-          type: 'checkbox',
-          label: 'Usar altura total da tela?'
+          name: 'height',
+          label: 'Altura (mínima)',
+          type: 'select',
+          options: [
+            { label: 'Automática', value: 'auto' },
+            { label: 'Full Screen', value: 'full' },
+            { label: '80% da tela', value: '80' }
+          ],
+          defaultValue: 'auto'
         },
         {
           name: 'variant',
@@ -66,48 +72,6 @@ export const defaultCTABlock: Block = {
     },
     { name: 'label', label: 'Chapéu', type: 'text' },
     { name: 'content', label: 'Texto', type: 'richText' },
-
-    {
-      name: 'buttons',
-      label: 'Botão',
-      labels: { singular: 'Botão', plural: 'Botões' },
-      type: 'array',
-      fields: [
-        { name: 'label', label: 'Texto', type: 'text' },
-        {
-          name: 'iconSlug',
-          label: 'Ícone',
-          type: 'select',
-          options: LUCIDE_ICONS as any,
-          admin: {
-            description: 'Adicone um ícone https://lucide.dev/icons/'
-          }
-        },
-        {
-          name: 'iconPosition',
-          label: 'Posição do Ícone',
-          type: 'radio',
-          options: [
-            { label: 'À Direita', value: 'right' },
-            { label: 'À Esquerda', value: 'left' }
-          ],
-          defaultValue: 'left'
-        },
-        {
-          name: 'variant',
-          label: 'Variante',
-          type: 'select',
-          options: [
-            { value: 'default', label: 'Padrão' },
-            { value: 'secondary', label: 'Secundário' },
-            { value: 'outline', label: 'Contorno' },
-            { value: 'ghost', label: 'Fantasma' },
-            { value: 'link', label: 'Link' }
-          ],
-          defaultValue: 'default'
-        },
-        linkField
-      ]
-    }
+    buttonsField
   ]
 };

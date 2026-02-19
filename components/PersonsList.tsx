@@ -67,7 +67,7 @@ export default function PersonsList({
         return (
           <Link
             key={doc.slug}
-            href={createDynamicContentURL(doc, collectionSlug)}
+            href={createDynamicContentURL(doc.slug, collectionSlug)}
             className="group"
           >
             <div key={`${doc.id}`} className="flex gap-4 my-4 items-center">

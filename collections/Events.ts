@@ -21,7 +21,14 @@ export const Events: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    group: 'Website'
+    group: 'Website',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/payload/ui/BeforeControls#VisitContent'
+        ]
+      }
+    }
   },
   fields: [
     nameField,

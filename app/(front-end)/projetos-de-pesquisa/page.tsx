@@ -20,7 +20,7 @@ export default async function ReasearchProjectsPage(
       {data.docs.map((doc: ResearchProject) => {
         return (
           <div key={doc.id + '_person'}>
-            <Link href={createDynamicContentURL(doc, 'researchProjects')}>
+            <Link href={createDynamicContentURL(doc.slug, 'researchProjects')}>
               <h3>{doc.name}</h3>
             </Link>
             <p>{doc.description}</p>

@@ -18,7 +18,7 @@ export default async function OrganizationsPage(props: OrganizationsPageProps) {
       {data.docs.map((doc: Organization) => {
         return (
           <div key={doc.id + '_person'}>
-            <Link href={createDynamicContentURL(doc, 'organizations')}>
+            <Link href={createDynamicContentURL(doc.slug, 'organizations')}>
               <h3>{doc.name}</h3>
             </Link>
             <p>{doc.description}</p>

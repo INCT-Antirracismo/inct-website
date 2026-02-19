@@ -1,6 +1,6 @@
 'use client';
 
-import { createDynamicContentURL } from '@/lib/utils';
+import { cn, createDynamicContentURL } from '@/lib/utils';
 import { Media } from '@/payload-types';
 import type {
   DefaultNodeTypes,
@@ -24,7 +24,7 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     throw new Error('Expected value to be an object');
   }
 
-  return createDynamicContentURL(value as any, relationTo);
+  return createDynamicContentURL(value.slug as string, relationTo);
 };
 
 // Custom upload converter component that uses next/image
@@ -76,7 +76,13 @@ export const CustomRichText: React.FC<{
 }> = ({ lexicalData }) => {
   return (
     <>
-      <RichText converters={jsxConverters} data={lexicalData} />
+      <RichText
+        converters={jsxConverters}
+        data={lexicalData}
+        className={cn(
+          'text-pretty prose lg:prose-lg xl:prose-xl prose-a:duration-75 prose-a:decoration-trinidad-600 prose-a:hover:text-trinidad-600 prose-a:decoration-[0.2ex] prose-a:underline-offset-[0.2ex]'
+        )}
+      />
     </>
   );
 };

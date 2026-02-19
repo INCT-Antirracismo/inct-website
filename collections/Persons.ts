@@ -25,7 +25,14 @@ export const Persons: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'jobTitle', 'description'],
-    group: 'Institucional'
+    group: 'Institucional',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/payload/ui/BeforeControls#VisitContent'
+        ]
+      }
+    }
   },
   fields: [
     slugField,
@@ -38,8 +45,9 @@ export const Persons: CollectionConfig = {
     },
     {
       ...descriptionField,
-      admin: { description: 'Bio curta da pessoa.' }
+      admin: { ...descriptionField.admin, description: 'Bio curta da pessoa.' }
     } as Field,
+    // {type: 'ui', name: 'description-alert', admin: {components: {Field: ''}}},
     { ...imageField, label: 'Foto' } as Field,
     { name: 'email', type: 'email', label: 'E-mail' },
     { ...urlField, label: 'URL do Lattes', name: 'lattesUrl' } as Field,

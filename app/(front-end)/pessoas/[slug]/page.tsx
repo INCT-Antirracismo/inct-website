@@ -232,7 +232,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                       </p>
                       <Link
                         href={createDynamicContentURL(
-                          project,
+                          project.slug,
                           'researchProjects'
                         )}
                       >

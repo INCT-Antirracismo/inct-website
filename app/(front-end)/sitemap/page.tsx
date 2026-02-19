@@ -46,7 +46,7 @@ export default async function Home() {
         <ul>
           {pages.map((page) => (
             <li key={`${page.id}_pagina`}>
-              <Link href={createDynamicContentURL(page, 'pages')}>
+              <Link href={createDynamicContentURL(page.slug, 'pages')}>
                 {page.name}
               </Link>
             </li>
