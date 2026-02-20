@@ -38,8 +38,9 @@ export const defaultCTABlock: Block = {
           label: 'Estilo',
           type: 'select',
           options: [
-            { label: 'Padrão', value: 'light' },
-            { label: 'Escuro', value: 'dark' }
+            { label: 'Claro', value: 'light' },
+            { label: 'Laranja', value: 'dark' },
+            { label: 'Amarelo', value: 'sun' }
           ],
           defaultValue: 'light',
           admin: {

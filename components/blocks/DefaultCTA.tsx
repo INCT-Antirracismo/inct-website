@@ -6,12 +6,13 @@ import { RichText } from '@payloadcms/richtext-lexical/react';
 import { Sparkles } from 'lucide-react';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import Link from 'next/link';
+import Buttons from './Buttons';
 
 export type DefaultCTAProps = {
   title: string | null;
   label?: string | null;
   subtitle?: string | null;
-  variant?: 'dark' | 'light' | null;
+  variant?: 'dark' | 'light' | 'sun' | null;
   buttons?:
     | { label: string; iconSlug: string; variant: string; url: string }[]
     | any[]
@@ -37,12 +38,13 @@ export default function DefaultCTA({
     <div
       className={cn(
         'bg-stone-50 font-sans dark:bg-black',
-        variant === 'dark' && 'bg-trinidad text-white '
+        variant === 'dark' && 'bg-trinidad text-white',
+        variant === 'sun' && 'bg-sun text-black'
       )}
     >
       <main
         className={cn(
-          'relative flex w-full md:items-center justify-between',
+          'relative flex w-full md:items-center justify-between container mx-auto',
           !image || imagePosition === 'background' || imagePosition === 'none'
             ? ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!'
             : '',
@@ -51,7 +53,7 @@ export default function DefaultCTA({
       >
         {imagePosition === 'background' && (
           <div
-            className="absolute bg-cover bg-center w-full h-full z-1 opacity-80"
+            className="absolute bg-cover bg-center w-full h-full z-1 opacity-20 mix-blend-luminosity saturate-0"
             style={{
               backgroundImage:
                 imagePosition === 'background' ? `url('${image.url}')` : 'none'
@@ -66,19 +68,21 @@ export default function DefaultCTA({
             height === '80' && 'min-h-[80svh]'
           )}
         >
-          <div className={cn('flex flex-col px-6 md:px-8')}>
+          <div className={cn('flex flex-col')}>
             <p
               className={cn(
-                'uppercase text-xs sm:text-sm xl:text-base tracking-wide font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
-                variant === 'dark' && 'text-sun-300'
+                'uppercase text-sm md:text-base xl:text-lg tracking-wider font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
+                variant === 'dark' && 'text-sun-200',
+                variant === 'sun' && 'text-brown'
               )}
             >
               {label}
             </p>
             <h1
               className={cn(
-                'max-w-3xl text-2xl leading-[1.2]! sm:text-3xl lg:text-4xl lg:max-w-4xl xl:text-5xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-extrabold',
-                variant === 'dark' && 'text-trinidad-100'
+                'max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
+                variant === 'dark' && 'text-trinidad-100',
+                variant === 'sun' && 'text-brown'
               )}
             >
               {title}
@@ -86,8 +90,9 @@ export default function DefaultCTA({
             {subtitle ? (
               <p
                 className={cn(
-                  'max-w-prose w-full text-base text-balance leading-6.5 sm:text-lg md:text-xl xl:text-2xl md:leading-8 text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5',
-                  variant === 'dark' && 'text-stone-100'
+                  'max-w-prose w-full text-base text-balance sm:text-lg md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 md:max-w-4xl lg:max-w-7xl',
+                  variant === 'dark' && 'text-stone-100',
+                  variant === 'sun' && 'text-stone-800'
                 )}
               >
                 {subtitle}
@@ -103,35 +108,8 @@ export default function DefaultCTA({
               />
             ) : null}
             {buttons!.length > 0 && (
-              <div className="flex flex-col gap-4 text-base font-medium sm:flex-row mt-8 flex-wrap">
-                {buttons?.map((button, index) => {
-                  let url: string;
-                  if (button.link.linkType === 'external') {
-                    url = button.link.url;
-                  } else {
-                    url = createDynamicContentURL(
-                      button.link.internalContent.value.slug,
-                      button.link.internalContent.relationTo
-                    );
-                  }
-                  return (
-                    <Link
-                      key={button.id}
-                      href={url}
-                      target={button.link.targetBlank ? '_blank' : '_self'}
-                    >
-                      <Button variant={button.variant}>
-                        {button.iconSlug && button.iconPosition === 'left' ? (
-                          <DynamicIcon name={button.iconSlug} size={48} />
-                        ) : null}
-                        {button.label}
-                        {button.iconSlug && button.iconPosition === 'right' ? (
-                          <DynamicIcon name={button.iconSlug} size={48} />
-                        ) : null}
-                      </Button>
-                    </Link>
-                  );
-                })}
+              <div className="flex flex-col gap-3 text-base font-medium sm:flex-row mt-5 md:mt-8 flex-wrap">
+                <Buttons buttons={buttons} />
               </div>
             )}
           </div>

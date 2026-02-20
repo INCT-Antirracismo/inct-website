@@ -1,11 +1,17 @@
 import { createDynamicContentURL } from '@/lib/utils';
 import { Publication } from '@/payload-types';
 import config from '@payload-config';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { getPayload } from 'payload';
 
 const payload = await getPayload({ config });
 export type PublicationsPageProps = {};
+
+export const metadata: Metadata = {
+  title: 'Publicações - INCT Antirracismo',
+  description: '...'
+};
 
 export default async function PublicationsPage(props: PublicationsPageProps) {
   const data = await payload.find({

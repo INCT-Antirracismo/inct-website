@@ -1,13 +1,28 @@
+import BlockRenderer from '@/components/blocks/BlockRenderer';
 import DefaultCTA from '@/components/blocks/DefaultCTA';
 import NotFound from '@/components/NotFound';
 import { CustomRichText } from '@/components/payload/RichTextConverter';
 import { getDocBySlug } from '@/lib/local-api';
 import { Page } from '@/payload-types';
+import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
 export type PagePageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata(
+  { params }: PagePageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = (await getDocBySlug('pages', slug)) as Page | null;
+  if (!doc) return { title: 'INCT Antirracismo' };
+  return {
+    title: `${doc.name} - INCT Antirracismo`,
+    description: doc.description
+  };
+}
 
 export default async function PagePage({ params }: PagePageProps) {
   const { slug } = await params;
@@ -21,31 +36,12 @@ export default async function PagePage({ params }: PagePageProps) {
         <Link href={'/sitemap'}>Página Inicial</Link>
       </div> */}
       {doc.content?.map((block, index) => {
-        if (block.blockType === 'defaultCTABlock') {
-          return (
-            <DefaultCTA
-              key={`${doc.slug}_block_${block.id}_${index}`}
-              {...block}
-            />
-          );
-        }
-        if (block.blockType === 'richTextBlock') {
-          return (
-            <div
-              key={`${doc.slug}_block_${block.id}_${index}`}
-              className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid justify-center"
-            >
-              <CustomRichText lexicalData={block.body as any} />
-            </div>
-          );
-        }
-
         return (
-          <div className="w-full">
-            <code className="prose font-mono prose-sm wrap-normal">
-              {JSON.stringify(block)}
-            </code>
-          </div>
+          <BlockRenderer
+            key={slug + index + 'block' + block.id}
+            block={block}
+            index={index}
+          />
         );
       })}
     </>

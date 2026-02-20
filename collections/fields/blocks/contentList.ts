@@ -18,26 +18,27 @@ export const contentList: Block = {
     buttonsField,
     {
       name: 'collectionSlug',
+      label: 'Tipo de Conteúdo',
       type: 'select',
       options: [
-        'publications',
-        'persons',
-        'researchProjects',
-        'posts',
-        'pages',
-        'events',
-        'organizations'
+        { value: 'publications', label: 'Publicações' },
+        { value: 'persons', label: 'Pessoas' },
+        { value: 'researchProjects', label: 'Projetos de Pesquisa' },
+        { value: 'posts', label: 'Posts' },
+        { value: 'events', label: 'Eventos' },
+        { value: 'organizations', label: 'Organizações' }
       ]
     },
+    { name: 'json', type: 'checkbox', label: 'Pesquisa personalizada em JSON' },
     {
       name: 'items',
+      label: 'Itens',
       type: 'relationship',
       relationTo: [
         'publications',
         'persons',
         'researchProjects',
         'posts',
-        'pages',
         'events',
         'organizations'
       ],
@@ -47,7 +48,16 @@ export const contentList: Block = {
       },
       admin: {
         condition: (data, siblingData, ctx) => {
-          return siblingData!.collectionSlug;
+          return siblingData!.collectionSlug && !siblingData.json;
+        }
+      }
+    },
+    {
+      name: 'jsonQuery',
+      type: 'json',
+      admin: {
+        condition: (data, siblingData, ctx) => {
+          return siblingData!.collectionSlug && siblingData.json;
         }
       }
     }

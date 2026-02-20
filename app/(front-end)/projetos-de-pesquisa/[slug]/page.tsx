@@ -3,13 +3,28 @@ import { CustomRichText } from '@/components/payload/RichTextConverter';
 import PersonsList from '@/components/PersonsList';
 import { getDocBySlug } from '@/lib/local-api';
 import { ResearchProject } from '@/payload-types';
-import { RichText } from '@payloadcms/richtext-lexical/react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 export type ResearchProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({
+  params
+}: ResearchProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = (await getDocBySlug(
+    'researchProjects',
+    slug
+  )) as ResearchProject | null;
+  if (!doc) return { title: 'INCT Antirracismo' };
+  return {
+    title: `${doc.name} - INCT Antirracismo`,
+    description: doc.description
+  };
+}
 
 export default async function ResearchProjectPage({
   params

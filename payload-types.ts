@@ -555,7 +555,7 @@ export interface Page {
         | {
             imagePosition?: ('none' | 'right' | 'left' | 'background') | null;
             height?: ('auto' | 'full' | '80') | null;
-            variant?: ('light' | 'dark') | null;
+            variant?: ('light' | 'dark' | 'sun') | null;
             image?: (string | null) | Media;
             title: string;
             subtitle?: string | null;
@@ -4468,8 +4468,9 @@ export interface Page {
                 }[]
               | null;
             collectionSlug?:
-              | ('publications' | 'persons' | 'researchProjects' | 'posts' | 'pages' | 'events' | 'organizations')
+              | ('publications' | 'persons' | 'researchProjects' | 'posts' | 'events' | 'organizations')
               | null;
+            json?: boolean | null;
             items?:
               | (
                   | {
@@ -4489,10 +4490,6 @@ export interface Page {
                       value: string | Post;
                     }
                   | {
-                      relationTo: 'pages';
-                      value: string | Page;
-                    }
-                  | {
                       relationTo: 'events';
                       value: string | Event;
                     }
@@ -4501,6 +4498,15 @@ export interface Page {
                       value: string | Organization;
                     }
                 )[]
+              | null;
+            jsonQuery?:
+              | {
+                  [k: string]: unknown;
+                }
+              | unknown[]
+              | string
+              | number
+              | boolean
               | null;
             id?: string | null;
             blockName?: string | null;
@@ -4962,7 +4968,9 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                   };
               collectionSlug?: T;
+              json?: T;
               items?: T;
+              jsonQuery?: T;
               id?: T;
               blockName?: T;
             };

@@ -1,12 +1,10 @@
 import CollapsibleBodyContent from '@/components/CollapsibleBodyContent';
 import NotFound from '@/components/NotFound';
-import { CustomRichText } from '@/components/payload/RichTextConverter';
 import { Button } from '@/components/ui/button';
 import { getDocBySlug } from '@/lib/local-api';
 import {
   applyPronounsToDefinedTerm,
   buildListSentence,
-  cn,
   createDynamicContentURL
 } from '@/lib/utils';
 import {
@@ -16,12 +14,26 @@ import {
   Publication,
   ResearchProject
 } from '@/payload-types';
-import { ArrowLeft, ExternalLinkIcon, LinkIcon } from 'lucide-react';
+import { ArrowLeft, ExternalLinkIcon } from 'lucide-react';
+import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
 export type PersonPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata(
+  { params }: PersonPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = (await getDocBySlug('persons', slug)) as Person | null;
+  if (!doc) return { title: 'INCT Antirracismo' };
+  return {
+    title: `${doc.name} - INCT Antirracismo`,
+    description: doc.description
+  };
+}
 
 export default async function PersonPage({ params }: PersonPageProps) {
   const { slug: pageSlug } = await params;

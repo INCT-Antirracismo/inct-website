@@ -81,12 +81,14 @@
   --color-brown: #492611;
   --color-dark-blue: #191231;
   --color-destructive: #ff0000;
+  --color-white: var(--background);
+  --color-white: var(--foreground);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
+  --background: #f2f2f2;
+  --foreground: #1c1c1c;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
   --popover: oklch(1 0 0);

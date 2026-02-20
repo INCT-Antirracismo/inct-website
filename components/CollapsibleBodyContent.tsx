@@ -64,12 +64,12 @@ export default function CollapsibleBodyContent({
       )}
       <div className="prose mx-auto">
         {/* <p className="text-xs!">{JSON.stringify(body)}</p> */}
-        <div className="prose">
+        <div className="prose pb-5">
           <CustomRichText lexicalData={body as any} />
         </div>
       </div>
       {open && (
-        <div className="max-w-prose mx-auto ">
+        <div className="max-w-prose mx-auto">
           <Button
             variant={'secondary'}
             className="w-full"
