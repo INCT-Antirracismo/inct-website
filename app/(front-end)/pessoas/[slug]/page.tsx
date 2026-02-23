@@ -14,8 +14,10 @@ import {
   Publication,
   ResearchProject
 } from '@/payload-types';
+import { find } from 'lodash';
 import { ArrowLeft, ExternalLinkIcon } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export type PersonPageProps = {
@@ -60,71 +62,60 @@ export default async function PersonPage({ params }: PersonPageProps) {
     id
   } = doc;
   return (
-    <div className="">
-      <main className="flex flex-wrap justify-center">
-        <article className="profile basis-full lg:basis-3/4 p-4">
-          <header className="pb-5">
-            <nav
-              aria-label="Voltar para lista"
-              className="bg-deep-sea-green h-20 w-full rounded-xs text-white p-3"
-            >
-              <Link href={'/equipe'} className="flex items-center gap-2">
-                <ArrowLeft className="size-4" />
-                Lista de pessoas
-              </Link>
-            </nav>
-            <div className="flex flex-col gap-4 justify-center items-center mb-5 -mt-16 text-center">
-              <div className="relative size-30 rounded-full overflow-hidden shadow-lg border-4 border-sun">
-                {image! && typeof image !== 'string' && image.url && (
-                  <img
-                    src={image?.url}
-                    alt={image?.alt}
-                    className="w-full h-full object-center object-cover m-0! saturate-0"
-                  />
-                )}
-              </div>
-              <div>
-                <h1 className="text-2xl md:text-3xl lg:text-6xl font-black mb-3 text-balance">
-                  {name}
-                </h1>
-                <div className="w-full flex justify-between"></div>
-                {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' ||
-                inctGroup!.length > 0 ? (
-                  <div className="grid gap-3">
-                    <p className="text-lg text-stone-700">
-                      {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' &&
-                        buildListSentence(
-                          inctPosition.map((position) => {
-                            return applyPronounsToDefinedTerm(
-                              pronouns,
-                              position as DefinedTerm
-                            );
-                          })
-                        )}{' '}
-                      no INCT Antirracismo.
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {memberOf!.length > 0 &&
-                        memberOf
-                          ?.map((organization) => {
-                            return `${buildListSentence(
-                              organization.relationType.map((relation) => {
-                                return applyPronounsToDefinedTerm(
-                                  pronouns,
-                                  relation as DefinedTerm
-                                );
-                              })
-                            )} - ${
-                              (organization.relationTo.value as Organization)
-                                .acronym ||
-                              (organization.relationTo.value as Organization)
-                                .name
-                            }`;
-                          })
-                          .join(' | ')}
-                    </p>
+    <article className="container mx-auto px-4 mb-16">
+      <div className="grid sm:flex gap-6 items-center my-8">
+        <div className="relative w-1/5 max-w-56 aspect-3/4 overflow-hidden rounded-xl border shrink-0">
+          {image! && typeof image !== 'string' && image.url && (
+            <Image
+              width={300}
+              height={400}
+              loading="lazy"
+              src={image?.thumbnailURL || image?.url}
+              alt={image?.alt}
+              className="w-full h-full object-center object-cover m-0! duration-300 ease-in-out group-hover:scale-102"
+            />
+          )}
+        </div>
+        <div className="w-full">
+          <p className="text-balance tracking-wide font-medium text-deep-sea-green">
+            Núcleo: {inctGroup!.map((group) => (group as DefinedTerm).name)}
+          </p>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold lg:mb-1 text-balance">
+            {name}
+          </h1>
+          {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' ||
+          inctGroup!.length > 0 ? (
+            <>
+              <p className="md:text-lg lg:text-xl mb-3 text-brown">
+                {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' &&
+                  buildListSentence(
+                    inctPosition.map((position) => {
+                      return applyPronounsToDefinedTerm(
+                        pronouns,
+                        position as DefinedTerm
+                      );
+                    })
+                  )}{' '}
+                no INCT Antirracismo.
+              </p>
+              {memberOf!.length > 0 &&
+                memberOf?.map((organization) => (
+                  <p className="text-sm md:text-base font-medium tracking-wider md:tracking-normal text-trinidad">
+                    {`${buildListSentence(
+                      organization.relationType.map((relation) => {
+                        return applyPronounsToDefinedTerm(
+                          pronouns,
+                          relation as DefinedTerm
+                        );
+                      })
+                    )} - ${
+                      (organization.relationTo.value as Organization).acronym ||
+                      (organization.relationTo.value as Organization).name
+                    }`}
+                  </p>
+                ))}
 
-                    {/* {inctGroup!.length > 0 && (
+              {/* {inctGroup!.length > 0 && (
                       <p className="text-xs uppercase text-muted-foreground tracking-wide">
                         {inctGroup!.length === 1 ? 'Núcleo' : 'Núcleos'}:{' '}
                         {buildListSentence(
@@ -138,7 +129,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                       </p>
                     )} */}
 
-                    {/* {inctGroup!.map((group) => {
+              {/* {inctGroup!.map((group) => {
                       group = group as DefinedTerm;
                       return (
                         <div
@@ -149,144 +140,156 @@ export default async function PersonPage({ params }: PersonPageProps) {
                         </div>
                       );
                     })} */}
-                  </div>
-                ) : null}
-              </div>
-            </div>
+            </>
+          ) : null}
+        </div>
+      </div>
 
-            {/* DESCRIÇÃO */}
-            <p className="mx-auto text-center text-lg lg:text-2xl text-balance max-w-prose">
-              {description}
-            </p>
-            <div className="flex items-center justify-center gap-2 my-5">
-              <a href="#projetos-de-pesquisa">
-                <Button>Projetos de pesquisa</Button>
-              </a>
-              <a href="#publicacoes">
-                <Button>Publicações</Button>
-              </a>
-            </div>
+      {/* DESCRIÇÃO */}
+      <p className="text-brown text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
+        {description}
+      </p>
 
-            {/* LATTES E ORCID */}
-            <div className="mt-5 flex flex-wrap items-center justify-center">
-              {lattesUrl ? (
-                <Button
-                  variant={'link'}
-                  className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
-                  size="sm"
-                  asChild
-                >
-                  <Link href={lattesUrl} target="_blank">
-                    Currículo Lattes
-                    <ExternalLinkIcon className="size-3" />
+      {/* LATTES E ORCID */}
+      <div className="mt-3 flex flex-wrap items-center">
+        {lattesUrl ? (
+          <Button
+            variant={'link'}
+            className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
+            size="sm"
+            asChild
+          >
+            <Link href={lattesUrl} target="_blank">
+              Currículo Lattes
+              <ExternalLinkIcon className="size-3" />
+            </Link>
+          </Button>
+        ) : null}
+        {orcidUrl ? (
+          <Button
+            variant={'link'}
+            className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
+            size="sm"
+            asChild
+          >
+            <Link href={orcidUrl} target="_blank">
+              Orcid
+              <ExternalLinkIcon className="size-3" />
+            </Link>
+          </Button>
+        ) : null}
+        {socialMedia!.length > 0 &&
+          socialMedia?.map((media) => {
+            return (
+              <Button
+                key={media.id}
+                variant={'link'}
+                className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
+                size="sm"
+                asChild
+              >
+                <Link href={media.url || ''} target="_blank">
+                  {media.type}
+                  <ExternalLinkIcon className="size-3" />
+                </Link>
+              </Button>
+            );
+          })}
+      </div>
+
+      <div className="flex items-center gap-2 mb-5 mt-8">
+        <a href="#projetos-de-pesquisa">
+          <Button>Projetos de pesquisa</Button>
+        </a>
+        <a href="#publicacoes">
+          <Button>Publicações</Button>
+        </a>
+      </div>
+      <hr className="max-w-sm my-5 mb-8 lg:mb-12" />
+      {/* SOBRE */}
+      <CollapsibleBodyContent body={body} />
+
+      {/* Projetos */}
+      {researchProjects!.length > 0 && (
+        <section className="my-16">
+          <h2
+            id="projetos-de-pesquisa"
+            className="uppercase text-sm tracking-widest text-trinidad font-medium mb-5"
+          >
+            Projetos de Pesquisa
+          </h2>
+          <ul>
+            {researchProjects?.map((researchProject) => {
+              const project = researchProject.relationTo
+                .value as ResearchProject;
+              return (
+                <li key={researchProject.id}>
+                  <p className="mb-1 font-medium text-deep-sea-green">
+                    É{' '}
+                    {buildListSentence(
+                      researchProject.relationType.map((relation) => {
+                        return applyPronounsToDefinedTerm(
+                          pronouns,
+                          relation as DefinedTerm
+                        );
+                      })
+                    ).toLowerCase()}{' '}
+                    em
+                  </p>
+                  <Link
+                    href={createDynamicContentURL(
+                      project.slug,
+                      'researchProjects'
+                    )}
+                    className="group"
+                  >
+                    <h3 className="font-bold text-2xl max-w-prose text-balance mb-2 decoration-trinidad underline-offset-2 decoration-2 group-hover:underline cursor-pointer">
+                      {project.name}
+                    </h3>
+                    <p className="text-muted-foreground max-w-prose text-pretty">
+                      {project.description}
+                    </p>
                   </Link>
-                </Button>
-              ) : null}
-              {orcidUrl ? (
-                <Button
-                  variant={'link'}
-                  className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
-                  size="sm"
-                  asChild
-                >
-                  <Link href={orcidUrl} target="_blank">
-                    Orcid
-                    <ExternalLinkIcon className="size-3" />
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+      {/* Publicações */}
+      {publications!.docs!.length > 0 && (
+        <section className="my-16">
+          <h2
+            id="publicacoes"
+            className="uppercase text-sm tracking-widest text-deep-sea-green font-medium mb-5"
+          >
+            Publicações
+          </h2>
+          <ul>
+            {publications!.docs?.map((publication) => {
+              publication = publication as Publication;
+              return (
+                <li key={publication.id}>
+                  <Link
+                    href={createDynamicContentURL(
+                      publication.slug,
+                      'publications'
+                    )}
+                    className="group"
+                  >
+                    <h3 className="font-bold text-2xl max-w-prose text-balance mb-2 decoration-trinidad underline-offset-2 decoration-2 group-hover:underline cursor-pointer">
+                      {publication.name}
+                    </h3>
+                    <p className="text-muted-foreground max-w-prose text-pretty">
+                      {publication.description}
+                    </p>
                   </Link>
-                </Button>
-              ) : null}
-              {socialMedia!.length > 0 &&
-                socialMedia?.map((media) => {
-                  return (
-                    <Button
-                      key={media.id}
-                      variant={'link'}
-                      className="text-primary uppercase font-medium tracking-wide text-xs flex items-center"
-                      size="sm"
-                      asChild
-                    >
-                      <Link href={media.url || ''} target="_blank">
-                        {media.type}
-                        <ExternalLinkIcon className="size-3" />
-                      </Link>
-                    </Button>
-                  );
-                })}
-            </div>
-          </header>
-          <hr className="mx-auto max-w-sm my-5" />
-          {/* SOBRE */}
-          <CollapsibleBodyContent body={body} />
-
-          <section className="my-16 container mx-auto">
-            <h2
-              id="projetos-de-pesquisa"
-              className="uppercase text-sm tracking-wide text-muted-foreground mb-5"
-            >
-              Projetos de Pesquisa
-            </h2>
-            <ul>
-              {researchProjects!.length > 0 &&
-                researchProjects?.map((researchProject) => {
-                  const project = researchProject.relationTo
-                    .value as ResearchProject;
-                  return (
-                    <li key={researchProject.id} className="w-1/2">
-                      <p className="mb-1">
-                        {buildListSentence(
-                          researchProject.relationType.map((relation) => {
-                            return applyPronounsToDefinedTerm(
-                              pronouns,
-                              relation as DefinedTerm
-                            );
-                          })
-                        )}
-                      </p>
-                      <Link
-                        href={createDynamicContentURL(
-                          project.slug,
-                          'researchProjects'
-                        )}
-                      >
-                        <h3 className="font-black text-2xl max-w-prose text-pretty mb-2 hover:underline cursor-pointer">
-                          {project.name}
-                        </h3>
-                      </Link>
-                      <p className="text-muted-foreground max-w-prose text-balance">
-                        {project.description}
-                      </p>
-                    </li>
-                  );
-                })}
-            </ul>
-          </section>
-          <section className="my-16 container mx-auto">
-            <h2
-              id="publicacoes"
-              className="uppercase text-sm tracking-wide text-muted-foreground mb-5"
-            >
-              Publicações
-            </h2>
-            <ul>
-              {publications!.docs!.length > 0 &&
-                publications!.docs?.map((publication) => {
-                  publication = publication as Publication;
-                  return (
-                    <li key={publication.id}>
-                      <h3 className="font-black text-xl uppercase max-w-prose text-balance">
-                        {publication.name}
-                      </h3>
-                      <p className="text-muted-foreground max-w-prose text-pretty">
-                        {publication.description}
-                      </p>
-                    </li>
-                  );
-                })}
-            </ul>
-          </section>
-        </article>
-        {/* <div className="basis-1/4 border h-36"></div> */}
-      </main>
-    </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+    </article>
   );
 }

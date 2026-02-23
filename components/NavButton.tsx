@@ -10,7 +10,6 @@ export type NavButtonProps = { menu: any };
 export default function NavButton({ menu }: NavButtonProps) {
   const { slug } = useParams();
   const ref = useRef(null);
-  console.log(menu.items?.map((item: any) => item.link!.internalContent.slug));
   return (
     <button
       ref={ref}

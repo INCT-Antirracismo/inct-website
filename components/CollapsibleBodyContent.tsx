@@ -5,6 +5,8 @@ import { CustomRichText } from './payload/RichTextConverter';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext';
+import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 
 export type CollapsibleBodyContentProps = {
   body:
@@ -38,16 +40,21 @@ export default function CollapsibleBodyContent({
   body
 }: CollapsibleBodyContentProps) {
   const [open, setOpen] = useState(false);
+  const plainText = convertLexicalToPlaintext({
+    data: body as SerializedEditorState
+  });
   return (
     <section
-      className={cn('relative overflow-hidden', !open && 'max-h-56')}
+      className={cn(
+        'relative overflow-hidden w-full',
+        !open && plainText.length > 500 && 'max-h-56'
+      )}
       aria-hidden={!open}
     >
-      {!open && (
+      {!open && plainText.length > 500 && (
         <>
-          {' '}
           <div className="absolute w-full py-2 bottom-0 left-0 z-3">
-            <div className="max-w-prose mx-auto ">
+            <div className="max-w-prose">
               <Button
                 variant={'secondary'}
                 className="w-full"
@@ -58,18 +65,15 @@ export default function CollapsibleBodyContent({
                 Leia mais <ChevronDown />
               </Button>
             </div>
-          </div>{' '}
+          </div>
           <div className="absolute w-full h-5/6 bg-linear-to-t from-white/90  via-35% via-white/80 to-transparent bottom-0 left-0 z-2"></div>
         </>
       )}
-      <div className="prose mx-auto">
-        {/* <p className="text-xs!">{JSON.stringify(body)}</p> */}
-        <div className="prose pb-5">
-          <CustomRichText lexicalData={body as any} />
-        </div>
+      <div className="prose pb-5">
+        <CustomRichText lexicalData={body as any} />
       </div>
       {open && (
-        <div className="max-w-prose mx-auto">
+        <div className="max-w-prose">
           <Button
             variant={'secondary'}
             className="w-full"
