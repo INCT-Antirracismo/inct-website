@@ -1,9 +1,10 @@
 import { authenticated, isEditor } from '@/app/access';
 import { GlobalConfig } from 'payload';
+import { linkField } from './fields/commonFields';
 
 export const Nav: GlobalConfig = {
   slug: 'nav',
-  label: 'Menu Principal',
+  label: 'Navegação',
   admin: { group: 'Website' },
   access: {
     read: authenticated,
@@ -11,16 +12,28 @@ export const Nav: GlobalConfig = {
   },
   fields: [
     {
-      name: 'items',
+      name: 'homepage',
+      label: 'Página Inicial',
+      type: 'relationship',
+      relationTo: 'pages'
+    },
+    {
+      label: 'Menu Principal',
+      labels: { plural: 'Itens', singular: 'Item' },
+      name: 'mainMenu',
       type: 'array',
       required: true,
-      maxRows: 8,
       fields: [
+        { name: 'label', type: 'text', label: 'Nome' },
+        { name: 'text', type: 'textarea', label: 'Texto' },
         {
-          name: 'page',
-          type: 'relationship',
-          relationTo: 'persons', // "pages" is the slug of an existing collection
-          required: true
+          name: 'items',
+          type: 'array',
+          label: 'Itens',
+          fields: [
+            linkField,
+            { name: 'text', type: 'textarea', label: 'Texto' }
+          ]
         }
       ]
     }

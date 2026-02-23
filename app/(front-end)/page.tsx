@@ -1,25 +1,39 @@
-export type IndexProps = {};
+import BlockRenderer from '@/components/blocks/BlockRenderer';
+import DefaultCTA from '@/components/blocks/DefaultCTA';
+import NotFound from '@/components/NotFound';
+import { CustomRichText } from '@/components/payload/RichTextConverter';
+import { getDocBySlug } from '@/lib/local-api';
+import { Page } from '@/payload-types';
+import { Metadata, ResolvingMetadata } from 'next';
+import Link from 'next/link';
+import config from '@payload-config';
+import { getPayload } from 'payload';
 
-export default async function Index(props: IndexProps) {
+const payload = await getPayload({ config });
+
+export type IndexPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function IndexPage({ params }: IndexPageProps) {
+  const data = await payload.findGlobal({
+    slug: 'nav',
+    depth: 2,
+    select: { homepage: true }
+  });
+  const doc = data.homepage as Page;
+  if (!doc) return <NotFound collectionSlug="pages" />;
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-6 bg-sun text-brown">
-      <div className="grid md:flex gap-12">
-        <img src="./icon.png" alt="" className=" size-32 h-fit shrink-0" />
-        <div className="text-left">
-          <p className="text-xl md:text-2xl lg:text-3xl">Vem ai o</p>
-          <h1 className="text-5xl md:text-5xl lg:text-7xl font-black mt-2 mb-6 text-black">
-            INCT Antirracismo
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-balance">
-            Uma{' '}
-            <span className="font-bold underline decoration-white decoration-1 decoration-dotted underline-offset-4">
-              educação transformadora
-            </span>
-            <br />
-            em movimento pela <span className="font-bold">América Latina</span>.
-          </p>
-        </div>
-      </div>
-    </div>
+    <>
+      {doc.content?.map((block, index) => {
+        return (
+          <BlockRenderer
+            key={'home' + index + 'block' + block.id}
+            block={block}
+            index={index}
+          />
+        );
+      })}
+    </>
   );
 }

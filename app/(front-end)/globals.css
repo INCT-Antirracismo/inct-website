@@ -79,10 +79,8 @@
   --color-deep-sea-green-950: #023031;
   --color-deep-sea-green: var(--color-deep-sea-green-800);
   --color-brown: #492611;
-  --color-dark-blue: #191231;
+  --color-dark-blue: #191130;
   --color-destructive: #ff0000;
-  --color-white: var(--background);
-  --color-black: var(--foreground);
 }
 
 :root {

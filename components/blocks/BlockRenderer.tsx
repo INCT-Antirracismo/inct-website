@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { CustomRichText } from '../payload/RichTextConverter';
 import Buttons from './Buttons';
 import ContentList from './contentList/ContentList';
@@ -13,7 +14,10 @@ export default function BlockRenderer({ block, index }: BlockRendererProps) {
     return (
       <div
         key={`block_${block.id}_${index}`}
-        className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid justify-center"
+        className={cn(
+          'container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid',
+          block.centered && 'justify-center'
+        )}
       >
         <CustomRichText lexicalData={block.body as any} />
       </div>

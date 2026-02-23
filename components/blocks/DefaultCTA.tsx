@@ -21,6 +21,7 @@ export type DefaultCTAProps = {
   imagePosition?: 'none' | 'left' | 'right' | 'background' | null;
   content?: any | null;
   height?: 'auto' | 'full' | '80' | null;
+  centered?: boolean;
 };
 
 export default function DefaultCTA({
@@ -32,7 +33,8 @@ export default function DefaultCTA({
   buttons,
   image,
   content,
-  height
+  height,
+  centered
 }: DefaultCTAProps) {
   return (
     <div
@@ -45,9 +47,8 @@ export default function DefaultCTA({
       <main
         className={cn(
           'relative flex w-full md:items-center justify-between container mx-auto',
-          !image || imagePosition === 'background' || imagePosition === 'none'
-            ? ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!'
-            : '',
+          centered &&
+            ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!',
           imagePosition === 'background' && 'dark bg-trinidad'
         )}
       >
@@ -64,14 +65,14 @@ export default function DefaultCTA({
           className={cn(
             ' flex items-center justify-center relative z-2 py-16 md:py-24 lg:py-32',
             imagePosition === 'left' && 'order-2',
-            height === 'full' && 'min-h-screen',
+            height === 'full' && 'min-h-[calc(100svh-4rem)]',
             height === '80' && 'min-h-[80svh]'
           )}
         >
           <div className={cn('flex flex-col')}>
             <p
               className={cn(
-                'uppercase text-sm md:text-base xl:text-lg tracking-wider font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
+                'uppercase text-sm md:text-base lg:text-lg xl:text-xl tracking-widest font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
                 variant === 'dark' && 'text-sun-200',
                 variant === 'sun' && 'text-brown'
               )}
@@ -82,7 +83,7 @@ export default function DefaultCTA({
               className={cn(
                 'max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
                 variant === 'dark' && 'text-trinidad-100',
-                variant === 'sun' && 'text-brown'
+                variant === 'sun' && 'text-dark-blue'
               )}
             >
               {title}
@@ -90,7 +91,7 @@ export default function DefaultCTA({
             {subtitle ? (
               <p
                 className={cn(
-                  'max-w-prose w-full text-base text-balance sm:text-lg md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 md:max-w-4xl lg:max-w-7xl',
+                  'max-w-prose w-full text-base text-balance sm:text-lg md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]',
                   variant === 'dark' && 'text-stone-100',
                   variant === 'sun' && 'text-stone-800'
                 )}

@@ -52,6 +52,7 @@ export const defaultCTABlock: Block = {
         }
       ]
     },
+    { name: 'centered', type: 'checkbox', label: 'Centralizar conteúdo' },
     {
       ...imageField,
       admin: {

@@ -121,9 +121,7 @@ export interface Config {
     footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user: User;
   jobs: {
     tasks: unknown;
     workflows: unknown;
@@ -556,6 +554,7 @@ export interface Page {
             imagePosition?: ('none' | 'right' | 'left' | 'background') | null;
             height?: ('auto' | 'full' | '80') | null;
             variant?: ('light' | 'dark' | 'sun') | null;
+            centered?: boolean | null;
             image?: (string | null) | Media;
             title: string;
             subtitle?: string | null;
@@ -2511,6 +2510,7 @@ export interface Page {
             blockType: 'defaultCTABlock';
           }
         | {
+            centered?: boolean | null;
             body?: {
               root: {
                 type: string;
@@ -4538,6 +4538,7 @@ export interface Post {
   author?: (string | Person)[] | null;
   content?:
     | {
+        centered?: boolean | null;
         body?: {
           root: {
             type: string;
@@ -4617,6 +4618,7 @@ export interface Event {
     | null;
   content?:
     | {
+        centered?: boolean | null;
         body?: {
           root: {
             type: string;
@@ -4666,6 +4668,7 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -4913,6 +4916,7 @@ export interface PagesSelect<T extends boolean = true> {
               imagePosition?: T;
               height?: T;
               variant?: T;
+              centered?: T;
               image?: T;
               title?: T;
               subtitle?: T;
@@ -4941,6 +4945,7 @@ export interface PagesSelect<T extends boolean = true> {
         richTextBlock?:
           | T
           | {
+              centered?: T;
               body?: T;
               id?: T;
               blockName?: T;
@@ -4996,6 +5001,7 @@ export interface PostsSelect<T extends boolean = true> {
         richTextBlock?:
           | T
           | {
+              centered?: T;
               body?: T;
               id?: T;
               blockName?: T;
@@ -5040,6 +5046,7 @@ export interface EventsSelect<T extends boolean = true> {
         richTextBlock?:
           | T
           | {
+              centered?: T;
               body?: T;
               id?: T;
               blockName?: T;
@@ -5216,8 +5223,46 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Nav {
   id: string;
-  items: {
-    page: string | Person;
+  homepage?: (string | null) | Page;
+  mainMenu: {
+    label?: string | null;
+    text?: string | null;
+    items?:
+      | {
+          link?: {
+            linkType?: ('external' | 'internal') | null;
+            url?: string | null;
+            internalContent?:
+              | ({
+                  relationTo: 'persons';
+                  value: string | Person;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null)
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'researchProjects';
+                  value: string | ResearchProject;
+                } | null)
+              | ({
+                  relationTo: 'events';
+                  value: string | Event;
+                } | null)
+              | ({
+                  relationTo: 'organizations';
+                  value: string | Organization;
+                } | null);
+            targetBlank?: boolean | null;
+          };
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
     id?: string | null;
   }[];
   updatedAt?: string | null;
@@ -5238,10 +5283,26 @@ export interface Footer {
  * via the `definition` "nav_select".
  */
 export interface NavSelect<T extends boolean = true> {
-  items?:
+  homepage?: T;
+  mainMenu?:
     | T
     | {
-        page?: T;
+        label?: T;
+        text?: T;
+        items?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    linkType?: T;
+                    url?: T;
+                    internalContent?: T;
+                    targetBlank?: T;
+                  };
+              text?: T;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;

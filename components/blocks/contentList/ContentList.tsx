@@ -3,6 +3,7 @@
 import {
   applyPronounsToDefinedTerm,
   buildListSentence,
+  cn,
   createDynamicContentURL
 } from '@/lib/utils';
 import { DefinedTerm, Organization, Person } from '@/payload-types';
@@ -19,23 +20,23 @@ export default function ContentList({
 }: ContentListProps) {
   if (collectionSlug === 'persons')
     return (
-      <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid justify-center">
+      <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid">
         {/* Isso é o que vem antes da lists */}
         {block.name || block.description || block.buttons!.length > 0 ? (
-          <div className="mb-8 mt-12 border-b pb-3 text-center sm:text-left">
+          <div className="mb-8 mt-12 border-b pb-3">
             {block.name ? (
-              <h2 className="font-bold text-xl lg:text-2xl mb-1">
+              <h2 className="text-balance font-bold text-2xl mb-1">
                 {block.name}
               </h2>
             ) : null}
 
             {block.description ? (
-              <p className="text-sm lg:text-base text-muted-foreground mb-3">
+              <p className="text-balance text-muted-foreground mb-3">
                 {block.description}
               </p>
             ) : null}
             {block.buttons!.length > 0 && (
-              <div className=" mb-3 mt-1">
+              <div className=" mb-3 mt-2">
                 <Buttons buttons={block.buttons} />
               </div>
             )}
@@ -44,7 +45,12 @@ export default function ContentList({
 
         {/* Lista */}
         {block.items?.length > 0 ? (
-          <div className="grid lg:grid-cols-2 gap-x-8 gap-y-16 items-center">
+          <div
+            className={cn(
+              'grid xl:grid-cols-2 gap-x-8 gap-y-12 items-center',
+              block.items.length === 1 && 'xl:grid-cols-1'
+            )}
+          >
             {block.items
               .map((i: any) => i.value)
               .map((doc: Person) => {
@@ -54,10 +60,10 @@ export default function ContentList({
                 return (
                   <Link
                     key={doc.id + '_person'}
-                    className="flex flex-col sm:flex-row items-center gap-6 group text-center sm:text-left"
+                    className="flex  sm:items-center gap-6 group"
                     href={createDynamicContentURL(doc.slug, collectionSlug)}
                   >
-                    <div className="relative w-36 aspect-square lg:aspect-3/4 overflow-hidden rounded-xl shadow-lg border shrink-0">
+                    <div className="relative w-24 h-32  overflow-hidden rounded-xl border shrink-0">
                       {image! && typeof image !== 'string' && image.url && (
                         <Image
                           width={300}
@@ -65,11 +71,11 @@ export default function ContentList({
                           loading="lazy"
                           src={image?.thumbnailURL || image?.url}
                           alt={image?.alt}
-                          className="w-full h-full object-center object-cover m-0! saturate-0 contrast-125 group-hover:saturate-100 duration-300 ease-in-out group-hover:scale-102"
+                          className="w-full h-full object-center object-cover m-0! duration-300 ease-in-out group-hover:scale-102"
                         />
                       )}
                     </div>
-                    <div className="w-full max-w-lg">
+                    <div className="w-full max-w-prose">
                       <p className="text-xs font-medium tracking-wider text-trinidad uppercase mb-1 sm:mb-1.5">
                         {memberOf!.length > 0 &&
                           memberOf
@@ -91,10 +97,11 @@ export default function ContentList({
                             })
                             .join(' | ')}
                       </p>
-                      <h3 className="font-bold text-lg lg:text-xl group-hover:underline">
+                      <h3 className="font-semibold text-lg lg:text-xl group-hover:underline underline-offset-2 decoration-2 decoration-trinidad">
                         {doc.name}{' '}
                       </h3>
-                      <p className="text-sm text-balance">
+                      <p className="text-balance tracking-wide">
+                        Núcleo:{' '}
                         {inctGroup!.map((group) => (group as DefinedTerm).name)}
                       </p>
 
