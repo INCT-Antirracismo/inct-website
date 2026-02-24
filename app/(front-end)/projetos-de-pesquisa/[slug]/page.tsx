@@ -39,11 +39,14 @@ export default async function ResearchProjectPage({
   const { name, description } = doc;
   return (
     <div className="container py-12">
-      <div className="bg-sun-300 p-4 rounded-full mb-8 w-fit">
-        <TrafficCone className="text-trinidad size-12 " />
-      </div>
+      <h2
+        id="projetos-de-pesquisa"
+        className="uppercase text-sm md:text-base lg:text-lg xl:text-xl tracking-widest font-medium mb-2 text-trinidad max-w-prose text-balance"
+      >
+        Projeto de Pesquisa
+      </h2>
 
-      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb:1 lg:mb-3 text-balance">
+      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 lg:mb-4 text-balance lg:max-w-5/6">
         {name}
       </h1>
 

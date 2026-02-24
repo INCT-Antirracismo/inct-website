@@ -14,10 +14,10 @@ export default function NavButton({ menu }: NavButtonProps) {
     <button
       ref={ref}
       className={cn(
-        'text-left text-sm lg:text-base font-medium tracking-wide hover:underline decoration-trinidad decoration-2 underline-offset-2 group px-4 xl:px-6 group hover:bg-background border-x border-transparent hover:border-inherit',
-        menu.items
-          ?.map((item: any) => item.link!.internalContent.value.slug)
-          .includes(slug) && 'underline'
+        'text-left text-sm lg:text-base font-medium tracking-wide hover:underline decoration-trinidad decoration-2 underline-offset-2 group px-4 xl:px-6 group hover:bg-background border-x border-transparent hover:border-inherit'
+        // menu.items
+        //   ?.map((item: any) => item.link!.internalContent.value.slug)
+        //   .includes(slug) && 'font-semibold'
       )}
     >
       <Link
@@ -63,7 +63,7 @@ export default function NavButton({ menu }: NavButtonProps) {
                           item.link!.internalContent.relationTo
                         )}
                         className={cn(
-                          'p-2 rounded border border-transparent hover:bg-background  group/menu-item inline-block',
+                          'p-2 rounded border border-transparent hover:bg-background w-full group/menu-item inline-block',
                           slug === item.link!.internalContent.value.slug &&
                             'bg-background'
                         )}

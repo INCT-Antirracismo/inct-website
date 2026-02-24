@@ -44,45 +44,40 @@ export default function CollapsibleBodyContent({
     data: body as SerializedEditorState
   });
   return (
-    <section
-      className={cn(
-        'relative overflow-hidden w-full',
-        !open && plainText.length > 500 && 'max-h-56'
-      )}
-      aria-hidden={!open}
-    >
-      {!open && plainText.length > 500 && (
-        <>
-          <div className="absolute w-full py-2 bottom-0 left-0 z-3">
-            <div className="max-w-prose">
-              <Button
-                variant={'secondary'}
-                className="w-full"
-                onClick={() => setOpen(true)}
-                aria-expanded={open}
-                aria-controls="body-content"
-              >
-                Leia mais <ChevronDown />
-              </Button>
-            </div>
-          </div>
-          <div className="absolute w-full h-5/6 bg-linear-to-t from-white/90  via-35% via-white/80 to-transparent bottom-0 left-0 z-2"></div>
-        </>
-      )}
-      <div className="prose pb-5">
-        <CustomRichText lexicalData={body as any} />
-      </div>
-      {open && (
-        <div className="max-w-prose">
-          <Button
-            variant={'secondary'}
-            className="w-full"
-            onClick={() => setOpen(false)}
-          >
-            Ocultar texto <ChevronUp />
-          </Button>
+    <>
+      <section
+        className={cn(
+          'relative overflow-hidden',
+          !open && plainText.length > 500 && 'max-h-56'
+        )}
+        aria-hidden={!open}
+      >
+        <div className="prose pb-5">
+          <CustomRichText lexicalData={body as any} />
         </div>
+        {!open && plainText.length > 500 && (
+          <div className="absolute w-full h-5/6 bg-linear-to-t from-background/90  via-35% via-background/80 to-transparent bottom-0 left-0 z-2"></div>
+        )}
+        {open && (
+          <div className="max-w-prose">
+            <Button variant={'outline'} onClick={() => setOpen(false)}>
+              Ocultar texto <ChevronUp />
+            </Button>
+          </div>
+        )}
+      </section>
+
+      {!open && plainText.length > 500 && (
+        <Button
+          variant={'default'}
+          className=""
+          onClick={() => setOpen(true)}
+          aria-expanded={open}
+          aria-controls="body-content"
+        >
+          Leia mais <ChevronDown />
+        </Button>
       )}
-    </section>
+    </>
   );
 }

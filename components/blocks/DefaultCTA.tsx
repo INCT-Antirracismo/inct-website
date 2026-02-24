@@ -91,7 +91,7 @@ export default function DefaultCTA({
             {subtitle ? (
               <p
                 className={cn(
-                  'max-w-prose w-full text-base text-balance sm:text-lg md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]',
+                  'max-w-prose w-full text-lg text-balance md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]',
                   variant === 'dark' && 'text-stone-100',
                   variant === 'sun' && 'text-stone-800'
                 )}
