@@ -42,13 +42,13 @@ export const defaultCTABlock: Block = {
             { label: 'Laranja', value: 'dark' },
             { label: 'Amarelo', value: 'sun' }
           ],
-          defaultValue: 'light',
-          admin: {
-            condition: (data, siblingData, { blockData, path, user }) => {
-              // Não exibir se imagePosition for 'none'
-              return siblingData.imagePosition !== 'background';
-            }
-          }
+          defaultValue: 'light'
+          // admin: {
+          //   condition: (data, siblingData, { blockData, path, user }) => {
+          //     // Não exibir se imagePosition for 'none'
+          //     return siblingData.imagePosition !== 'background';
+          //   }
+          // }
         }
       ]
     },

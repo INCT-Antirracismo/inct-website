@@ -41,26 +41,43 @@ export default function DefaultCTA({
       className={cn(
         'bg-stone-50 font-sans dark:bg-black',
         variant === 'dark' && 'bg-trinidad text-white',
-        variant === 'sun' && 'bg-sun text-black'
+        variant === 'sun' && 'bg-sun text-black',
+        imagePosition === 'background' && 'bg-cover bg-center'
       )}
+      style={{
+        backgroundImage:
+          imagePosition === 'background' ? `url('${image.url}')` : 'none'
+      }}
     >
       <main
         className={cn(
-          'relative flex w-full md:items-center justify-between container mx-auto',
+          ' flex w-full md:items-center justify-between container mx-auto',
           centered &&
-            ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!',
-          imagePosition === 'background' && 'dark bg-trinidad'
+            ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!'
         )}
       >
-        {imagePosition === 'background' && (
-          <div
-            className="absolute bg-cover bg-center w-full h-full z-1 opacity-20 mix-blend-luminosity saturate-0"
-            style={{
-              backgroundImage:
-                imagePosition === 'background' ? `url('${image.url}')` : 'none'
-            }}
-          ></div>
-        )}
+        {imagePosition === 'background' &&
+          image &&
+          image.url.includes('.mp4') && (
+            <div
+              className="absolute bg-cover bg-center h-svh w-svw z-1 top-0 left-0"
+              style={{
+                backgroundImage:
+                  imagePosition === 'background' && !image.url.includes('.mp4')
+                    ? `url('${image.url}')`
+                    : 'none'
+              }}
+            >
+              <video
+                className="videoTag object-fit object-cover w-full h-full"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={image.url} type="video/mp4" />
+              </video>
+            </div>
+          )}
         <div
           className={cn(
             ' flex items-center justify-center relative z-2 py-16 md:py-24 lg:py-32',
