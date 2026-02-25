@@ -52,7 +52,7 @@ export default function CollapsibleBodyContent({
         )}
         aria-hidden={!open}
       >
-        <div className="prose pb-5">
+        <div className="pb-5">
           <CustomRichText lexicalData={body as any} />
         </div>
         {!open && plainText.length > 500 && (

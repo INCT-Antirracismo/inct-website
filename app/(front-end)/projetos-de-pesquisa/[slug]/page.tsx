@@ -38,7 +38,7 @@ export default async function ResearchProjectPage({
   if (!doc) return <NotFound collectionSlug="researchProjects" />;
   const { name, description } = doc;
   return (
-    <div className="container py-12">
+    <div className="container py-12 mx-auto">
       <h2
         id="projetos-de-pesquisa"
         className="uppercase text-sm md:text-base lg:text-lg xl:text-xl tracking-widest font-medium mb-2 text-trinidad max-w-prose text-balance"

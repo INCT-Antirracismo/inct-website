@@ -44,6 +44,7 @@ export default buildConfig({
     fallbackLanguage: 'pt', // default
     supportedLanguages: { en, pt }
   },
+  maxDepth: 3,
   admin: {
     autoRefresh: true,
     autoLogin:

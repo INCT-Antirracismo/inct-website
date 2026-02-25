@@ -4,6 +4,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import localFont from 'next/font/local';
 import Nav from '@/components/Nav';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import Footer from '@/components/Footer';
 
 const elza = localFont({
   src: [
@@ -58,6 +59,7 @@ export default function RootLayout({
             <div className="wrapper pt-16 w-full">
               <Nav />
               {children}
+              <Footer />
             </div>
           </SidebarProvider>
         </TooltipProvider>
