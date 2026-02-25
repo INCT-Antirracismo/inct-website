@@ -4,9 +4,20 @@ import Buttons from './Buttons';
 import ContentList from './contentList/ContentList';
 import DefaultCTA from './DefaultCTA';
 
-export type BlockRendererProps = { block: any; index: number };
+export type BlockRendererProps = {
+  block: any;
+  index: number;
+  params: {
+    q: string;
+    p: string;
+  };
+};
 
-export default function BlockRenderer({ block, index }: BlockRendererProps) {
+export default async function BlockRenderer({
+  block,
+  index,
+  params
+}: BlockRendererProps) {
   if (block.blockType === 'defaultCTABlock') {
     return <DefaultCTA key={`block_${block.id}_${index}`} {...block} />;
   }
@@ -30,6 +41,7 @@ export default function BlockRenderer({ block, index }: BlockRendererProps) {
         key={`block_${block.id}_${index}`}
         collectionSlug={block.collectionSlug}
         block={block}
+        params={params}
       />
     );
   }

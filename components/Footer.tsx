@@ -14,14 +14,14 @@ export default async function Footer(props: FooterProps) {
     select: { mainMenu: true }
   });
   return (
-    <div className="bg-dark-blue text-background py-12 w-full block">
+    <div className="bg-dark-blue text-background py-12 w-full block relative">
       <div className="container mx-auto mb-5 flex gap-6 items-center">
         <img src="/icon.png" alt="" className="size-24" />{' '}
         <div className="grid">
           <p className="uppercase text-[10px] mb-0.5 text-sun font-medium tracking-widest">
             Instituto Nacional de Ciência e Tecnologia
           </p>
-          <h1 className="text-base leading-tight font-black text-pretty lowercase">
+          <h1 className="text-base leading-tight font-black text-pretty">
             Educação Transformadora: Antirracismo,
             <br /> Interseccionalidade e Justiça Social Na América Latina
           </h1>
@@ -82,6 +82,7 @@ export default async function Footer(props: FooterProps) {
           <Link
             href="https://viniciusofp.com.br"
             className="font-semibold hover:underline hover:text-white duration-150"
+            target="_blank"
           >
             viniciusofp
           </Link>

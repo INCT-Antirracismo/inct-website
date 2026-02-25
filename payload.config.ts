@@ -27,7 +27,8 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        media: true
+        media: true,
+        files: true
       },
       bucket: process.env.S3_BUCKET || '',
       config: {

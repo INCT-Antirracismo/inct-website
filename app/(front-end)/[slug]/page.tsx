@@ -1,14 +1,15 @@
 import BlockRenderer from '@/components/blocks/BlockRenderer';
-import DefaultCTA from '@/components/blocks/DefaultCTA';
 import NotFound from '@/components/NotFound';
-import { CustomRichText } from '@/components/payload/RichTextConverter';
 import { getDocBySlug } from '@/lib/local-api';
 import { Page } from '@/payload-types';
 import { Metadata, ResolvingMetadata } from 'next';
-import Link from 'next/link';
 
 export type PagePageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{
+    q: string;
+    p: string;
+  }>;
 };
 
 export async function generateMetadata(
@@ -24,7 +25,11 @@ export async function generateMetadata(
   };
 }
 
-export default async function PagePage({ params }: PagePageProps) {
+export default async function PagePage({
+  params,
+  searchParams: searchParamsPromise
+}: PagePageProps) {
+  const searchParams = await searchParamsPromise;
   const { slug } = await params;
   const doc = (await getDocBySlug('pages', slug)) as Page | null;
   if (!doc) return <NotFound collectionSlug="pages" />;
@@ -41,6 +46,7 @@ export default async function PagePage({ params }: PagePageProps) {
             key={slug + index + 'block' + block.id}
             block={block}
             index={index}
+            params={searchParams}
           />
         );
       })}
