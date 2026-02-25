@@ -39,7 +39,7 @@ export default function DefaultCTA({
   return (
     <div
       className={cn(
-        'bg-stone-50 font-sans dark:bg-black',
+        'bg-stone-50 font-sans dark:bg-black relative max-w-svw overflow-hidden',
         variant === 'dark' && 'bg-trinidad text-white',
         variant === 'sun' && 'bg-sun text-black',
         imagePosition === 'background' && 'bg-cover bg-center'
@@ -51,7 +51,7 @@ export default function DefaultCTA({
     >
       <main
         className={cn(
-          ' flex w-full md:items-center justify-between container mx-auto',
+          'flex w-full md:items-center justify-between container mx-auto',
           centered &&
             ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!'
         )}
