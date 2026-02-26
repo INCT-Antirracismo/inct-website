@@ -17,7 +17,7 @@ import { Search } from '@/components/search/Search';
 export type ContentListProps = {
   block: any;
   collectionSlug: string;
-  params: {
+  params?: {
     q: string;
     p: string;
   };
@@ -30,7 +30,7 @@ export default async function ContentList({
   collectionSlug,
   params
 }: ContentListProps) {
-  const { q: query, p: page } = params;
+  const { q: query, p: page } = params || {};
   const items = block.jsonQuery
     ? await payload.find({
         ...block.jsonQuery,

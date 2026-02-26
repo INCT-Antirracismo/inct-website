@@ -7,7 +7,7 @@ import DefaultCTA from './DefaultCTA';
 export type BlockRendererProps = {
   block: any;
   index: number;
-  params: {
+  params?: {
     q: string;
     p: string;
   };
