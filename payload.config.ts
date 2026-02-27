@@ -17,7 +17,7 @@ import { Files } from './collections/Files';
 import { Publications } from './collections/Publications';
 import { Pages } from './collections/Pages';
 import { Posts } from './collections/Posts';
-import { Footer } from './collections/Footer';
+import { Info } from './collections/Info';
 import { Events } from './collections/Events';
 
 import { en } from '@payloadcms/translations/languages/en';
@@ -78,7 +78,7 @@ export default buildConfig({
     }
   },
   editor: lexicalEditor(),
-  globals: [Nav, Footer],
+  globals: [Nav, Info],
   collections: [
     ResearchProjects,
     Publications,

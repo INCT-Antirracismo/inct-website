@@ -18,7 +18,7 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
       className="flex  sm:items-center gap-6 group"
       href={createDynamicContentURL(slug, 'persons')}
     >
-      <div className="relative w-24 h-32  overflow-hidden rounded-xl border shrink-0">
+      <div className="relative w-30 h-36 sm:w-36 aspect-square  overflow-hidden rounded border shrink-0">
         {image! && typeof image !== 'string' && image.url && (
           <Image
             width={300}

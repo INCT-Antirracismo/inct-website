@@ -73,6 +73,7 @@ export default function DefaultCTA({
                 autoPlay
                 loop
                 muted
+                playsInline
               >
                 <source src={image.url} type="video/mp4" />
               </video>

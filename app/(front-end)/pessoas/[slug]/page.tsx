@@ -107,40 +107,40 @@ export default async function PersonPage({ params }: PersonPageProps) {
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold lg:mb-1 text-balance">
               {name}
             </h1>
-            {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' ||
-            inctGroup!.length > 0 ? (
-              <>
-                <p className="md:text-lg lg:text-xl mb-3 text-brown">
-                  {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' &&
-                    buildListSentence(
-                      inctPosition.map((position) => {
-                        return applyPronounsToDefinedTerm(
-                          pronouns,
-                          position as DefinedTerm
-                        );
-                      })
-                    )}{' '}
-                  no INCT Antirracismo.
-                </p>
-                {memberOf!.length > 0 &&
-                  memberOf?.map((organization) => (
-                    <p className="text-sm md:text-base font-medium tracking-wider md:tracking-normal text-trinidad">
-                      {`${buildListSentence(
-                        organization.relationType.map((relation) => {
-                          return applyPronounsToDefinedTerm(
-                            pronouns,
-                            relation as DefinedTerm
-                          );
-                        })
-                      )} - ${
-                        (organization.relationTo.value as Organization)
-                          .acronym ||
-                        (organization.relationTo.value as Organization).name
-                      }`}
-                    </p>
-                  ))}
+            {inctPosition.length > 0 &&
+            inctPosition.map((p: any) => p.name).includes('Nenhum') ? (
+              <p className="md:text-lg lg:text-xl mb-3 text-brown">
+                {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' &&
+                  buildListSentence(
+                    inctPosition.map((position) => {
+                      return applyPronounsToDefinedTerm(
+                        pronouns,
+                        position as DefinedTerm
+                      );
+                    })
+                  )}{' '}
+                no INCT Antirracismo.
+              </p>
+            ) : null}
 
-                {/* {inctGroup!.length > 0 && (
+            {memberOf!.length > 0 &&
+              memberOf?.map((organization) => (
+                <p className="text-sm md:text-base font-medium tracking-wider md:tracking-normal text-trinidad">
+                  {`${buildListSentence(
+                    organization.relationType.map((relation) => {
+                      return applyPronounsToDefinedTerm(
+                        pronouns,
+                        relation as DefinedTerm
+                      );
+                    })
+                  )} - ${
+                    (organization.relationTo.value as Organization).acronym ||
+                    (organization.relationTo.value as Organization).name
+                  }`}
+                </p>
+              ))}
+
+            {/* {inctGroup!.length > 0 && (
                       <p className="text-xs uppercase text-muted-foreground tracking-wide">
                         {inctGroup!.length === 1 ? 'Núcleo' : 'Núcleos'}:{' '}
                         {buildListSentence(
@@ -154,7 +154,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                       </p>
                     )} */}
 
-                {/* {inctGroup!.map((group) => {
+            {/* {inctGroup!.map((group) => {
                       group = group as DefinedTerm;
                       return (
                         <div
@@ -165,8 +165,6 @@ export default async function PersonPage({ params }: PersonPageProps) {
                         </div>
                       );
                     })} */}
-              </>
-            ) : null}
           </div>
         </div>
 

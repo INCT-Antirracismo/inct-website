@@ -33,32 +33,34 @@ export default async function ContentList({
   const { q: query, p: page } = params || {};
   const items = block.jsonQuery
     ? await payload.find({
+        limit: 36,
         ...block.jsonQuery,
         ...(query
-          ? {
-              where: {
-                or: [
-                  {
-                    name: {
-                      like: query
+          ? collectionSlug === 'persons'
+            ? {
+                where: {
+                  or: [
+                    {
+                      name: {
+                        like: query
+                      }
+                    },
+                    {
+                      description: {
+                        like: query
+                      }
+                    },
+                    { 'inctPosition.name': { like: query } },
+                    { 'inctGroup.name': { like: query } },
+                    {
+                      slug: {
+                        like: query
+                      }
                     }
-                  },
-                  {
-                    description: {
-                      like: query
-                    }
-                  },
-                  { ['memberOf.relationTo.name']: { like: query } },
-                  { 'inctPosition.name': { like: query } },
-                  { 'inctGroup.name': { like: query } },
-                  {
-                    slug: {
-                      like: query
-                    }
-                  }
-                ]
+                  ]
+                }
               }
-            }
+            : {} // Tem query, mas não de persons
           : {})
       })
     : false;

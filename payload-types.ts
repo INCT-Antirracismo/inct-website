@@ -114,11 +114,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     nav: Nav;
-    footer: Footer;
+    info: Info;
   };
   globalsSelect: {
     nav: NavSelect<false> | NavSelect<true>;
-    footer: FooterSelect<false> | FooterSelect<true>;
+    info: InfoSelect<false> | InfoSelect<true>;
   };
   locale: null;
   user: User;
@@ -5270,11 +5270,12 @@ export interface Nav {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer".
+ * via the `definition` "info".
  */
-export interface Footer {
+export interface Info {
   id: string;
   name: string;
+  logo?: (string | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -5311,10 +5312,11 @@ export interface NavSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer_select".
+ * via the `definition` "info_select".
  */
-export interface FooterSelect<T extends boolean = true> {
+export interface InfoSelect<T extends boolean = true> {
   name?: T;
+  logo?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
