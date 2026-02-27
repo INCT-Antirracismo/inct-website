@@ -48,11 +48,7 @@ export default async function Nav(props: NavProps) {
               </div>
             </Link>
             <div className="h-6 w-0.5 bg-trinidad rotate-6"></div>
-            <img
-              src="/api/media/file/CNPq_v2017_rgb-1.png"
-              alt="Logo CNPq"
-              className="h-5 saturate-0"
-            />
+            <img src="/cnpq.jpg" alt="Logo CNPq" className="h-5 saturate-0" />
           </div>
           <div className="center ">
             <ul className="xl:flex items-center hidden">

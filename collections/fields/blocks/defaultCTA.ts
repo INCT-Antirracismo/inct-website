@@ -65,7 +65,7 @@ export const defaultCTABlock: Block = {
       required: true
     } as Field,
 
-    { name: 'title', label: 'Título', type: 'text', required: true },
+    { name: 'title', label: 'Título', type: 'text' },
     {
       name: 'subtitle',
       label: 'Subtítulo',

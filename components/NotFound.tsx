@@ -8,7 +8,7 @@ export type NotFoundProps = {
 
 export default function NotFound({ collectionSlug }: NotFoundProps) {
   return (
-    <div className="container mx-auto py-12 prose">
+    <div className="container mx-auto py-36 prose prose-lg">
       Que pena, não encontramos o conteúdo que você buscou.
     </div>
   );

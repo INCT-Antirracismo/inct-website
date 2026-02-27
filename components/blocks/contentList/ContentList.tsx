@@ -7,6 +7,10 @@ import PersonsList from '../PersonsList';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import OrganizationsList from '../OrganizationsList';
+import PublicationsList from '../PublicationsList';
+import ResearchProjectsList from '../ResearchProjectsList';
+import EventsList from '../EventsList';
+import PostsList from '../PostsList';
 
 export type ContentListProps = {
   block: any;
@@ -55,8 +59,27 @@ export default async function ContentList({
                   ]
                 }
               }
-            : {} // Tem query, mas não de persons
-          : {})
+            : ['publications', 'researchProjects', 'events', 'posts'].includes(
+                  collectionSlug
+                )
+              ? {
+                  where: {
+                    or: [
+                      {
+                        name: {
+                          like: query
+                        }
+                      },
+                      {
+                        description: {
+                          like: query
+                        }
+                      }
+                    ]
+                  }
+                }
+              : {} // Tem query, mas não de persons
+          : {}) // Não tem query
       })
     : false;
   return (
@@ -97,6 +120,14 @@ export default async function ContentList({
             <div className="z-2 w-32 bg-linear-to-l absolute top-0 right-0 h-full from-white via-white/80 via-30% to-transparent"></div>
             <OrganizationsList block={block} items={items as any} />
           </div>
+        ) : collectionSlug == 'publications' ? (
+          <PublicationsList block={block} items={items as any} />
+        ) : collectionSlug == 'researchProjects' ? (
+          <ResearchProjectsList block={block} items={items as any} />
+        ) : collectionSlug == 'events' ? (
+          <EventsList block={block} items={items as any} />
+        ) : collectionSlug == 'posts' ? (
+          <PostsList block={block} items={items as any} />
         ) : null}
       </div>
     </div>

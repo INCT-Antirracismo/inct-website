@@ -556,7 +556,7 @@ export interface Page {
             variant?: ('light' | 'dark' | 'sun') | null;
             centered?: boolean | null;
             image?: (string | null) | Media;
-            title: string;
+            title?: string | null;
             subtitle?: string | null;
             label?: string | null;
             content?: {
@@ -4499,7 +4499,6 @@ export interface Page {
                     }
                 )[]
               | null;
-            enableSearch?: boolean | null;
             jsonQuery?:
               | {
                   [k: string]: unknown;
@@ -4509,6 +4508,7 @@ export interface Page {
               | number
               | boolean
               | null;
+            enableSearch?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'contentList';
@@ -4976,8 +4976,8 @@ export interface PagesSelect<T extends boolean = true> {
               collectionSlug?: T;
               json?: T;
               items?: T;
-              enableSearch?: T;
               jsonQuery?: T;
+              enableSearch?: T;
               id?: T;
               blockName?: T;
             };
