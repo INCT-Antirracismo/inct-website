@@ -4499,6 +4499,7 @@ export interface Page {
                     }
                 )[]
               | null;
+            enableSearch?: boolean | null;
             jsonQuery?:
               | {
                   [k: string]: unknown;
@@ -4975,6 +4976,7 @@ export interface PagesSelect<T extends boolean = true> {
               collectionSlug?: T;
               json?: T;
               items?: T;
+              enableSearch?: T;
               jsonQuery?: T;
               id?: T;
               blockName?: T;

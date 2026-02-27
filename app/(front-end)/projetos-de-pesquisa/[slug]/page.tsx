@@ -1,12 +1,8 @@
-import ContentList from '@/components/blocks/contentList/ContentList';
 import NotFound from '@/components/NotFound';
 import { CustomRichText } from '@/components/payload/RichTextConverter';
-import PersonsList from '@/components/PersonsList';
 import { getDocBySlug } from '@/lib/local-api';
 import { ResearchProject } from '@/payload-types';
-import { ArrowLeft, TrafficCone } from 'lucide-react';
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export type ResearchProjectPageProps = {
   params: Promise<{ slug: string }>;

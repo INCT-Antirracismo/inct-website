@@ -1,5 +1,6 @@
 import {
   AppWindow,
+  BadgeInfoIcon,
   BookA,
   Calendar,
   File,
@@ -31,7 +32,7 @@ export const navIconMap: Partial<
   nav: Menu,
   pages: AppWindow,
   posts: NotebookPen,
-  footer: PanelBottom,
+  info: BadgeInfoIcon,
   events: Calendar
 };
 

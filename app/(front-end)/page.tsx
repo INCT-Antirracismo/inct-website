@@ -18,7 +18,7 @@ export type IndexPageProps = {
 export default async function IndexPage({ params }: IndexPageProps) {
   const data = await payload.findGlobal({
     slug: 'nav',
-    depth: 2,
+    depth: 3,
     select: { homepage: true }
   });
   const doc = data.homepage as Page;

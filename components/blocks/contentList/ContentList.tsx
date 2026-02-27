@@ -1,18 +1,12 @@
-import {
-  applyPronounsToDefinedTerm,
-  buildListSentence,
-  cn,
-  createDynamicContentURL
-} from '@/lib/utils';
-import { DefinedTerm, Organization, Person } from '@/payload-types';
-import Image from 'next/image';
-import Link from 'next/link';
-import ContentCarousel from './ContentCarousel';
-import Buttons from '../Buttons';
-import PersonCard from '../PersonCard';
-import { getPayload } from 'payload';
-import config from '@payload-config';
 import { Search } from '@/components/search/Search';
+import { Media, Organization } from '@/payload-types';
+import config from '@payload-config';
+import { getPayload } from 'payload';
+import Buttons from '../Buttons';
+import PersonsList from '../PersonsList';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import OrganizationsList from '../OrganizationsList';
 
 export type ContentListProps = {
   block: any;
@@ -34,6 +28,7 @@ export default async function ContentList({
   const items = block.jsonQuery
     ? await payload.find({
         limit: 36,
+        depth: 2,
         ...block.jsonQuery,
         ...(query
           ? collectionSlug === 'persons'
@@ -65,63 +60,45 @@ export default async function ContentList({
       })
     : false;
   return (
-    <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid">
-      {/* Isso é o que vem antes da lists */}
-      {block.name || block.description || block.buttons!.length > 0 ? (
-        <div className="mb-8 mt-12 border-b pb-3">
-          {block.name ? (
-            <h2 className="text-balance font-bold text-2xl mb-1">
-              {block.name}
-            </h2>
-          ) : null}
+    <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
+      <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-16 grid">
+        {/* Isso é o que vem antes da lists */}
+        {block.name || block.description || block.buttons!.length > 0 ? (
+          <div className="mb-8 mt-12 border-b pb-3">
+            {block.name ? (
+              <h2 className="text-balance font-bold text-2xl mb-1">
+                {block.name}
+              </h2>
+            ) : null}
 
-          {block.description ? (
-            <p className="text-balance text-muted-foreground mb-3">
-              {block.description}
-            </p>
-          ) : null}
-          {block.buttons!.length > 0 && (
-            <div className=" mb-3 mt-2">
-              <Buttons buttons={block.buttons} />
-            </div>
-          )}
-        </div>
-      ) : null}
-      {block.jsonQuery ? (
-        <div className="filters mb-8">
-          <Search />
-        </div>
-      ) : null}
-      {/* Lista */}
-      {block.items?.length > 0 ? (
-        <div
-          className={cn(
-            'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-            block.items.length === 1 && 'xl:grid-cols-1'
-          )}
-        >
-          {block.items
-            .map((i: any) => i.value)
-            .map((doc: Person) => {
-              if (collectionSlug === 'persons')
-                return <PersonCard key={doc.id + '_person'} person={doc} />;
-            })}
-        </div>
-      ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-        <>
-          <div
-            className={cn(
-              'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-              items.docs.length === 1 && 'xl:grid-cols-1'
+            {block.description ? (
+              <p className="text-balance text-muted-foreground mb-3">
+                {block.description}
+              </p>
+            ) : null}
+            {block.buttons!.length > 0 && (
+              <div className=" mb-3 mt-2">
+                <Buttons buttons={block.buttons} />
+              </div>
             )}
-          >
-            {items.docs.map((doc: any) => {
-              if (collectionSlug === 'persons' && doc)
-                return <PersonCard key={doc?.slug + '_person'} person={doc} />;
-            })}
           </div>
-        </>
-      ) : null}
+        ) : null}
+        {block.jsonQuery && block.enableSearch ? (
+          <div className="filters mb-8">
+            <Search />
+          </div>
+        ) : null}
+        {/* Lista */}
+        {collectionSlug === 'persons' ? (
+          <PersonsList block={block} items={items as any} />
+        ) : collectionSlug === 'organizations' ? (
+          <div className="relative container p-0! -ml-4 lg:-ml-8">
+            <div className="z-2 w-32 bg-linear-to-r absolute top-0 left-0 h-full from-white via-white/80 via-30% to-transparent"></div>
+            <div className="z-2 w-32 bg-linear-to-l absolute top-0 right-0 h-full from-white via-white/80 via-30% to-transparent"></div>
+            <OrganizationsList block={block} items={items as any} />
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -52,6 +52,7 @@ export const contentList: Block = {
         }
       }
     },
+    { name: 'enableSearch', type: 'checkbox', label: 'Permitir busca' },
     {
       name: 'jsonQuery',
       type: 'json',

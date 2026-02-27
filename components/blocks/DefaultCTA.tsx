@@ -39,7 +39,7 @@ export default function DefaultCTA({
   return (
     <div
       className={cn(
-        'bg-stone-50 font-sans dark:bg-black relative max-w-svw overflow-hidden',
+        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden',
         variant === 'dark' && 'bg-trinidad text-white',
         variant === 'sun' && 'bg-sun text-black',
         imagePosition === 'background' && 'bg-cover bg-center'
