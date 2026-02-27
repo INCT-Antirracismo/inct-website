@@ -52,13 +52,28 @@ export const contentList: Block = {
         }
       }
     },
-    { name: 'enableSearch', type: 'checkbox', label: 'Permitir busca' },
     {
       name: 'jsonQuery',
       type: 'json',
       admin: {
         condition: (data, siblingData, ctx) => {
           return siblingData!.collectionSlug && siblingData.json;
+        }
+      }
+    },
+    {
+      name: 'enableSearch',
+      type: 'checkbox',
+      label: 'Inserir busca e paginação',
+      admin: {
+        condition: (data, siblingData, ctx) => {
+          return [
+            'persons',
+            'events',
+            'posts',
+            'researchProjects',
+            'publications'
+          ].includes(siblingData!.collectionSlug);
         }
       }
     }

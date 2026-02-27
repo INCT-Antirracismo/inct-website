@@ -64,7 +64,7 @@ export default async function OrganizationsList({
         })}
     </Marquee>
   ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-    <Marquee className="flex gap-3 items-center w-full relative">
+    <Marquee className="flex gap-3 items-center w-full relative" speed={20}>
       {items.docs.map((doc: any) => {
         if (doc)
           return (

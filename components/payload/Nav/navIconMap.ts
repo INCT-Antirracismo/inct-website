@@ -9,7 +9,6 @@ import {
   Menu,
   Newspaper,
   NotebookPen,
-  PanelBottom,
   Search,
   University,
   User,
