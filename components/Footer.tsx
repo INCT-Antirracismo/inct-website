@@ -15,22 +15,24 @@ export default async function Footer(props: FooterProps) {
   });
   return (
     <div className="bg-dark-blue text-background py-12 w-full block relative">
-      <div className="container mx-auto mb-5 flex gap-6 items-center">
-        <img src="/icon.png" alt="" className="size-24" />{' '}
-        <div className="grid">
-          <p className="uppercase text-[10px] mb-0.5 text-sun font-medium tracking-widest">
+      <div className="container mx-auto mb-5 md:flex gap-6 items-center">
+        <img src="/icon.png" alt="" className="size-24 mx-auto mb-4 md:m-0" />{' '}
+        <div className="grid text-center md:text-left">
+          <p className="uppercase text-xs lg:text-sm mb-1 text-sun font-medium tracking-widest">
             Instituto Nacional de Ciência e Tecnologia
           </p>
-          <h1 className="text-base leading-tight font-black text-pretty">
-            Educação Transformadora: Antirracismo,
-            <br /> Interseccionalidade e Justiça Social Na América Latina
+          <h1 className="text-base md:text-lg lg:text-xl leading-snug font-bold text-pretty">
+            Educação Transformadora: <br className="sm:hidden" />
+            Antirracismo,
+            <br className="hidden sm:inline" /> Interseccionalidade{' '}
+            <br className="sm:hidden" />e Justiça Social Na América Latina
           </h1>
         </div>
       </div>
       <div className="container mx-auto h-px bg-white/5 my-8"></div>
-      <div className="container mx-auto flex gap-12 flex-wrap">
+      <div className="container mx-auto md:flex gap-12 flex-wrap">
         {data.mainMenu.map((menu: any) => (
-          <div key={menu.label + 'sidebar'} className="">
+          <div key={menu.label + 'sidebar'} className="mb-8">
             <Link
               href={
                 menu.items && menu.items!.length > 0
@@ -56,7 +58,7 @@ export default async function Footer(props: FooterProps) {
                           item.link!.internalContent.value.slug,
                           item.link!.internalContent.relationTo
                         )}
-                        className="text-sm font-medium hover:underline p-3 py-1.5"
+                        className="text-lg lg:text-xl font-medium hover:underline p-3 py-1 inline-block"
                       >
                         {item.link.linkType === 'internal'
                           ? item.link!.internalContent!.value!.acronym ||
