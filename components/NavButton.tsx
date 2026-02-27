@@ -41,7 +41,7 @@ export default function NavButton({ menu }: NavButtonProps) {
       >
         {menu.label}
       </Link>
-      <div className="w-full py-8 bg-white absolute top-full left-0 z-50 hidden group-hover:block group-focus:block border-y">
+      <div className="w-full py-8 bg-background absolute top-full left-0 z-50 hidden group-hover:block group-focus:block border-y">
         <div className="container mx-auto">
           <div className="grid grid-cols-3 gap-6">
             <div className="">
@@ -56,7 +56,7 @@ export default function NavButton({ menu }: NavButtonProps) {
               <ul className="flex flex-wrap gap-3 gap-x-3 justify-start ">
                 {menu.items?.map((item: any) => {
                   return (
-                    <li key={item.id} className="w-56">
+                    <li key={item.id} className="w-64">
                       <Link
                         href={createDynamicContentURL(
                           item.link!.internalContent.value.slug,
@@ -79,7 +79,7 @@ export default function NavButton({ menu }: NavButtonProps) {
                       >
                         <h3
                           className={cn(
-                            'text-sm font-medium decoration-trinidad underline-offset-2 decoration-2 group-hover/menu-item:underline mb-0.5',
+                            'text-base font-medium decoration-trinidad underline-offset-2 decoration-2 group-hover/menu-item:underline mb-0.5',
                             slug === item.link!.internalContent.value.slug &&
                               'underline'
                           )}
