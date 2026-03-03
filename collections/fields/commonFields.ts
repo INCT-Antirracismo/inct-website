@@ -207,7 +207,7 @@ export const buttonsField: Field = {
   ]
 };
 
-export const richTextField = {
+export const richTextField: Field = {
   name: 'body',
   type: 'richText',
   label: 'Conteúdo',
