@@ -32,7 +32,7 @@ export default async function ContentList({
   const { q: query, p: page } = params || {};
   const items = block.jsonQuery
     ? await payload.find({
-        limit: 12,
+        limit: 36,
         depth: 2,
         pagination: page ? page : false,
         page,
