@@ -1,4 +1,5 @@
 import { LUCIDE_ICONS } from '@/lib/lucide-icons';
+import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { Field, slugField as payloadSlugField } from 'payload';
 
 export const nameField: Field = {
@@ -204,4 +205,23 @@ export const buttonsField: Field = {
     },
     linkField
   ]
+};
+
+export const richTextField = {
+  name: 'body',
+  type: 'richText',
+  label: 'Conteúdo',
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      BlocksFeature({
+        blocks: [
+          {
+            slug: 'videoEmbed',
+            fields: [urlField, imageField]
+          }
+        ]
+      })
+    ]
+  })
 };

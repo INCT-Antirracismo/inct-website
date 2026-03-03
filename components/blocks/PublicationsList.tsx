@@ -1,7 +1,8 @@
-import { cn } from '@/lib/utils';
+import { cn, createDynamicContentURL } from '@/lib/utils';
 import { Person, Publication } from '@/payload-types';
 import PersonCard from './PersonCard';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
+import Link from 'next/link';
 
 export type PublicationsListProps = {
   block: any;
@@ -42,7 +43,13 @@ export default async function PublicationsList({
       {block.items
         .map((i: any) => i.value)
         .map((doc: Publication) => {
-          return <div key={doc?.slug + '_publication'}>{doc.name}</div>;
+          return (
+            <div key={doc?.slug + '_publication'}>
+              <Link href={createDynamicContentURL(doc?.slug, 'publications')}>
+                {doc.name}
+              </Link>
+            </div>
+          );
         })}
     </div>
   ) : block.jsonQuery && items && items.docs?.length > 0 ? (
@@ -55,7 +62,13 @@ export default async function PublicationsList({
       >
         {items.docs.map((doc: any) => {
           if (doc)
-            return <div key={doc?.slug + '_publication'}>{doc.name}</div>;
+            return (
+              <div key={doc?.slug + '_publication'}>
+                <Link href={createDynamicContentURL(doc?.slug, 'publications')}>
+                  {doc.name}
+                </Link>
+              </div>
+            );
         })}
       </div>
     </>

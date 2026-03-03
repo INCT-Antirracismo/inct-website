@@ -51,12 +51,23 @@ const CustomUploadComponent: React.FC<{
   if (!uploadDoc) return null;
 
   return (
-    <Image
-      alt={uploadDoc.alt}
-      height={uploadDoc.height}
-      src={uploadDoc.url}
-      width={uploadDoc.width}
-    />
+    <figure className="">
+      <Image
+        alt={uploadDoc.alt}
+        height={uploadDoc.height}
+        src={
+          uploadDoc?.sizes?.half?.url
+            ? uploadDoc?.sizes?.half?.url
+            : uploadDoc.url
+        }
+        width={uploadDoc.width}
+      />
+      {uploadDoc.alt ? (
+        <figcaption>
+          {uploadDoc.alt} {uploadDoc.author ? <>({uploadDoc.author})</> : null}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 };
 

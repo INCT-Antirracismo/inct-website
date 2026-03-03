@@ -26,6 +26,7 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { VisitContent as VisitContent_9349de83aaadd3cdc639c1acf5a43f21 } from '@/components/payload/ui/BeforeControls'
 import { AvatarCellField as AvatarCellField_a2aa3c64a904c03f5f64b95af49c7e04 } from '@/components/payload/ui/AvatarCell'
 import { LocationField as LocationField_305ee8e882911338a25867987ec80d9d } from '@/components/payload/ui/location'
+import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { TagCell as TagCell_174e1f41fd54e4ef96afcabd95ee7ea1 } from '@/components/payload/ui/TagCell'
 import { Nav as Nav_6a3490dcdf999345f7d9ebf36f3d3644 } from '@/components/payload/Nav'
 import { default as default_37cdd159ba7901abba227544c6c443f0 } from '@/components/payload/PayloadIcon'
@@ -63,6 +64,7 @@ export const importMap = {
   "@/components/payload/ui/BeforeControls#VisitContent": VisitContent_9349de83aaadd3cdc639c1acf5a43f21,
   "@/components/payload/ui/AvatarCell#AvatarCellField": AvatarCellField_a2aa3c64a904c03f5f64b95af49c7e04,
   "@/components/payload/ui/location#LocationField": LocationField_305ee8e882911338a25867987ec80d9d,
+  "@payloadcms/richtext-lexical/client#BlocksFeatureClient": BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/components/payload/ui/TagCell#TagCell": TagCell_174e1f41fd54e4ef96afcabd95ee7ea1,
   "@/components/payload/Nav#Nav": Nav_6a3490dcdf999345f7d9ebf36f3d3644,
   "@/components/payload/PayloadIcon#default": default_37cdd159ba7901abba227544c6c443f0,

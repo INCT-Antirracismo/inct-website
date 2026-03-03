@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
+import { cn, createDynamicContentURL } from '@/lib/utils';
 import { Post } from '@/payload-types';
+import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
 export type PostsListProps = {
@@ -38,7 +39,13 @@ export default async function PostsList({ block, items }: PostsListProps) {
       {block.items
         .map((i: any) => i.value)
         .map((doc: Post) => {
-          return <div key={doc?.slug + '_posts'}>{doc.name}</div>;
+          return (
+            <div key={doc?.slug + '_posts'}>
+              <Link href={createDynamicContentURL(doc?.slug, 'posts')}>
+                {doc.name}
+              </Link>
+            </div>
+          );
         })}
     </div>
   ) : block.jsonQuery && items && items.docs?.length > 0 ? (
@@ -50,7 +57,14 @@ export default async function PostsList({ block, items }: PostsListProps) {
         )}
       >
         {items.docs.map((doc: any) => {
-          if (doc) return <div key={doc?.slug + '_posts'}>{doc.name}</div>;
+          if (doc)
+            return (
+              <div key={doc?.slug + '_posts'}>
+                <Link href={createDynamicContentURL(doc?.slug, 'posts')}>
+                  {doc.name}
+                </Link>
+              </div>
+            );
         })}
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Search } from '@/components/search/Search';
+import { Search } from '@/components/Search';
 import { Media, Organization } from '@/payload-types';
 import config from '@payload-config';
 import { getPayload } from 'payload';
@@ -11,6 +11,7 @@ import PublicationsList from '../PublicationsList';
 import ResearchProjectsList from '../ResearchProjectsList';
 import EventsList from '../EventsList';
 import PostsList from '../PostsList';
+import Pagination from '@/components/Pagination';
 
 export type ContentListProps = {
   block: any;
@@ -31,8 +32,10 @@ export default async function ContentList({
   const { q: query, p: page } = params || {};
   const items = block.jsonQuery
     ? await payload.find({
-        limit: 36,
+        limit: 12,
         depth: 2,
+        pagination: page ? page : false,
+        page,
         ...block.jsonQuery,
         ...(query
           ? collectionSlug === 'persons'
@@ -128,6 +131,12 @@ export default async function ContentList({
           <EventsList block={block} items={items as any} />
         ) : collectionSlug == 'posts' ? (
           <PostsList block={block} items={items as any} />
+        ) : null}
+
+        {block.jsonQuery && block.enableSearch ? (
+          <div className="filters mb-8">
+            <Pagination />
+          </div>
         ) : null}
       </div>
     </div>

@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
+import { cn, createDynamicContentURL } from '@/lib/utils';
 import { Event } from '@/payload-types';
+import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
 export type EventsListProps = {
@@ -38,7 +39,13 @@ export default async function EventsList({ block, items }: EventsListProps) {
       {block.items
         .map((i: any) => i.value)
         .map((doc: Event) => {
-          return <div key={doc?.slug + '_events'}>{doc.name}</div>;
+          return (
+            <div key={doc?.slug + '_events'}>
+              <Link href={createDynamicContentURL(doc?.slug, 'events')}>
+                {doc.name}
+              </Link>
+            </div>
+          );
         })}
     </div>
   ) : block.jsonQuery && items && items.docs?.length > 0 ? (
@@ -50,7 +57,14 @@ export default async function EventsList({ block, items }: EventsListProps) {
         )}
       >
         {items.docs.map((doc: any) => {
-          if (doc) return <div key={doc?.slug + '_events'}>{doc.name}</div>;
+          if (doc)
+            return (
+              <div key={doc?.slug + '_events'}>
+                <Link href={createDynamicContentURL(doc?.slug, 'events')}>
+                  {doc.name}
+                </Link>
+              </div>
+            );
         })}
       </div>
     </>

@@ -1,27 +1,30 @@
 'use client';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import React, { useState, useEffect } from 'react';
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams
-} from 'next/navigation';
-import { useDebounce } from '@/lib/utils/useDebounce';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
+import { useDebounce } from '@/lib/utils/useDebounce';
 import { SearchIcon } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 export const Search: React.FC = () => {
   const path = usePathname();
   const searchParams = useSearchParams();
   const [value, setValue] = useState('');
   const router = useRouter();
+  const [prevValue, setPrevValue] = useState('XXX');
 
   const q = searchParams.get('q');
+  const p = searchParams.get('p');
 
   const debouncedValue = useDebounce(value);
+
+  useEffect(() => {
+    if (value !== prevValue) {
+      setPrevValue;
+    }
+  }, [value]);
 
   useEffect(() => {
     if (q && !value) {
@@ -30,7 +33,20 @@ export const Search: React.FC = () => {
   }, [q]);
 
   useEffect(() => {
-    router.push(`${path}${debouncedValue ? `?q=${debouncedValue}` : ''}`);
+    let queryString = '';
+    let qChar = '?';
+
+    [
+      { value: debouncedValue, key: 'q' },
+      { value: p, key: 'p' }
+    ].forEach((element, index) => {
+      if (element.value) {
+        queryString += qChar;
+        qChar = '&';
+        queryString += `${element.key}=${element.value}`;
+      }
+    });
+    router.push(`${path}${queryString}`);
   }, [debouncedValue, router]);
 
   return (

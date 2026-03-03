@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
+import { cn, createDynamicContentURL } from '@/lib/utils';
 import { ResearchProject } from '@/payload-types';
+import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
 export type ResearchProjectsListProps = {
@@ -41,7 +42,15 @@ export default async function ResearchProjectsList({
       {block.items
         .map((i: any) => i.value)
         .map((doc: ResearchProject) => {
-          return <div key={doc?.slug + '_researchProject'}>{doc.name}</div>;
+          return (
+            <div key={doc?.slug + '_researchProject'}>
+              <Link
+                href={createDynamicContentURL(doc?.slug, 'researchProjects')}
+              >
+                {doc.name}
+              </Link>
+            </div>
+          );
         })}
     </div>
   ) : block.jsonQuery && items && items.docs?.length > 0 ? (
@@ -54,7 +63,15 @@ export default async function ResearchProjectsList({
       >
         {items.docs.map((doc: any) => {
           if (doc)
-            return <div key={doc?.slug + '_researchProject'}>{doc.name}</div>;
+            return (
+              <div key={doc?.slug + '_researchProject'}>
+                <Link
+                  href={createDynamicContentURL(doc?.slug, 'researchProjects')}
+                >
+                  {doc.name}
+                </Link>
+              </div>
+            );
         })}
       </div>
     </>
