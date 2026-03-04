@@ -37,16 +37,6 @@ export const Events: CollectionConfig = {
     { ...imageField, label: 'Imagem de Capa' } as Field,
 
     {
-      name: 'imageOrientation',
-      type: 'radio',
-      label: 'Orientação da imagem',
-      options: [
-        { label: 'Paisagem', value: 'landscape' },
-        { label: 'Retrato', value: 'portrait' }
-      ],
-      defaultValue: 'landscape'
-    },
-    {
       name: 'author',
       label: 'Organizadores',
       labels: {

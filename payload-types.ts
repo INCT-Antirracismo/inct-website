@@ -4535,7 +4535,6 @@ export interface Post {
    */
   description?: string | null;
   image?: (string | null) | Media;
-  imageOrientation?: ('landscape' | 'portrait') | null;
   author?: (string | Person)[] | null;
   content?:
     | {
@@ -4581,7 +4580,6 @@ export interface Event {
    */
   description?: string | null;
   image?: (string | null) | Media;
-  imageOrientation?: ('landscape' | 'portrait') | null;
   /**
    * Pessoas e instituições responsáveis pelo evento.
    */
@@ -4995,7 +4993,6 @@ export interface PostsSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   image?: T;
-  imageOrientation?: T;
   author?: T;
   content?:
     | T
@@ -5023,7 +5020,6 @@ export interface EventsSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   image?: T;
-  imageOrientation?: T;
   author?:
     | T
     | {

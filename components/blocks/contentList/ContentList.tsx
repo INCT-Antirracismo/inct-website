@@ -112,8 +112,10 @@ export default async function ContentList({
         {block.jsonQuery && block.enableSearch ? (
           <div className="filters mb-8">
             <Search />
+            <div className="my-8 h-1 bg-trinidad max-w-xs -rotate-1"></div>
           </div>
         ) : null}
+
         {/* Lista */}
         {collectionSlug === 'persons' ? (
           <PersonsList block={block} items={items as any} />
