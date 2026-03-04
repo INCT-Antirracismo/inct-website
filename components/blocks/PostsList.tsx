@@ -49,7 +49,7 @@ export default async function PostsList({ block, items }: PostsListProps) {
             <div className="aspect-square md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
               <img
                 src={
-                  (doc.image as Media)?.sizes?.third?.url ||
+                  (doc.image as Media)?.sizes?.thumbnail?.url ||
                   (doc.image as Media).url ||
                   ''
                 }
@@ -57,10 +57,10 @@ export default async function PostsList({ block, items }: PostsListProps) {
                 alt=""
               />
               <div
-                className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg"
+                className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
                 style={{
                   backgroundImage: `url(${
-                    (doc.image as Media)?.sizes?.third?.url ||
+                    (doc.image as Media)?.sizes?.thumbnail?.url ||
                     (doc.image as Media).url ||
                     ''
                   })`

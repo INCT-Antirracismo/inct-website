@@ -3,11 +3,24 @@ import NotFound from '@/components/NotFound';
 import { getDocBySlug } from '@/lib/local-api';
 import { cn } from '@/lib/utils';
 import { Media, Post } from '@/payload-types';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 export type PostPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({
+  params
+}: PostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = (await getDocBySlug('posts', slug)) as Post | null;
+  if (!doc) return { title: 'INCT Antirracismo' };
+  return {
+    title: `${doc.name} - INCT Antirracismo`,
+    description: doc.description
+  };
+}
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
@@ -25,7 +38,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="h-full max-h-[60svh] bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
           <img
             src={
-              (doc.image as Media)?.sizes?.half?.url ||
+              (doc.image as Media)?.sizes?.third?.url ||
               (doc.image as Media).url ||
               ''
             }
@@ -33,7 +46,7 @@ export default async function PostPage({ params }: PostPageProps) {
             alt=""
           />
           <div
-            className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg"
+            className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
             style={{
               backgroundImage: `url(${
                 (doc.image as Media)?.sizes?.half?.url ||

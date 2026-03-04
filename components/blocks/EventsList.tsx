@@ -1,5 +1,5 @@
 import { cn, createDynamicContentURL } from '@/lib/utils';
-import { Event } from '@/payload-types';
+import { Media, Event } from '@/payload-types';
 import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
@@ -29,44 +29,53 @@ export type EventsListProps = {
 };
 
 export default async function EventsList({ block, items }: EventsListProps) {
-  return block.items?.length > 0 ? (
-    <div
-      className={cn(
-        'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-        block.items.length === 1 && 'xl:grid-cols-1'
-      )}
-    >
-      {block.items
-        .map((i: any) => i.value)
-        .map((doc: Event) => {
-          return (
-            <div key={doc?.slug + '_events'}>
-              <Link href={createDynamicContentURL(doc?.slug, 'events')}>
-                {doc.name}
-              </Link>
-            </div>
-          );
-        })}
+  let itemsArr =
+    block?.items?.length > 0
+      ? block.items.map((i: any) => i.value)
+      : items && items?.docs?.length > 0
+        ? items.docs
+        : [];
+  if (!(itemsArr?.length > 0)) return null;
+  return (
+    <div className={cn('grid gap-x-6 gap-y-12 items-center')}>
+      {itemsArr.map((doc: Event) => {
+        const startDate = new Date(doc.startDate || '');
+        const endDate = new Date(doc.endDate || '');
+        return (
+          <Link
+            href={createDynamicContentURL(doc?.slug, 'events')}
+            key={doc?.slug + '_events'}
+            className=" group"
+          >
+            <h2 className="font-bold text-lg md:text-2xl lg:text-3xl mb-1 lg:mb-2 leading-tight text-balance decoration-trinidad underline-offset-2 decoration-2 group-hover:underline">
+              {doc.name}
+            </h2>
+            <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
+              {' '}
+              {doc.description!.slice(0, 160)}
+              {doc.description!.length > 160 && '...'}
+            </p>
+            <p className="text-sm lg:text-base font-medium text-primary mt-2">
+              {startDate.toLocaleDateString('pt-BR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}
+              {doc.endDate ? (
+                <>
+                  {' '}
+                  -{' '}
+                  {endDate.toLocaleDateString('pt-BR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  })}
+                </>
+              ) : null}
+            </p>
+          </Link>
+        );
+      })}
     </div>
-  ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-    <>
-      <div
-        className={cn(
-          'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-          items.docs.length === 1 && 'xl:grid-cols-1'
-        )}
-      >
-        {items.docs.map((doc: any) => {
-          if (doc)
-            return (
-              <div key={doc?.slug + '_events'}>
-                <Link href={createDynamicContentURL(doc?.slug, 'events')}>
-                  {doc.name}
-                </Link>
-              </div>
-            );
-        })}
-      </div>
-    </>
-  ) : null;
+  );
 }
