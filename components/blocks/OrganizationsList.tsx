@@ -48,7 +48,11 @@ export default async function OrganizationsList({
                       width={300}
                       height={400}
                       loading="lazy"
-                      src={(doc.logo as Media)?.url || ''}
+                      src={
+                        (doc.logo as Media)?.sizes?.third?.url ||
+                        (doc.logo as Media)?.url ||
+                        ''
+                      }
                       alt={doc.acronym || doc.name}
                       className="w-auto h-auto max-h-16 max-w-36 grow-0 mx-auto"
                     />

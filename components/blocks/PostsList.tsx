@@ -29,14 +29,21 @@ export type PostsListProps = {
 };
 
 export default async function PostsList({ block, items }: PostsListProps) {
-  return block.items?.length > 0 ? (
+  let itemsArr =
+    block.items.length > 0
+      ? block.items
+      : items && items?.docs?.length > 0
+        ? items.docs
+        : [];
+  if (!(itemsArr?.length > 0)) return null;
+  return (
     <div
       className={cn(
         'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-        block.items.length === 1 && 'xl:grid-cols-1'
+        itemsArr.length === 1 && 'xl:grid-cols-1'
       )}
     >
-      {block.items
+      {itemsArr
         .map((i: any) => i.value)
         .map((doc: Post) => {
           return (
@@ -48,25 +55,5 @@ export default async function PostsList({ block, items }: PostsListProps) {
           );
         })}
     </div>
-  ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-    <>
-      <div
-        className={cn(
-          'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-          items.docs.length === 1 && 'xl:grid-cols-1'
-        )}
-      >
-        {items.docs.map((doc: any) => {
-          if (doc)
-            return (
-              <div key={doc?.slug + '_posts'}>
-                <Link href={createDynamicContentURL(doc?.slug, 'posts')}>
-                  {doc.name}
-                </Link>
-              </div>
-            );
-        })}
-      </div>
-    </>
-  ) : null;
+  );
 }
