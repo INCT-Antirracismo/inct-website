@@ -1,5 +1,6 @@
 import { cn, createDynamicContentURL } from '@/lib/utils';
-import { ResearchProject } from '@/payload-types';
+import { Media, ResearchProject } from '@/payload-types';
+import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
@@ -32,48 +33,37 @@ export default async function ResearchProjectsList({
   block,
   items
 }: ResearchProjectsListProps) {
-  return block.items?.length > 0 ? (
-    <div
-      className={cn(
-        'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-        block.items.length === 1 && 'xl:grid-cols-1'
-      )}
-    >
-      {block.items
-        .map((i: any) => i.value)
-        .map((doc: ResearchProject) => {
-          return (
-            <div key={doc?.slug + '_researchProject'}>
-              <Link
-                href={createDynamicContentURL(doc?.slug, 'researchProjects')}
-              >
+  let itemsArr =
+    block?.items?.length > 0
+      ? block.items.map((i: any) => i.value)
+      : items && items?.docs?.length > 0
+        ? items.docs
+        : [];
+  if (!(itemsArr?.length > 0)) return null;
+  return (
+    <div className={cn('grid gap-x-6 gap-y-12 items-center')}>
+      {itemsArr.map((doc: ResearchProject) => {
+        return (
+          <Link
+            href={createDynamicContentURL(doc?.slug, 'researchProjects')}
+            key={doc?.slug + '_publications'}
+            className="grid gap-4 md:gap-6 items-center group"
+          >
+            <div className="">
+              <h2 className="font-bold text-lg md:text-2xl lg:text-3xl mb-1 lg:mb-2 leading-tight text-balance decoration-trinidad underline-offset-2 decoration-2 group-hover:underline">
                 {doc.name}
-              </Link>
+              </h2>
+              <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
+                {doc.description!.slice(0, 160)}
+                {doc.description!.length > 160 && '...'}
+              </p>
+              <p className="text-trinidad font-medium flex items-center gap-2">
+                <AlertTriangle /> Adicionar membros aqui
+              </p>
             </div>
-          );
-        })}
+          </Link>
+        );
+      })}
     </div>
-  ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-    <>
-      <div
-        className={cn(
-          'grid lg:grid-cols-2 gap-x-6 gap-y-12 items-center',
-          items.docs.length === 1 && 'xl:grid-cols-1'
-        )}
-      >
-        {items.docs.map((doc: any) => {
-          if (doc)
-            return (
-              <div key={doc?.slug + '_researchProject'}>
-                <Link
-                  href={createDynamicContentURL(doc?.slug, 'researchProjects')}
-                >
-                  {doc.name}
-                </Link>
-              </div>
-            );
-        })}
-      </div>
-    </>
-  ) : null;
+  );
 }

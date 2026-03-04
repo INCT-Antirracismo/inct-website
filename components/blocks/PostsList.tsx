@@ -46,7 +46,7 @@ export default async function PostsList({ block, items }: PostsListProps) {
             key={doc?.slug + '_posts'}
             className="grid grid-cols-3 gap-4 md:gap-6 items-center group"
           >
-            <div className="aspect-square md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
+            <div className="h-full md:h-auto md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
               <img
                 src={
                   (doc.image as Media)?.sizes?.thumbnail?.url ||

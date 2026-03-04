@@ -87,10 +87,10 @@ export default async function ContentList({
     : false;
   return (
     <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
-      <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-16 grid">
+      <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid">
         {/* Isso é o que vem antes da lists */}
         {block.name || block.description || block.buttons!.length > 0 ? (
-          <div className="mb-8 mt-12 border-b pb-3">
+          <div className="mb-8 border-b pb-3">
             {block.name ? (
               <h2 className="text-balance font-bold text-2xl mb-1">
                 {block.name}
