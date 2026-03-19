@@ -50,32 +50,38 @@ export const Search: React.FC = () => {
   }, [debouncedValue, router]);
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
-      <Label htmlFor="search" className={cn('mb-3')}>
-        Busca
-      </Label>
-      <div className="relative max-w-96 w-full">
-        <Input
-          id="search"
-          onChange={(event) => {
-            setValue(event.target.value);
-          }}
-          placeholder="Busca"
-          value={value}
-        />
-        <Button
-          type="submit"
-          variant={'secondary'}
-          size="icon"
-          className="absolute right-0 top-1/2 -translate-y-1/2"
-        >
-          <SearchIcon />
-        </Button>
-      </div>
-    </form>
+    <div className="filters mb-8">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <Label htmlFor="search" className={cn('mb-3')}>
+          Busca
+        </Label>
+        <div className="relative max-w-96 w-full">
+          <Input
+            id="search"
+            onChange={(event) => {
+              setValue(event.target.value);
+            }}
+            placeholder="Busca"
+            value={value}
+          />
+          <Button
+            type="submit"
+            variant={'secondary'}
+            size="icon"
+            className="absolute right-0 top-1/2 -translate-y-1/2"
+          >
+            <SearchIcon />
+          </Button>
+        </div>
+      </form>
+      <div className="my-8 h-1 bg-trinidad max-w-xs -rotate-1"></div>
+      {value !== '' && (
+        <h2 className="font-medium">Resultados de busca para "{value}".</h2>
+      )}
+    </div>
   );
 };

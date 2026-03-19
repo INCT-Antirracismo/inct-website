@@ -18,3 +18,23 @@ export async function getDocBySlug(
   if (!(data.docs.length > 0)) return null;
   return data.docs[0];
 }
+
+export async function getTermById(id: string) {
+  const doc = await payload.findByID({
+    collection: 'definedTerms',
+    id
+  });
+  if (!doc) return null;
+  return doc;
+}
+
+export async function getRelations() {
+  const docs = await payload.find({
+    collection: 'definedTerms',
+    where: {
+      additionalType: { equals: 'occupation' }
+    },
+    limit: 99
+  });
+  return docs;
+}

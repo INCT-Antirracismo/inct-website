@@ -57,13 +57,15 @@ export const ResearchProjects: CollectionConfig = {
       required: true,
       admin: { description: 'Do que se trata esse projeto? ' }
     },
+    { label: 'Membros', name: 'additionalMembers', type: 'textarea' },
     {
-      label: 'Membros',
+      label: 'Membros (readonly)',
       name: 'members',
       type: 'join',
       collection: 'persons',
       on: 'researchProjects.relationTo',
       admin: {
+        hidden: true,
         defaultColumns: ['image', 'name', 'description'],
         description:
           'Esse campo serve apenas para listar os membros. Para editar a relação da pessoa com o projeto de pesquisa, edite no documento da pessoa.'

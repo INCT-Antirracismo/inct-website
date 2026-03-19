@@ -109,12 +109,7 @@ export default async function ContentList({
             )}
           </div>
         ) : null}
-        {block.jsonQuery && block.enableSearch ? (
-          <div className="filters mb-8">
-            <Search />
-            <div className="my-8 h-1 bg-trinidad max-w-xs -rotate-1"></div>
-          </div>
-        ) : null}
+        {block.jsonQuery && block.enableSearch ? <Search /> : null}
 
         {/* Lista */}
         {collectionSlug === 'persons' ? (
