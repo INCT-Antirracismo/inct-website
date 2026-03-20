@@ -35,7 +35,7 @@ async function Face({ media, name }: FaceProps) {
     media = (await getDocumentById('media', media)) as Media;
   }
   return (
-    <div className="inline-block size-12 rounded-full ring-1 ring-layer ring-white overflow-hidden relative shadow-lg brightness-110 contrast-75 hover:brightness-100 hover:contrast-100 duration-150 hover:z-3">
+    <div className="inline-block size-12 rounded-full ring-1 ring-layer bg-background ring-white overflow-hidden relative shadow-lg brightness-110 contrast-75 hover:brightness-100 hover:contrast-100 duration-150 hover:z-3">
       <img
         className="w-full h-full object-center object-cover"
         src={media?.thumbnailURL || media?.url || ''}
