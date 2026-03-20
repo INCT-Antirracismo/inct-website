@@ -39,7 +39,8 @@ export default async function ContentList({
         ...block.jsonQuery,
         ...(query
           ? collectionSlug === 'persons'
-            ? {
+            ? // Query se forem PERSONS
+              {
                 where: {
                   or: [
                     {
@@ -65,7 +66,8 @@ export default async function ContentList({
             : ['publications', 'researchProjects', 'events', 'posts'].includes(
                   collectionSlug
                 )
-              ? {
+              ? // Query se for PUBLICATIONS, RESEARCH PROJECTS, EVENTS OU POSTS
+                {
                   where: {
                     or: [
                       {

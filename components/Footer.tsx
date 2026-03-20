@@ -78,8 +78,11 @@ export default async function Footer(props: FooterProps) {
         ))}
       </div>
       <div className="container mx-auto h-px bg-white/5 my-8"></div>
-      <div className="container mx-auto">
-        <p className="text-xs text-white/20 tracking-wide mt-8 text-right">
+      <div className="container mx-auto flex items-center justify-end gap-3">
+        <p className="text-xs text-white/40 tracking-wide text-right text-balance">
+          Instituto Nacional de Ciência e Tecnologia Educação Tranformadora:
+          Antirracismo, Interseccionalidade e Justiça Social na América Latina.
+          <br />
           Desenvolvido por{' '}
           <Link
             href="https://viniciusofp.com.br"
@@ -90,6 +93,7 @@ export default async function Footer(props: FooterProps) {
           </Link>
           . 2026.
         </p>
+        <img src="/icon.png" className="size-8" alt="" />
       </div>
     </div>
   );
