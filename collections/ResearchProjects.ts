@@ -57,7 +57,12 @@ export const ResearchProjects: CollectionConfig = {
       required: true,
       admin: { description: 'Do que se trata esse projeto? ' }
     },
-    { label: 'Membros', name: 'additionalMembers', type: 'textarea' },
+    {
+      label: 'Membros',
+      name: 'additionalMembers',
+      type: 'textarea',
+      required: true
+    },
     {
       label: 'Membros (readonly)',
       name: 'members',

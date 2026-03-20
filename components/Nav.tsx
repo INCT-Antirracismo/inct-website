@@ -28,24 +28,7 @@ export default async function Nav(props: NavProps) {
               title="Instituto Nacional de Ciência e Tecnologia Educação transformadora: Antirracismo, Interseccionalidade e Justiça Social Na América Latina"
               className="left flex gap-4 items-center"
             >
-              <img
-                src="/icon.png"
-                alt="Logo INCT Antirracismo"
-                className="size-10"
-              />
-              <div className="grid">
-                <h1 className="font-bold text-lg lg:text-xl">
-                  INCT Antirracismo
-                </h1>
-                {/* <p className="uppercase text-[10px] text-primary font-medium tracking-wide">
-                  Instituto Nacional de Ciência e Tecnologia
-                </p>
-                <h1 className="text-xs leading-[1.2] font-bold tracking-wide text-pretty">
-                  Educação transformadora: <br />
-                  Antirracismo, Interseccionalidade <br />e Justiça Social Na
-                  América Latina
-                </h1> */}
-              </div>
+              <img src="/logo.png" alt="INCT Antirracismo" className="h-11" />
             </Link>
             <div className="h-6 w-0.5 bg-trinidad rotate-6"></div>
             <img src="/cnpq.jpg" alt="Logo CNPq" className="h-5 saturate-0" />

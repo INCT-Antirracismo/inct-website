@@ -38,7 +38,6 @@ export default async function OrganizationsList({
       {block.items
         .map((i: any) => i.value)
         .map((doc: Organization) => {
-          console.log(doc);
           return (
             <div key={doc.id + 'org'} className="mx-8">
               <Tooltip>

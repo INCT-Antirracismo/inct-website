@@ -41,7 +41,7 @@ export default function NavButton({ menu }: NavButtonProps) {
       >
         {menu.label}
       </Link>
-      <div className="w-full py-8 bg-background absolute top-full left-0 z-50 hidden group-hover:block group-focus:block border-y">
+      <div className="w-full py-8 bg-white absolute top-full left-0 z-50 hidden group-hover:block group-focus:block border-y">
         <div className="container mx-auto">
           <div className="grid grid-cols-3 gap-6">
             <div className="">

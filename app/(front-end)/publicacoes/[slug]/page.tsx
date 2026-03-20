@@ -1,9 +1,12 @@
 import BlockRenderer from '@/components/blocks/BlockRenderer';
+import FacePile from '@/components/Facepile';
 import NotFound from '@/components/NotFound';
 import { CustomRichText } from '@/components/payload/RichTextConverter';
+import { Button } from '@/components/ui/button';
 import { getDocBySlug } from '@/lib/local-api';
-import { cn } from '@/lib/utils';
-import { Media, Publication } from '@/payload-types';
+import { applyPronounsToDefinedTerm, buildListSentence, cn } from '@/lib/utils';
+import { DefinedTerm, Media, Person, Publication } from '@/payload-types';
+import { ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -30,58 +33,94 @@ export default async function PublicationPage({
   const doc = (await getDocBySlug('publications', slug)) as Publication | null;
   if (!doc) return <NotFound collectionSlug="publications" />;
   const createdAt = new Date(doc.createdAt || '');
+
   return (
-    <>
-      <div
-        className={cn(
-          'container mx-auto my-6 md:my-8 lg:my-12 grid md:items-center gap-8',
-          Boolean(doc.image) && 'md:grid-cols-3'
-        )}
-      >
-        <div className="h-full max-h-[60svh] bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
+    <div className="container py-12 mx-auto">
+      <div className="grid md:flex gap-4 md:gap-8 items-center group">
+        <div className="h-64 w-full md:h-auto min-h-96 md:w-1/5 min-w-56 md:aspect-square  rounded flex items-center justify-center overflow-hidden relative p-0.5">
           <img
             src={
-              (doc.image as Media)?.sizes?.third?.url ||
+              (doc.image as Media)?.thumbnailURL ||
               (doc.image as Media).url ||
               ''
             }
-            className="relative z-2 w-full h-full object-contain"
+            className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
             alt=""
           />
           <div
-            className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
+            className="absolute z-1 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
             style={{
-              backgroundImage: `url(${
-                (doc.image as Media)?.sizes?.half?.url ||
+              backgroundImage: `url('${
+                (doc.image as Media)?.thumbnailURL ||
                 (doc.image as Media).url ||
                 ''
-              })`
+              }')`
             }}
           ></div>
         </div>
-        <div
-          className={cn(
-            !Boolean(doc.image) ? 'md:text-center' : 'md:col-span-2'
-          )}
-        >
-          <h1 className="md:mx-auto max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold">
+        <div>
+          <Link href="/publicacoes">
+            <h2
+              id="publicações"
+              className="uppercase text-xs md:text-sm tracking-widest font-medium mb-2 text-trinidad max-w-prose text-balance"
+            >
+              Publicações
+            </h2>
+          </Link>
+
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 lg:mb-4 text-balance lg:max-w-5/6">
             {doc.name}
           </h1>
-          <p className="md:mx-auto max-w-prose w-full text-lg text-balance md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]">
+
+          {/* DESCRIÇÃO */}
+          <p className="text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
             {doc.description}
           </p>
+          <div className="mt-3 flex flex-wrap gap-3 items-center">
+            {doc.url ? (
+              <Button
+                variant={'secondary'}
+                className="hover:bg-white text-primary uppercase font-medium tracking-wide text-xs flex items-center"
+                size="sm"
+                asChild
+              >
+                <Link href={doc.url} target="_blank">
+                  Site <ExternalLink />
+                </Link>
+              </Button>
+            ) : null}
+          </div>
         </div>
       </div>
-      <div className="mx-auto h-1 bg-trinidad max-w-sm rotate-2"></div>
 
-      <div
-        className={cn(
-          'container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid',
-          'justify-center'
+      <div className="my-8 py-8 pb-6 border-y ">
+        <p className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
+          Autoria
+        </p>
+        <h3 className="font-normal md:text-lg max-w-prose text-balance mb-2">
+          {doc.creditText}
+        </h3>
+        {doc.author && doc.author.length > 0 && (
+          <div className="grid items-center gap-2 mt-5">
+            <p className="text-[10px] tracking-widest text-muted-foreground uppercase">
+              Pessoas deste INCT que participam
+            </p>
+            <FacePile
+              members={
+                doc.author?.map((relation) => {
+                  const person = relation.relationTo.value as Person;
+                  return person;
+                }) as Person[]
+              }
+            />
+          </div>
         )}
-      >
+      </div>
+
+      <div className=" my-8">
+        {/* <p className="text-xs!">{JSON.stringify(doc.body)}</p> */}
         <CustomRichText lexicalData={doc.body as any} />
       </div>
-    </>
+    </div>
   );
 }

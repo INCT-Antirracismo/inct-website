@@ -170,7 +170,7 @@ export interface ResearchProject {
    * Do que se trata esse projeto?
    */
   type: string | DefinedTerm;
-  additionalMembers?: string | null;
+  additionalMembers: string;
   /**
    * Esse campo serve apenas para listar os membros. Para editar a relação da pessoa com o projeto de pesquisa, edite no documento da pessoa.
    */

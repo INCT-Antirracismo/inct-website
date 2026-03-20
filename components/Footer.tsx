@@ -1,8 +1,7 @@
 import { createDynamicContentURL } from '@/lib/utils';
-import { getPayload } from 'payload';
 import config from '@payload-config';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { getPayload } from 'payload';
 const payload = await getPayload({ config });
 
 export type FooterProps = {};
@@ -14,10 +13,10 @@ export default async function Footer(props: FooterProps) {
     select: { mainMenu: true }
   });
   return (
-    <div className="bg-dark-blue text-background py-12 w-full block relative">
-      <div className="container mx-auto mb-5 md:flex gap-6 items-center">
+    <div className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
+      <div className="container mx-auto mb-5 grid md:flex gap-3 md:gap-6 items-center justify-center">
         <img src="/icon.png" alt="" className="size-24 mx-auto mb-4 md:m-0" />{' '}
-        <div className="grid text-center md:text-left">
+        <div className="grid text-center md:text-left w-fit">
           <p className="uppercase text-xs lg:text-sm mb-1 text-sun font-medium tracking-widest">
             Instituto Nacional de Ciência e Tecnologia
           </p>
@@ -28,6 +27,12 @@ export default async function Footer(props: FooterProps) {
             <br className="sm:hidden" />e Justiça Social Na América Latina
           </h1>
         </div>
+        <div className="h-0.5 w-12 md:h-12 md:w-0.5 bg-trinidad rotate-6 md:mx-4 my-4 mx-auto"></div>
+        <img
+          src="/cnpq_white.png"
+          alt=""
+          className="h-6 md:h-8 lg:h-10 mx-auto md:mx-0"
+        />
       </div>
       <div className="container mx-auto h-px bg-white/5 my-8"></div>
       <div className="container mx-auto md:flex gap-12 flex-wrap">
@@ -74,11 +79,6 @@ export default async function Footer(props: FooterProps) {
       </div>
       <div className="container mx-auto h-px bg-white/5 my-8"></div>
       <div className="container mx-auto">
-        <img
-          src="https://www.gov.br/cnpq/pt-br/canais_atendimento/identidade-visual/CNPq_v2017_rgb_neg.png"
-          alt=""
-          className="h-8"
-        />
         <p className="text-xs text-white/20 tracking-wide mt-8 text-right">
           Desenvolvido por{' '}
           <Link

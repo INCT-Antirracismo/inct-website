@@ -19,10 +19,15 @@ export async function getDocBySlug(
   return data.docs[0];
 }
 
-export async function getTermById(id: string) {
+export async function getDocumentById(
+  collectionSlug: CollectionSlug,
+  id: string,
+  args: any = {}
+) {
   const doc = await payload.findByID({
-    collection: 'definedTerms',
-    id
+    collection: collectionSlug,
+    id,
+    ...args
   });
   if (!doc) return null;
   return doc;

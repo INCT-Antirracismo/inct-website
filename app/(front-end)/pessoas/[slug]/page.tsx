@@ -18,6 +18,7 @@ import { find } from 'lodash';
 import {
   ArrowLeft,
   ChevronRight,
+  ExternalLink,
   ExternalLinkIcon,
   Pointer
 } from 'lucide-react';
@@ -169,7 +170,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
         </div>
 
         {/* DESCRIÇÃO */}
-        <p className="text-brown text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
+        <p className="text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
           {description}
         </p>
 
@@ -177,25 +178,25 @@ export default async function PersonPage({ params }: PersonPageProps) {
         <div className="mt-3 flex flex-wrap gap-3 items-center">
           {lattesUrl ? (
             <Button
-              variant={'ghost'}
+              variant={'secondary'}
               className="hover:bg-white text-primary uppercase font-medium tracking-wide text-xs flex items-center"
               size="sm"
               asChild
             >
               <Link href={lattesUrl} target="_blank">
-                Currículo Lattes
+                Currículo Lattes <ExternalLink />
               </Link>
             </Button>
           ) : null}
           {orcidUrl ? (
             <Button
-              variant={'ghost'}
+              variant={'secondary'}
               className="hover:bg-white text-primary uppercase font-medium tracking-wide text-xs flex items-center"
               size="sm"
               asChild
             >
               <Link href={orcidUrl} target="_blank">
-                Orcid
+                Orcid <ExternalLink />
               </Link>
             </Button>
           ) : null}
@@ -204,13 +205,13 @@ export default async function PersonPage({ params }: PersonPageProps) {
               return (
                 <Button
                   key={media.id}
-                  variant={'ghost'}
+                  variant={'secondary'}
                   className="hover:bg-white text-primary uppercase font-medium tracking-wide text-xs flex items-center"
                   size="sm"
                   asChild
                 >
                   <Link href={media.url || ''} target="_blank">
-                    {media.type}
+                    {media.type} <ExternalLink />
                   </Link>
                 </Button>
               );
