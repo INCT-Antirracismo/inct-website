@@ -10,12 +10,12 @@ export type FacePileProps = { members: Person[] };
 export default async function FacePile({ members }: FacePileProps) {
   const id = useId();
   return (
-    <div className="flex -space-x-2">
+    <div className="flex -space-x-2 flex-wrap">
       {members.map((member) => (
         <Tooltip key={'facePile' + member.id + id}>
           <TooltipTrigger>
             <Link href={createDynamicContentURL(member.slug, 'persons')}>
-              <Face media={member.image} />
+              <Face media={member.image} name={member.name} />
             </Link>
           </TooltipTrigger>
           <TooltipContent>{member.name}</TooltipContent>
@@ -27,9 +27,10 @@ export default async function FacePile({ members }: FacePileProps) {
 
 type FaceProps = {
   media?: Media | string | null;
+  name: string;
 };
 
-async function Face({ media }: FaceProps) {
+async function Face({ media, name }: FaceProps) {
   if (typeof media === 'string') {
     media = (await getDocumentById('media', media)) as Media;
   }
@@ -38,7 +39,7 @@ async function Face({ media }: FaceProps) {
       <img
         className="w-full h-full object-center object-cover"
         src={media?.thumbnailURL || media?.url || ''}
-        alt="Avatar"
+        alt={name}
       />
     </div>
   );

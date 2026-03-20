@@ -13,8 +13,8 @@ export default async function Footer(props: FooterProps) {
     select: { mainMenu: true }
   });
   return (
-    <div className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
-      <div className="container mx-auto mb-5 grid md:flex gap-3 md:gap-6 items-center justify-center">
+    <footer className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
+      <div className="container mx-auto mb-12 grid md:flex gap-3 md:gap-6 items-center justify-center">
         <img src="/icon.png" alt="" className="size-24 mx-auto mb-4 md:m-0" />{' '}
         <div className="grid text-center md:text-left w-fit">
           <p className="uppercase text-xs lg:text-sm mb-1 text-sun font-medium tracking-widest">
@@ -34,8 +34,7 @@ export default async function Footer(props: FooterProps) {
           className="h-6 md:h-8 lg:h-10 mx-auto md:mx-0"
         />
       </div>
-      <div className="container mx-auto h-px bg-white/5 my-8"></div>
-      <div className="container mx-auto md:flex gap-12 flex-wrap">
+      <div className="container mx-auto md:flex gap-12 flex-wrap md:justify-center my-12">
         {data.mainMenu.map((menu: any) => (
           <div key={menu.label + 'sidebar'} className="mb-8">
             <Link
@@ -77,7 +76,6 @@ export default async function Footer(props: FooterProps) {
           </div>
         ))}
       </div>
-      <div className="container mx-auto h-px bg-white/5 my-8"></div>
       <div className="container mx-auto flex items-center justify-end gap-3">
         <p className="text-xs text-white/40 tracking-wide text-right text-balance">
           Instituto Nacional de Ciência e Tecnologia Educação Tranformadora:
@@ -95,6 +93,6 @@ export default async function Footer(props: FooterProps) {
         </p>
         <img src="/icon.png" className="size-8" alt="" />
       </div>
-    </div>
+    </footer>
   );
 }

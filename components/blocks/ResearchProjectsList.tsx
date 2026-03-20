@@ -42,33 +42,29 @@ export default async function ResearchProjectsList({
         : [];
   if (!(itemsArr?.length > 0)) return null;
   return (
-    <div className={cn('grid gap-x-6 gap-y-12 items-center')}>
+    <div className={cn('grid gap-x-8 gap-y-12 lg:grid-cols-2')}>
       {itemsArr.map((doc: ResearchProject) => {
         return (
-          <Link
-            href={createDynamicContentURL(doc?.slug, 'researchProjects')}
-            key={doc?.slug + '_publications'}
-            className="grid gap-4 md:flex md:gap-6 items-center group"
-          >
-            <div className="">
-              <p className="text-xs md:text-sm uppercase font-medium text-primary mb-2 tracking-widest">
-                {(doc.status as DefinedTerm).name}
-              </p>
-              <h2 className="font-bold text-lg md:text-2xl lg:text-3xl mb-1 lg:mb-2 leading-tight text-balance decoration-trinidad underline-offset-2 decoration-2 group-hover:underline max-w-prose">
+          <section key={doc?.slug + '_publications'}>
+            <p className="text-xs md:text-sm uppercase font-medium text-primary mb-2 tracking-widest">
+              {(doc.status as DefinedTerm).name}
+            </p>
+            <Link href={createDynamicContentURL(doc?.slug, 'researchProjects')}>
+              <h2 className="font-bold text-xl md:text-2xl mb-3 lg:mb-3 leading-tight text-pretty decoration-trinidad underline-offset-2 decoration-2 hover:underline max-w-prose">
                 {doc.name}
               </h2>
-              <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
-                {doc.description!.slice(0, 160)}
-                {doc.description!.length > 160 && '...'}
+            </Link>
+            <p className="text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
+              {doc.description!.slice(0, 160)}
+              {doc.description!.length > 160 && '...'}
+            </p>
+            <div className="grid items-center gap-2 mt-5">
+              <p className="text-[10px] tracking-widest text-muted-foreground uppercase">
+                Pessoas deste INCT que participam
               </p>
-              <div className="grid items-center gap-2 mt-3">
-                <p className="text-[10px] tracking-widest text-muted-foreground uppercase">
-                  Pessoas deste INCT que participam
-                </p>
-                <FacePile members={doc.members?.docs as any} />
-              </div>
+              <FacePile members={doc.members?.docs as any} />
             </div>
-          </Link>
+          </section>
         );
       })}
     </div>
