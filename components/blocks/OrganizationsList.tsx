@@ -43,9 +43,7 @@ export default async function OrganizationsList({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="w-full">
-                    <Image
-                      width={300}
-                      height={400}
+                    <img
                       loading="lazy"
                       src={
                         (doc.logo as Media)?.sizes?.third?.url ||
@@ -75,9 +73,7 @@ export default async function OrganizationsList({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div className="w-full">
-                    <Image
-                      width={300}
-                      height={400}
+                    <img
                       loading="lazy"
                       src={(doc.logo as Media)?.url || ''}
                       alt={doc.acronym || doc.name}

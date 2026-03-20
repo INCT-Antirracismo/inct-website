@@ -1,7 +1,6 @@
 'use client';
 
 import { cn, createDynamicContentURL } from '@/lib/utils';
-import { Media } from '@/payload-types';
 import type {
   DefaultNodeTypes,
   SerializedLinkNode,
@@ -12,10 +11,8 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 import {
   type JSXConvertersFunction,
   LinkJSXConverter,
-  RichText,
-  UploadJSXConverter
+  RichText
 } from '@payloadcms/richtext-lexical/react';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -52,7 +49,7 @@ const CustomUploadComponent: React.FC<{
 
   return (
     <figure className="">
-      <Image
+      <img
         alt={uploadDoc.alt}
         height={uploadDoc.height}
         src={

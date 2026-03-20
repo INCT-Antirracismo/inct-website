@@ -6,7 +6,6 @@ import {
   createDynamicContentURL
 } from '@/lib/utils';
 import { DefinedTerm, Organization, Person } from '@/payload-types';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export type PersonCardProps = { person: Person };
@@ -20,9 +19,7 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
     >
       <div className="relative w-30 h-36 sm:w-36 aspect-square  overflow-hidden rounded border shrink-0">
         {image! && typeof image !== 'string' && image.url && (
-          <Image
-            width={300}
-            height={400}
+          <img
             loading="lazy"
             src={image?.thumbnailURL || image?.url}
             alt={image?.alt}

@@ -91,9 +91,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
         <div className="flex sm:items-center gap-6 my-8">
           <div className="relative sm:w-1/5 max-w-56 aspect-3/4 overflow-hidden rounded-xl border shrink-0">
             {image! && typeof image !== 'string' && image.url && (
-              <Image
-                width={300}
-                height={400}
+              <img
                 loading="lazy"
                 src={image?.url}
                 alt={image?.alt}
