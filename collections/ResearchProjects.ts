@@ -69,8 +69,9 @@ export const ResearchProjects: CollectionConfig = {
       type: 'join',
       collection: 'persons',
       on: 'researchProjects.relationTo',
+      orderable: true,
+      defaultLimit: 0,
       admin: {
-        hidden: true,
         defaultColumns: ['image', 'name', 'description'],
         description:
           'Esse campo serve apenas para listar os membros. Para editar a relação da pessoa com o projeto de pesquisa, edite no documento da pessoa.'

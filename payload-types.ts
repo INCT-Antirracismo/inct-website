@@ -245,6 +245,7 @@ export interface DefinedTerm {
  */
 export interface Person {
   id: string;
+  _persons_members_order?: string | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -4861,6 +4862,7 @@ export interface OrganizationsSelect<T extends boolean = true> {
  * via the `definition` "persons_select".
  */
 export interface PersonsSelect<T extends boolean = true> {
+  _persons_members_order?: T;
   generateSlug?: T;
   slug?: T;
   name?: T;

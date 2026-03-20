@@ -1,18 +1,18 @@
 import { getDocumentById } from '@/lib/local-api';
 import { createDynamicContentURL } from '@/lib/utils';
-import { Person, Media } from '@/payload-types';
-import { find } from 'lodash';
+import { Media, Person } from '@/payload-types';
 import Link from 'next/link';
-import { Tooltip, TooltipTrigger, TooltipContent } from './ui/tooltip';
-import Image from 'next/image';
+import { useId } from 'react';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 export type FacePileProps = { members: Person[] };
 
 export default async function FacePile({ members }: FacePileProps) {
+  const id = useId();
   return (
     <div className="flex -space-x-2">
       {members.map((member) => (
-        <Tooltip key={'facePile' + member.id}>
+        <Tooltip key={'facePile' + member.id + id}>
           <TooltipTrigger>
             <Link href={createDynamicContentURL(member.slug, 'persons')}>
               <Face media={member.image} />
