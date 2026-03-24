@@ -32,9 +32,9 @@ export default async function ContentList({
   const { q: query, p: page } = params || {};
   const items = block.jsonQuery
     ? await payload.find({
-        limit: 36,
+        limit: 32,
         depth: 2,
-        pagination: page ? page : false,
+        pagination: true,
         page,
         ...block.jsonQuery,
         ...(query
@@ -87,6 +87,7 @@ export default async function ContentList({
           : {}) // Não tem query
       })
     : false;
+  console.log(items);
   return (
     <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
       <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid">
@@ -132,9 +133,12 @@ export default async function ContentList({
           <PostsList block={block} items={items as any} />
         ) : null}
 
-        {block.jsonQuery && block.enableSearch ? (
+        {block.jsonQuery &&
+        block.enableSearch &&
+        items &&
+        items.totalPages > 1 ? (
           <div className="filters mb-8">
-            <Pagination />
+            <Pagination config={items} loading={false} />
           </div>
         ) : null}
       </div>

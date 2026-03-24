@@ -33,20 +33,7 @@ export const Search: React.FC = () => {
   }, [q]);
 
   useEffect(() => {
-    let queryString = '';
-    let qChar = '?';
-
-    [
-      { value: debouncedValue, key: 'q' },
-      { value: p, key: 'p' }
-    ].forEach((element, index) => {
-      if (element.value) {
-        queryString += qChar;
-        qChar = '&';
-        queryString += `${element.key}=${element.value}`;
-      }
-    });
-    router.push(`${path}${queryString}`);
+    if (prevValue !== 'XXX') router.push(`${path}?q=${debouncedValue}`);
   }, [debouncedValue, router]);
 
   return (
