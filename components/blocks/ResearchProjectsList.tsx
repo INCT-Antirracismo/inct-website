@@ -45,7 +45,7 @@ export default async function ResearchProjectsList({
     <div className={cn('grid gap-x-8 gap-y-12 lg:grid-cols-2')}>
       {itemsArr.map((doc: ResearchProject) => {
         return (
-          <section key={doc?.slug + '_publications'}>
+          <article key={doc?.slug + '_publications'}>
             <p className="text-xs md:text-sm uppercase font-medium text-primary mb-2 tracking-widest">
               {(doc.status as DefinedTerm).name}
             </p>
@@ -64,7 +64,7 @@ export default async function ResearchProjectsList({
               </p>
               <FacePile members={doc.members?.docs as any} />
             </div>
-          </section>
+          </article>
         );
       })}
     </div>

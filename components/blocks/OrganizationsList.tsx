@@ -33,62 +33,39 @@ export default async function OrganizationsList({
   block,
   items
 }: OrganizationsListProps) {
-  return block.items?.length > 0 ? (
-    <Marquee className="flex gap-3 items-center">
-      {block.items
-        .map((i: any) => i.value)
-        .map((doc: Organization) => {
-          return (
-            <div key={doc.id + 'org'} className="mx-8">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className="w-full">
-                    <img
-                      loading="lazy"
-                      src={
-                        (doc.logo as Media)?.sizes?.third?.url ||
-                        (doc.logo as Media)?.url ||
-                        ''
-                      }
-                      alt={doc.acronym || doc.name}
-                      className="w-auto h-auto max-h-16 max-w-36 grow-0 mx-auto"
-                    />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{doc.name}</p>
-                </TooltipContent>
-              </Tooltip>
-              {/* <div className="text-xs text-balance">{doc.name}</div> */}
-            </div>
-          );
-        })}
-    </Marquee>
-  ) : block.jsonQuery && items && items.docs?.length > 0 ? (
-    <Marquee className="flex gap-3 items-center w-full relative" speed={20}>
-      {items.docs.map((doc: any) => {
-        if (doc)
-          return (
-            <div key={doc.id + 'org'} className="mx-8">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className="w-full">
-                    <img
-                      loading="lazy"
-                      src={(doc.logo as Media)?.url || ''}
-                      alt={doc.acronym || doc.name}
-                      className="w-auto h-auto max-h-14 max-w-32 grow-0 mx-auto saturate-0 duration-150 hover:saturate-100"
-                    />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{doc.name}</p>
-                </TooltipContent>
-              </Tooltip>
-              {/* <div className="text-xs text-balance">{doc.name}</div> */}
-            </div>
-          );
+  return (
+    <Marquee className="flex gap-3 items-center w-full relative py-8">
+      {(block.items?.length > 0
+        ? block.items.map((i: any) => i.value)
+        : block.jsonQuery && items && items.docs?.length > 0
+          ? items.docs
+          : []
+      ).map((doc: Organization) => {
+        return (
+          <div key={doc.id + 'org'} className="mx-8">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="">
+                  <img
+                    loading="lazy"
+                    src={
+                      (doc.logo as Media)?.sizes?.third?.url ||
+                      (doc.logo as Media)?.url ||
+                      ''
+                    }
+                    alt={doc.acronym || doc.name}
+                    className="w-auto h-auto max-h-14 max-w-32 grow-0 mx-auto saturate-0 duration-150 hover:saturate-100"
+                  />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{doc.name}</p>
+              </TooltipContent>
+            </Tooltip>
+            {/* <div className="text-xs text-balance">{doc.name}</div> */}
+          </div>
+        );
       })}
     </Marquee>
-  ) : null;
+  );
 }

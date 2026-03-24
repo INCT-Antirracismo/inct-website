@@ -11,7 +11,7 @@ import {
   Person,
   ResearchProject
 } from '@/payload-types';
-import { ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -52,8 +52,9 @@ export default async function ResearchProjectPage({
         <Link href="/projetos-de-pesquisa">
           <h2
             id="projetos-de-pesquisa"
-            className="uppercase text-xs md:text-sm tracking-widest font-medium mb-2 text-trinidad max-w-prose text-balance"
+            className="uppercase text-xs md:text-sm tracking-widest font-medium mb-2 text-trinidad max-w-prose text-balance flex items-center gap-2"
           >
+            <ArrowLeft className="size-4" />
             Projetos de Pesquisa
           </h2>
         </Link>
