@@ -5,6 +5,9 @@ import localFont from 'next/font/local';
 import Nav from '@/components/Nav';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import Footer from '@/components/Footer';
+import config from '@payload-config';
+import { getPayload } from 'payload';
+import { headers as nextHeaders } from 'next/headers';
 
 const elza = localFont({
   src: [
@@ -41,17 +44,22 @@ const elza = localFont({
   ]
 });
 
+const payload = await getPayload({ config });
 export const metadata: Metadata = {
   title: 'INCT Antirracismo',
   description: 'Produção científica a serviço da justiça social.'
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (process.env.NODE_ENV === 'production')
+  const headers = await nextHeaders();
+  const result = await payload.auth({ headers, canSetHeaders: false });
+  console.log(result);
+
+  if (process.env.NODE_ENV === 'production' && !result.user)
     return (
       <div className="w-full h-svh flex flex-col items-center justify-center text-center">
         <img src="/logo.png" alt="INCT Antirracismo" className="h-16 mb-3" />

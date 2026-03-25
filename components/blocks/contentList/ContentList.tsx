@@ -87,7 +87,7 @@ export default async function ContentList({
           : {}) // Não tem query
       })
     : false;
-  console.log(items);
+
   return (
     <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
       <div className="container mx-auto px-4 lg:px-8 my-8 lg:my-16 grid">
