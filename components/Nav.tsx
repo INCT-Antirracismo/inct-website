@@ -35,8 +35,10 @@ export default async function Nav(props: NavProps) {
           </div>
           <div className="center ">
             <ul className="xl:flex items-center hidden">
-              {menu.map((menu) => {
-                return <NavButton key={menu.label + 'menu'} menu={menu} />;
+              {menu.map((menu, index) => {
+                return (
+                  <NavButton key={menu.label + 'menu' + index} menu={menu} />
+                );
               })}
             </ul>
           </div>
