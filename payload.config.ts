@@ -99,7 +99,7 @@ export default buildConfig({
     url: process.env.DATABASE_URL || ''
   }),
   email: resendAdapter({
-    defaultFromAddress: 'onboarding@resend.dev',
+    defaultFromAddress: 'site@inctantirracismo.com.br',
     defaultFromName: 'Site INCT Antirracismo',
     apiKey: process.env.RESEND_API_KEY || ''
   }),
