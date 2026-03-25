@@ -3,6 +3,8 @@ import NotFound from '@/components/NotFound';
 import { getDocBySlug } from '@/lib/local-api';
 import { Page } from '@/payload-types';
 import { Metadata, ResolvingMetadata } from 'next';
+import { getPayload } from 'payload';
+import config from '@payload-config';
 
 export type PagePageProps = {
   params: Promise<{ slug: string }>;
@@ -23,6 +25,16 @@ export async function generateMetadata(
     title: `${doc.name} - INCT Antirracismo`,
     description: doc.description
   };
+}
+
+export async function generateStaticParams() {
+  const payload = await getPayload({ config });
+  const { docs } = await payload.find({
+    collection: 'pages',
+    limit: 0,
+    select: { slug: true }
+  });
+  return docs.map((doc) => ({ slug: doc.slug }));
 }
 
 export default async function PagePage({

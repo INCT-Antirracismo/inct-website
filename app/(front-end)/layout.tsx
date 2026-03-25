@@ -51,6 +51,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  if (process.env.NODE_ENV === 'production')
+    return (
+      <div className="w-full h-svh flex flex-col items-center justify-center text-center">
+        <img src="/logo.png" alt="INCT Antirracismo" className="h-16 mb-3" />
+        Em breve.
+      </div>
+    );
   return (
     <html lang="en">
       <body className={`${elza.className} antialiased text-black`}>
