@@ -9,13 +9,14 @@ import { SidebarTrigger } from './ui/sidebar';
 
 const payload = await getPayload({ config });
 
-export type NavProps = {};
+export type NavProps = { locale: string };
 
-export default async function Nav(props: NavProps) {
+export default async function Nav({ locale }: NavProps) {
   const data = await payload.findGlobal({
     slug: 'nav',
     depth: 1,
-    select: { mainMenu: true }
+    select: { mainMenu: true },
+    locale: locale as any
   });
   const menu = data.mainMenu;
   return (

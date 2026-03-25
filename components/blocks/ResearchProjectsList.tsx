@@ -1,9 +1,9 @@
-import { cn, createDynamicContentURL } from '@/lib/utils';
-import { DefinedTerm, Media, ResearchProject } from '@/payload-types';
-import { AlertTriangle } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { DefinedTerm, ResearchProject } from '@/payload-types';
 import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 import FacePile from '../Facepile';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 
 export type ResearchProjectsListProps = {
   block: any;

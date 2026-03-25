@@ -24,15 +24,15 @@ export const Nav: GlobalConfig = {
       type: 'array',
       required: true,
       fields: [
-        { name: 'label', type: 'text', label: 'Nome' },
-        { name: 'text', type: 'textarea', label: 'Texto' },
+        { name: 'label', type: 'text', label: 'Nome', localized: true },
+        { name: 'text', type: 'textarea', label: 'Texto', localized: true },
         {
           name: 'items',
           type: 'array',
           label: 'Itens',
           fields: [
             linkField,
-            { name: 'text', type: 'textarea', label: 'Texto' }
+            { name: 'text', type: 'textarea', label: 'Texto', localized: true }
           ]
         }
       ]

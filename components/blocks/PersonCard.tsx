@@ -1,10 +1,7 @@
 'use client';
 
-import {
-  applyPronounsToDefinedTerm,
-  buildListSentence,
-  createDynamicContentURL
-} from '@/lib/utils';
+import { applyPronounsToDefinedTerm, buildListSentence } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import { DefinedTerm, Organization, Person } from '@/payload-types';
 import Link from 'next/link';
 

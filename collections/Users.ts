@@ -18,7 +18,7 @@ export const Users: CollectionConfig = {
   },
   admin: { useAsTitle: 'name', group: 'Configuração' },
   fields: [
-    nameField,
+    { name: 'name', label: 'Nome', type: 'text' },
     {
       name: 'role',
       type: 'select',

@@ -23,7 +23,7 @@ import {
 } from './ui/collapsible';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
-import { createDynamicContentURL } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 
 export type NavSidebarProps = { menu: any };
 const data = {

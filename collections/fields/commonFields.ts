@@ -3,6 +3,7 @@ import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { Field, slugField as payloadSlugField } from 'payload';
 
 export const nameField: Field = {
+  localized: true,
   label: 'Nome',
   name: 'name',
   required: true,
@@ -21,6 +22,7 @@ export const slugField: Field = {
 } as Field;
 
 export const descriptionField: Field = {
+  localized: true,
   name: 'description',
   label: 'Descrição curta',
   type: 'textarea',
@@ -170,7 +172,7 @@ export const buttonsField: Field = {
   labels: { singular: 'Botão', plural: 'Botões' },
   type: 'array',
   fields: [
-    { name: 'label', label: 'Texto', type: 'text' },
+    { name: 'label', label: 'Texto', type: 'text', localized: true },
     {
       name: 'iconSlug',
       label: 'Ícone',
@@ -211,6 +213,7 @@ export const richTextField: Field = {
   name: 'body',
   type: 'richText',
   label: 'Conteúdo',
+  localized: true,
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,

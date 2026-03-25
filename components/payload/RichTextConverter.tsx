@@ -1,6 +1,7 @@
 'use client';
 
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import type {
   DefaultNodeTypes,
   SerializedLinkNode,

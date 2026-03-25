@@ -51,9 +51,11 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
+  params,
   children
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
   // MAINTENANCE MODE CODE
   const headers = await nextHeaders();
@@ -66,14 +68,14 @@ export default async function RootLayout({
       </div>
     );
   // MAINTENANCE MODE CODE
-
+  const { lang: locale } = await params;
   return (
     <html lang="en">
       <body className={`${elza.className} antialiased text-black`}>
         <TooltipProvider>
           <SidebarProvider defaultOpen={false}>
             <div className="wrapper pt-16 w-full">
-              <Nav />
+              <Nav locale={locale} />
               {children}
               <Footer />
             </div>

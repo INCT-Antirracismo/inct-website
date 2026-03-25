@@ -1,5 +1,5 @@
 import { getDocumentById } from '@/lib/local-api';
-import { createDynamicContentURL } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import { Media, Person } from '@/payload-types';
 import Link from 'next/link';
 import { useId } from 'react';

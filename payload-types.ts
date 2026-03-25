@@ -111,7 +111,7 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('pt-BR' | 'es') | ('pt-BR' | 'es')[];
   globals: {
     nav: Nav;
     info: Info;
@@ -120,7 +120,7 @@ export interface Config {
     nav: NavSelect<false> | NavSelect<true>;
     info: InfoSelect<false> | InfoSelect<true>;
   };
-  locale: null;
+  locale: 'pt-BR' | 'es';
   user: User;
   jobs: {
     tasks: unknown;
@@ -4650,7 +4650,7 @@ export interface Event {
  */
 export interface User {
   id: string;
-  name: string;
+  name?: string | null;
   role: 'admin' | 'editor' | 'author';
   updatedAt: string;
   createdAt: string;

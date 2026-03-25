@@ -2,7 +2,7 @@
 import React from 'react';
 import type { BeforeDocumentControlsClientProps } from 'payload';
 import { useDocumentInfo, useField } from '@payloadcms/ui';
-import { createDynamicContentURL } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import { ExternalLink } from 'lucide-react';
 
 export function VisitContent(props: BeforeDocumentControlsClientProps) {

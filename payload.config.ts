@@ -45,6 +45,11 @@ export default buildConfig({
     fallbackLanguage: 'pt', // default
     supportedLanguages: { en, pt }
   },
+  localization: {
+    locales: ['pt-BR', 'es'],
+    defaultLocale: 'pt-BR',
+    fallback: true
+  },
   maxDepth: 3,
   admin: {
     autoRefresh: true,

@@ -1,4 +1,4 @@
-import { createDynamicContentURL } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import config from '@payload-config';
 import Link from 'next/link';
 import { getPayload } from 'payload';

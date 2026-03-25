@@ -1,9 +1,10 @@
 'use client';
 
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 export type NavButtonProps = { menu: any };
 
@@ -63,7 +64,7 @@ export default function NavButton({ menu }: NavButtonProps) {
                           item.link!.internalContent.relationTo
                         )}
                         className={cn(
-                          'p-2 rounded border border-transparent hover:bg-background w-full group/menu-item inline-block',
+                          'px-2 py-0.5 rounded border border-transparent hover:bg-background w-full group/menu-item inline-block',
                           slug === item.link!.internalContent.value.slug &&
                             'bg-background'
                         )}

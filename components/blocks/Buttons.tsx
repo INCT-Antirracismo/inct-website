@@ -1,6 +1,6 @@
 'use client';
 
-import { createDynamicContentURL } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { DynamicIcon } from 'lucide-react/dynamic';

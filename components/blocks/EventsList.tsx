@@ -1,4 +1,5 @@
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
 import { Media, Event } from '@/payload-types';
 import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
