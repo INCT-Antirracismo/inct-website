@@ -55,10 +55,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // MAINTENANCE MODE CODE
   const headers = await nextHeaders();
   const result = await payload.auth({ headers, canSetHeaders: false });
-  console.log(result);
-
   if (process.env.NODE_ENV === 'production' && !result.user)
     return (
       <div className="w-full h-svh flex flex-col items-center justify-center text-center">
@@ -66,6 +65,8 @@ export default async function RootLayout({
         Em breve.
       </div>
     );
+  // MAINTENANCE MODE CODE
+
   return (
     <html lang="en">
       <body className={`${elza.className} antialiased text-black`}>

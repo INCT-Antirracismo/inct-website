@@ -1,17 +1,15 @@
+import Pagination from '@/components/Pagination';
 import { Search } from '@/components/Search';
-import { Media, Organization } from '@/payload-types';
+import { cn } from '@/lib/utils';
 import config from '@payload-config';
 import { getPayload } from 'payload';
 import Buttons from '../Buttons';
-import PersonsList from '../PersonsList';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import EventsList from '../EventsList';
 import OrganizationsList from '../OrganizationsList';
+import PersonsList from '../PersonsList';
+import PostsList from '../PostsList';
 import PublicationsList from '../PublicationsList';
 import ResearchProjectsList from '../ResearchProjectsList';
-import EventsList from '../EventsList';
-import PostsList from '../PostsList';
-import Pagination from '@/components/Pagination';
 
 export type ContentListProps = {
   block: any;
