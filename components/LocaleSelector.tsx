@@ -14,7 +14,7 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
         href={pathname.replace('/es', '/pt-BR')}
         className={cn(
           'hover:text-foreground',
-          pathname.includes('pt-BR') && 'font-bold pointer-events-none'
+          pathname.includes('/pt-BR') && 'font-bold pointer-events-none'
         )}
       >
         PT
@@ -24,7 +24,7 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
         href={pathname.replace('/pt-BR', '/es')}
         className={cn(
           'hover:text-foreground',
-          pathname.includes('es') && 'font-bold pointer-events-none'
+          pathname.includes('/es') && 'font-bold pointer-events-none'
         )}
       >
         ES

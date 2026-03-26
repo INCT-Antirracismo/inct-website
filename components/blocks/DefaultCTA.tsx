@@ -3,6 +3,8 @@
 import { cn } from '@/lib/utils';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import Buttons from './Buttons';
+import BGOrange from '@/public/bg_orange.jpg';
+import BGBlue from '@/public/bg_blue.jpg';
 
 export type DefaultCTAProps = {
   title: string | null;
@@ -35,14 +37,19 @@ export default function DefaultCTA({
   return (
     <div
       className={cn(
-        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden',
+        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center',
         variant === 'dark' && 'bg-trinidad text-white',
-        variant === 'sun' && 'bg-sun text-black',
-        imagePosition === 'background' && 'bg-cover bg-center'
+        variant === 'sun' && 'bg-trinidad text-white'
       )}
       style={{
         backgroundImage:
-          imagePosition === 'background' ? `url('${image.url}')` : 'none'
+          imagePosition === 'background' && !image.url.includes('.mp4')
+            ? `url('${image.url}')`
+            : variant === 'dark'
+              ? `url('${BGBlue.src}')`
+              : variant === 'sun'
+                ? `url('${BGOrange.src}')`
+                : ''
       }}
     >
       <main
@@ -55,15 +62,7 @@ export default function DefaultCTA({
         {imagePosition === 'background' &&
           image &&
           image.url.includes('.mp4') && (
-            <div
-              className="absolute bg-cover bg-center h-svh w-svw z-1 top-0 left-0"
-              style={{
-                backgroundImage:
-                  imagePosition === 'background' && !image.url.includes('.mp4')
-                    ? `url('${image.url}')`
-                    : 'none'
-              }}
-            >
+            <div className="absolute bg-cover bg-center h-svh w-svw z-1 top-0 left-0">
               <video
                 className="videoTag object-fit object-cover w-full h-full"
                 autoPlay
@@ -88,7 +87,7 @@ export default function DefaultCTA({
               className={cn(
                 'uppercase text-sm md:text-base lg:text-lg xl:text-xl tracking-widest font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
                 variant === 'dark' && 'text-sun-200',
-                variant === 'sun' && 'text-brown'
+                variant === 'sun' && 'text-sun-200'
               )}
             >
               {label}
@@ -97,7 +96,7 @@ export default function DefaultCTA({
               className={cn(
                 'max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
                 variant === 'dark' && 'text-trinidad-100',
-                variant === 'sun' && 'text-dark-blue'
+                variant === 'sun' && 'text-trinidad-100'
               )}
             >
               {title}
@@ -107,7 +106,7 @@ export default function DefaultCTA({
                 className={cn(
                   'max-w-prose w-full text-lg text-balance md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]',
                   variant === 'dark' && 'text-stone-100',
-                  variant === 'sun' && 'text-stone-800',
+                  variant === 'sun' && 'text-stone-100',
                   centered && 'mx-auto'
                 )}
               >
