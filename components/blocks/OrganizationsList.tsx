@@ -34,7 +34,7 @@ export default async function OrganizationsList({
   items
 }: OrganizationsListProps) {
   return (
-    <Marquee className="flex gap-3 items-center w-full relative py-8">
+    <Marquee className="flex gap-3 items-center w-full max-w-svw relative py-8">
       {(block.items?.length > 0
         ? block.items.map((i: any) => i.value)
         : block.jsonQuery && items && items.docs?.length > 0
