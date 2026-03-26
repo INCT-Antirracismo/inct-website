@@ -18,6 +18,7 @@ export type ContentListProps = {
     q: string;
     p: string;
   };
+  lang: string;
 };
 
 const payload = await getPayload({ config });
@@ -25,7 +26,8 @@ const payload = await getPayload({ config });
 export default async function ContentList({
   block,
   collectionSlug,
-  params
+  params,
+  lang
 }: ContentListProps) {
   const { q: query, p: page } = params || {};
   const items = block.jsonQuery
@@ -34,6 +36,8 @@ export default async function ContentList({
         depth: 2,
         pagination: true,
         page,
+        locale: lang,
+        fallbackLocale: 'pt-BR',
         ...block.jsonQuery,
         ...(query
           ? collectionSlug === 'persons'

@@ -5,11 +5,11 @@ import { Event } from '@/payload-types';
 import Link from 'next/link';
 
 export type EventPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 };
 
 export default async function EventPage({ params }: EventPageProps) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const doc = (await getDocBySlug('events', slug)) as Event | null;
   if (!doc) return <NotFound collectionSlug="events" />;
   const startDate = new Date(doc.startDate || '');
@@ -57,6 +57,7 @@ export default async function EventPage({ params }: EventPageProps) {
             key={slug + index + 'block' + block.id}
             block={block}
             index={index}
+            lang={lang}
           />
         );
       })}

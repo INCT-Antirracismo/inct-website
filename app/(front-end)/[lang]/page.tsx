@@ -33,6 +33,7 @@ export default async function IndexPage({ params }: IndexPageProps) {
             key={'home' + index + 'block' + block.id}
             block={block}
             index={index}
+            lang={locale}
           />
         );
       })}

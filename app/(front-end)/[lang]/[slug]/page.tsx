@@ -57,6 +57,7 @@ export default async function PagePage({
             block={block}
             index={index}
             params={searchParams}
+            lang={lang}
           />
         );
       })}

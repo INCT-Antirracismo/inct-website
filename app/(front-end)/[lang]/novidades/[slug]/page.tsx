@@ -7,14 +7,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export type PostPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 };
 
 export async function generateMetadata({
   params
 }: PostPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const doc = (await getDocBySlug('posts', slug)) as Post | null;
+  const { slug, lang } = await params;
+  const doc = (await getDocBySlug('posts', slug, lang)) as Post | null;
   if (!doc) return { title: 'INCT Antirracismo' };
   return {
     title: `${doc.name} - INCT Antirracismo`,
@@ -23,7 +23,7 @@ export async function generateMetadata({
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const doc = (await getDocBySlug('posts', slug)) as Post | null;
   if (!doc) return <NotFound collectionSlug="posts" />;
   const createdAt = new Date(doc.createdAt || '');
@@ -85,6 +85,7 @@ export default async function PostPage({ params }: PostPageProps) {
             key={slug + index + 'block' + block.id}
             block={block}
             index={index}
+            lang={lang}
           />
         );
       })}

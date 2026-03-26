@@ -11,12 +11,14 @@ export type BlockRendererProps = {
     q: string;
     p: string;
   };
+  lang?: string;
 };
 
 export default async function BlockRenderer({
   block,
   index,
-  params
+  params,
+  lang = 'pt-BR'
 }: BlockRendererProps) {
   if (block.blockType === 'defaultCTABlock') {
     return <DefaultCTA key={`block_${block.id}_${index}`} {...block} />;
@@ -42,6 +44,7 @@ export default async function BlockRenderer({
         collectionSlug={block.collectionSlug}
         block={block}
         params={params}
+        lang={lang}
       />
     );
   }
