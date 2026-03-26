@@ -51,7 +51,7 @@ export default function NavButton({ menu }: NavButtonProps) {
               <ul className="flex flex-wrap gap-3 gap-x-3 justify-start ">
                 {menu.items?.map((item: any) => {
                   return (
-                    <li key={item.id} className="w-64">
+                    <li key={item.id} className="w-56">
                       <DynamicContentLink
                         slug={item.link!.internalContent.value.slug}
                         collection={item.link!.internalContent.relationTo}

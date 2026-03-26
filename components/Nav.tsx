@@ -1,8 +1,7 @@
-import { Button } from '@/components/ui/button';
 import config from '@payload-config';
-import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { getPayload } from 'payload';
+import LocaleSelector from './LocaleSelector';
 import NavButton from './NavButton';
 import NavSidebar from './NavSidebar';
 import { SidebarTrigger } from './ui/sidebar';
@@ -32,15 +31,16 @@ export default async function Nav({ locale }: NavProps) {
             <div className="h-6 w-0.5 bg-trinidad rotate-6"></div>
             <img src="/cnpq.jpg" alt="Logo CNPq" className="h-5 saturate-0" />
           </Link>
-          <div className="center ">
+          <div className="flex gap-6 items-center justify-end">
             <ul className="xl:flex items-center hidden">
               {menu.map((menu) => {
                 return <NavButton key={menu.label + 'menu'} menu={menu} />;
               })}
             </ul>
-          </div>
-          <div className="right flex gap-2 items-center xl:hidden">
-            <SidebarTrigger />
+            <LocaleSelector />
+            <div className="xl:hidden">
+              <SidebarTrigger />
+            </div>
           </div>
         </div>
       </nav>
