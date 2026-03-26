@@ -182,21 +182,25 @@ export default async function PersonPage({ params }: PersonPageProps) {
       </div>
 
       {/* DESCRIÇÃO */}
-      <section className="my-5 md:my-8 pt-5 md:pt-8 border-t">
-        <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
-          Linhas de pesquisa
-        </h2>
-        <p className="text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
-          {description}
-        </p>
-      </section>
+      {description ? (
+        <section className="my-5 md:my-8 pt-5 md:pt-8 border-t">
+          <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
+            Linhas de pesquisa
+          </h2>
+          <p className="text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
+            {description}
+          </p>
+        </section>
+      ) : null}
 
-      <section className="my-10 md:my-16">
-        <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
-          Sobre
-        </h2>
-        <CollapsibleBodyContent body={doc.body} />
-      </section>
+      {doc.body ? (
+        <section className="my-10 md:my-16">
+          <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
+            Sobre
+          </h2>
+          <CollapsibleBodyContent body={doc.body} />
+        </section>
+      ) : null}
 
       {/* Projetos */}
       {researchProjects!.length > 0 && (
