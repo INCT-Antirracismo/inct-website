@@ -65,15 +65,16 @@ export const defaultCTABlock: Block = {
       required: true
     } as Field,
 
-    { name: 'title', label: 'Título', type: 'text' },
+    { name: 'title', label: 'Título', type: 'text', localized: true },
     {
       name: 'subtitle',
       label: 'Subtítulo',
       type: 'textarea',
+      localized: true,
       admin: { rows: 3 }
     },
-    { name: 'label', label: 'Chapéu', type: 'text' },
-    { name: 'content', label: 'Texto', type: 'richText' },
+    { name: 'label', label: 'Chapéu', type: 'text', localized: true },
+    { name: 'content', label: 'Texto', type: 'richText', localized: true },
     buttonsField
   ]
 };

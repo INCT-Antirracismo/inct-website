@@ -1,7 +1,6 @@
-import { cn, createDynamicContentURL } from '@/lib/utils';
-import { DefinedTerm, Media, ResearchProject } from '@/payload-types';
-import { AlertTriangle } from 'lucide-react';
-import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
+import { DefinedTerm, ResearchProject } from '@/payload-types';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 import FacePile from '../Facepile';
 
@@ -49,11 +48,11 @@ export default async function ResearchProjectsList({
             <p className="text-xs md:text-sm uppercase font-medium text-primary mb-2 tracking-widest">
               {(doc.status as DefinedTerm).name}
             </p>
-            <Link href={createDynamicContentURL(doc?.slug, 'researchProjects')}>
+            <DynamicContentLink slug={doc?.slug} collection="researchProjects">
               <h2 className="font-bold text-xl md:text-2xl mb-3 lg:mb-3 leading-tight text-pretty decoration-trinidad underline-offset-2 decoration-2 hover:underline max-w-prose">
                 {doc.name}
               </h2>
-            </Link>
+            </DynamicContentLink>
             <p className="text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
               {doc.description!.slice(0, 160)}
               {doc.description!.length > 160 && '...'}

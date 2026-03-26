@@ -3,11 +3,9 @@ import NotFound from '@/components/NotFound';
 import { getDocBySlug } from '@/lib/local-api';
 import { Page } from '@/payload-types';
 import { Metadata, ResolvingMetadata } from 'next';
-import { getPayload } from 'payload';
-import config from '@payload-config';
 
 export type PagePageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
   searchParams: Promise<{
     q: string;
     p: string;
@@ -18,8 +16,8 @@ export async function generateMetadata(
   { params }: PagePageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const doc = (await getDocBySlug('pages', slug)) as Page | null;
+  const { slug, lang } = await params;
+  const doc = (await getDocBySlug('pages', slug, lang)) as Page | null;
   if (!doc) return { title: 'INCT Antirracismo' };
   return {
     title: `${doc.name} - INCT Antirracismo`,
@@ -27,23 +25,23 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config });
-  const { docs } = await payload.find({
-    collection: 'pages',
-    limit: 0,
-    select: { slug: true }
-  });
-  return docs.map((doc) => ({ slug: doc.slug }));
-}
+// export async function generateStaticParams() {
+//   const payload = await getPayload({ config });
+//   const { docs } = await payload.find({
+//     collection: 'pages',
+//     limit: 0,
+//     select: { slug: true }
+//   });
+//   return docs.map((doc) => ({ slug: doc.slug }));
+// }
 
 export default async function PagePage({
   params,
   searchParams: searchParamsPromise
 }: PagePageProps) {
   const searchParams = await searchParamsPromise;
-  const { slug } = await params;
-  const doc = (await getDocBySlug('pages', slug)) as Page | null;
+  const { slug, lang } = await params;
+  const doc = (await getDocBySlug('pages', slug, lang)) as Page | null;
   if (!doc) return <NotFound collectionSlug="pages" />;
   return (
     <>

@@ -1,6 +1,6 @@
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { Media, Post } from '@/payload-types';
-import Link from 'next/link';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
 export type PostsListProps = {
@@ -41,8 +41,9 @@ export default async function PostsList({ block, items }: PostsListProps) {
       {itemsArr.map((doc: Post) => {
         const createdAt = new Date(doc.createdAt || '');
         return (
-          <Link
-            href={createDynamicContentURL(doc?.slug, 'posts')}
+          <DynamicContentLink
+            slug={doc?.slug}
+            collection="posts"
             key={doc?.slug + '_posts'}
             className="grid grid-cols-3 gap-4 md:gap-6 items-center group"
           >
@@ -86,7 +87,7 @@ export default async function PostsList({ block, items }: PostsListProps) {
                 .
               </p>
             </div>
-          </Link>
+          </DynamicContentLink>
         );
       })}
     </div>

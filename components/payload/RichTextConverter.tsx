@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import type {
   DefaultNodeTypes,
   SerializedLinkNode,
@@ -20,8 +20,8 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   if (typeof value !== 'object') {
     throw new Error('Expected value to be an object');
   }
-
-  return createDynamicContentURL(value.slug as string, relationTo);
+  return '';
+  //  return createDynamicContentURL(value.slug as string, relationTo);
 };
 
 // Custom upload converter component that uses next/image

@@ -2,28 +2,18 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarRail,
   SidebarMenu,
-  SidebarMenuSub,
-  SidebarMenuItem,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
   SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarRail,
   useSidebar
 } from '@/components/ui/sidebar';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from './ui/collapsible';
-import { ChevronDown } from 'lucide-react';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import Link from 'next/link';
-import { createDynamicContentURL } from '@/lib/utils';
 
 export type NavSidebarProps = { menu: any };
 const data = {
@@ -175,22 +165,21 @@ export default function NavSidebar({ menu: mainMenu }: NavSidebarProps) {
             {mainMenu.map((menu: any) => (
               <SidebarMenuItem key={menu.label + 'sidebar'}>
                 <SidebarMenuButton asChild>
-                  <Link
+                  <DynamicContentLink
+                    slug={
+                      (menu.items![0].link!.internalContent as any).value.slug
+                    }
+                    collection={
+                      (menu.items![0].link!.internalContent as any).relationTo
+                    }
                     href={
-                      menu.items && menu.items!.length > 0
-                        ? createDynamicContentURL(
-                            (menu.items![0].link!.internalContent as any).value
-                              .slug,
-                            (menu.items![0].link!.internalContent as any)
-                              .relationTo
-                          )
-                        : '#'
+                      menu.items && menu.items!.length === 0 ? '#' : undefined
                     }
                     className="font-medium text-xs uppercase tracking-widest text-deep-sea-green"
                     onClick={toggleSidebar}
                   >
                     {menu.label}
-                  </Link>
+                  </DynamicContentLink>
                 </SidebarMenuButton>
                 {menu.items?.length ? (
                   <SidebarMenuSub>
@@ -199,11 +188,9 @@ export default function NavSidebar({ menu: mainMenu }: NavSidebarProps) {
                         key={menu.label + item.link!.internalContent!.value!.id}
                       >
                         <SidebarMenuSubButton asChild>
-                          <Link
-                            href={createDynamicContentURL(
-                              item.link!.internalContent.value.slug,
-                              item.link!.internalContent.relationTo
-                            )}
+                          <DynamicContentLink
+                            slug={item.link!.internalContent.value.slug}
+                            collection={item.link!.internalContent.relationTo}
                             onClick={toggleSidebar}
                             className="text-sm font-medium"
                           >
@@ -211,7 +198,7 @@ export default function NavSidebar({ menu: mainMenu }: NavSidebarProps) {
                               ? item.link!.internalContent!.value!.acronym ||
                                 item.link!.internalContent!.value!.name
                               : 'Link Externo'}
-                          </Link>
+                          </DynamicContentLink>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}

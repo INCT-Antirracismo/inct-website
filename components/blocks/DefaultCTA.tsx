@@ -1,11 +1,7 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { cn, createDynamicContentURL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { RichText } from '@payloadcms/richtext-lexical/react';
-import { Sparkles } from 'lucide-react';
-import { DynamicIcon } from 'lucide-react/dynamic';
-import Link from 'next/link';
 import Buttons from './Buttons';
 
 export type DefaultCTAProps = {

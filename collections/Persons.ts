@@ -54,7 +54,7 @@ export const Persons: CollectionConfig = {
     { ...urlField, label: 'URL do Orcid', name: 'orcidUrl' } as Field,
     socialMediaField,
 
-    { name: 'body', label: 'Sobre', type: 'richText' },
+    { name: 'body', label: 'Sobre', type: 'richText', localized: true },
     {
       name: 'inctPosition',
       label: 'Vínculos com o INCT Antirracismo',

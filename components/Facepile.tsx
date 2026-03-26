@@ -1,7 +1,6 @@
 import { getDocumentById } from '@/lib/local-api';
-import { createDynamicContentURL } from '@/lib/utils';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { Media, Person } from '@/payload-types';
-import Link from 'next/link';
 import { useId } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
@@ -14,9 +13,9 @@ export default async function FacePile({ members }: FacePileProps) {
       {members.map((member) => (
         <Tooltip key={'facePile' + member.id + id}>
           <TooltipTrigger>
-            <Link href={createDynamicContentURL(member.slug, 'persons')}>
+            <DynamicContentLink slug={member.slug} collection="persons">
               <Face media={member.image} name={member.name} />
-            </Link>
+            </DynamicContentLink>
           </TooltipTrigger>
           <TooltipContent>{member.name}</TooltipContent>
         </Tooltip>

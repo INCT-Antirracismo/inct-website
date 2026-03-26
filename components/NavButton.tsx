@@ -1,9 +1,9 @@
 'use client';
 
-import { cn, createDynamicContentURL } from '@/lib/utils';
-import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { useParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 export type NavButtonProps = { menu: any };
 
@@ -20,15 +20,10 @@ export default function NavButton({ menu }: NavButtonProps) {
         //   .includes(slug) && 'font-semibold'
       )}
     >
-      <Link
-        href={
-          menu.items!.length > 0
-            ? createDynamicContentURL(
-                (menu.items![0].link!.internalContent as any).value.slug,
-                (menu.items![0].link!.internalContent as any).relationTo
-              )
-            : '#'
-        }
+      <DynamicContentLink
+        slug={(menu.items![0].link!.internalContent as any).value.slug}
+        collection={(menu.items![0].link!.internalContent as any).relationTo}
+        href={menu.items!.length === 0 ? '#' : undefined}
         className="h-16 flex items-center"
         onClick={() => {
           if (ref.current) {
@@ -40,7 +35,7 @@ export default function NavButton({ menu }: NavButtonProps) {
         }}
       >
         {menu.label}
-      </Link>
+      </DynamicContentLink>
       <div className="w-full py-8 bg-white absolute top-full left-0 z-50 hidden group-hover:block group-focus:block border-y">
         <div className="container mx-auto">
           <div className="grid grid-cols-3 gap-6">
@@ -56,14 +51,12 @@ export default function NavButton({ menu }: NavButtonProps) {
               <ul className="flex flex-wrap gap-3 gap-x-3 justify-start ">
                 {menu.items?.map((item: any) => {
                   return (
-                    <li key={item.id} className="w-64">
-                      <Link
-                        href={createDynamicContentURL(
-                          item.link!.internalContent.value.slug,
-                          item.link!.internalContent.relationTo
-                        )}
+                    <li key={item.id} className="w-56">
+                      <DynamicContentLink
+                        slug={item.link!.internalContent.value.slug}
+                        collection={item.link!.internalContent.relationTo}
                         className={cn(
-                          'p-2 rounded border border-transparent hover:bg-background w-full group/menu-item inline-block',
+                          'px-2 py-0.5 rounded border border-transparent hover:bg-background w-full group/menu-item inline-block',
                           slug === item.link!.internalContent.value.slug &&
                             'bg-background'
                         )}
@@ -92,7 +85,7 @@ export default function NavButton({ menu }: NavButtonProps) {
                         <p className="text-sm font-normal text-muted-foreground text-pretty">
                           {item.text}
                         </p>
-                      </Link>
+                      </DynamicContentLink>
                     </li>
                   );
                 })}

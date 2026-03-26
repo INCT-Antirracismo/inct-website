@@ -2,6 +2,14 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // i18n: {
+  //   // These are all the locales you want to support in
+  //   // your application
+  //   locales: ['pt-BR', 'es'],
+  //   // This is the default locale you want to be used when visiting
+  //   // a non-locale prefixed path e.g. `/hello`
+  //   defaultLocale: 'pt-BR'
+  // },
   // Your Next.js config here
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {

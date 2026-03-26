@@ -24,8 +24,18 @@ export const DefinedTerms: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { type: 'text', name: 'nameFemale', label: 'Nome no Feminino' },
-        { type: 'text', name: 'nameMale', label: 'Nome no Masculino' }
+        {
+          type: 'text',
+          name: 'nameFemale',
+          label: 'Nome no Feminino',
+          localized: true
+        },
+        {
+          type: 'text',
+          name: 'nameMale',
+          label: 'Nome no Masculino',
+          localized: true
+        }
       ]
     },
     descriptionField,

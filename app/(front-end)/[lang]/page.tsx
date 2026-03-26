@@ -12,14 +12,16 @@ import { getPayload } from 'payload';
 const payload = await getPayload({ config });
 
 export type IndexPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 };
 
 export default async function IndexPage({ params }: IndexPageProps) {
+  const { lang: locale } = await params;
   const data = await payload.findGlobal({
     slug: 'nav',
     depth: 3,
-    select: { homepage: true }
+    select: { homepage: true },
+    locale: locale as any
   });
   const doc = data.homepage as Page;
   if (!doc) return <NotFound collectionSlug="pages" />;

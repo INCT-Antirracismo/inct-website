@@ -1,9 +1,8 @@
 'use client';
 
-import { createDynamicContentURL } from '@/lib/utils';
-import Link from 'next/link';
-import { Button } from '../ui/button';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { DynamicIcon } from 'lucide-react/dynamic';
+import { Button } from '../ui/button';
 
 export type ButtonsProps = { buttons: any };
 
@@ -11,19 +10,14 @@ export default function Buttons({ buttons }: ButtonsProps) {
   return (
     <>
       {buttons?.map((button: any, index: number) => {
-        let url: string;
-        if (button.link.linkType === 'external') {
-          url = button.link.url;
-        } else {
-          url = createDynamicContentURL(
-            button.link.internalContent.value.slug,
-            button.link.internalContent.relationTo
-          );
-        }
         return (
-          <Link
+          <DynamicContentLink
             key={button.id}
-            href={url}
+            slug={button.link.internalContent.value.slug}
+            collection={button.link.internalContent.relationTo}
+            href={
+              button.link.linkType === 'external' ? button.link.url : undefined
+            }
             target={button.link.targetBlank ? '_blank' : '_self'}
           >
             <Button variant={button.variant}>
@@ -35,7 +29,7 @@ export default function Buttons({ buttons }: ButtonsProps) {
                 <DynamicIcon name={button.iconSlug} size={48} />
               ) : null}
             </Button>
-          </Link>
+          </DynamicContentLink>
         );
       })}
     </>
