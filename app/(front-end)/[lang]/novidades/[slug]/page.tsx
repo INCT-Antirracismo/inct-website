@@ -4,7 +4,6 @@ import { getDocBySlug } from '@/lib/local-api';
 import { cn } from '@/lib/utils';
 import { Media, Post } from '@/payload-types';
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export type PostPageProps = {
   params: Promise<{ slug: string; lang: string }>;
@@ -24,7 +23,7 @@ export async function generateMetadata({
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug, lang } = await params;
-  const doc = (await getDocBySlug('posts', slug)) as Post | null;
+  const doc = (await getDocBySlug('posts', slug, lang)) as Post | null;
   if (!doc) return <NotFound collectionSlug="posts" />;
   const createdAt = new Date(doc.createdAt || '');
   return (

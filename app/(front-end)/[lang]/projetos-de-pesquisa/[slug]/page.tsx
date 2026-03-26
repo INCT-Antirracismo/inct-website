@@ -16,16 +16,17 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export type ResearchProjectPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 };
 
 export async function generateMetadata({
   params
 }: ResearchProjectPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const doc = (await getDocBySlug(
     'researchProjects',
-    slug
+    slug,
+    lang
   )) as ResearchProject | null;
   if (!doc) return { title: 'INCT Antirracismo' };
   return {
@@ -37,10 +38,11 @@ export async function generateMetadata({
 export default async function ResearchProjectPage({
   params
 }: ResearchProjectPageProps) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const doc = (await getDocBySlug(
     'researchProjects',
-    slug
+    slug,
+    lang
   )) as ResearchProject | null;
   if (!doc) return <NotFound collectionSlug="researchProjects" />;
   const { id, name, description, relations, members, additionalMembers, url } =

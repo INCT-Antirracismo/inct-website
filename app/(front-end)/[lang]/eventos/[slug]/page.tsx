@@ -10,7 +10,7 @@ export type EventPageProps = {
 
 export default async function EventPage({ params }: EventPageProps) {
   const { slug, lang } = await params;
-  const doc = (await getDocBySlug('events', slug)) as Event | null;
+  const doc = (await getDocBySlug('events', slug, lang)) as Event | null;
   if (!doc) return <NotFound collectionSlug="events" />;
   const startDate = new Date(doc.startDate || '');
   const endDate = new Date(doc.endDate || '');

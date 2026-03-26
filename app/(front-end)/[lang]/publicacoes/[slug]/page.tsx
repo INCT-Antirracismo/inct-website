@@ -13,14 +13,18 @@ import Link from 'next/link';
 import { File } from '@/payload-types';
 
 export type PublicationPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 };
 
 export async function generateMetadata({
   params
 }: PublicationPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const doc = (await getDocBySlug('publications', slug)) as Publication | null;
+  const { slug, lang } = await params;
+  const doc = (await getDocBySlug(
+    'publications',
+    slug,
+    lang
+  )) as Publication | null;
   if (!doc) return { title: 'INCT Antirracismo' };
   return {
     title: `${doc.name} - INCT Antirracismo`,

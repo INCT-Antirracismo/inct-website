@@ -23,8 +23,8 @@ export async function generateMetadata(
   { params }: PersonPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const doc = (await getDocBySlug('persons', slug)) as Person | null;
+  const { slug, lang } = await params;
+  const doc = (await getDocBySlug('persons', slug, lang)) as Person | null;
   if (!doc) return { title: 'INCT Antirracismo' };
   return {
     title: `${doc.name} - INCT Antirracismo`,
