@@ -2,11 +2,8 @@ import CollapsibleBodyContent from '@/components/CollapsibleBodyContent';
 import NotFound from '@/components/NotFound';
 import { Button } from '@/components/ui/button';
 import { getDocBySlug } from '@/lib/local-api';
-import {
-  applyPronounsToDefinedTerm,
-  buildListSentence,
-  createDynamicContentURL
-} from '@/lib/utils';
+import { applyPronounsToDefinedTerm, buildListSentence } from '@/lib/utils';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import {
   DefinedTerm,
   Organization,
@@ -226,11 +223,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     ).toLowerCase()}{' '}
                     em
                   </p>
-                  <Link
-                    href={createDynamicContentURL(
-                      project.slug,
-                      'researchProjects'
-                    )}
+                  <DynamicContentLink
+                    slug={project.slug}
+                    collection="researchProjects"
                     className="group"
                   >
                     <h3 className="font-bold text-2xl max-w-prose text-pretty mb-2 decoration-trinidad underline-offset-2 decoration-2 group-hover:underline cursor-pointer">
@@ -239,7 +234,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     <p className="text-muted-foreground max-w-prose text-pretty">
                       {project.description}
                     </p>
-                  </Link>
+                  </DynamicContentLink>
                 </li>
               );
             })}
@@ -260,11 +255,9 @@ export default async function PersonPage({ params }: PersonPageProps) {
               publication = publication as Publication;
               return (
                 <li key={publication.id}>
-                  <Link
-                    href={createDynamicContentURL(
-                      publication.slug,
-                      'publications'
-                    )}
+                  <DynamicContentLink
+                    slug={publication.slug}
+                    collection="publications"
                     className="group"
                   >
                     <h3 className="font-bold text-2xl max-w-prose text-pretty mb-2 decoration-trinidad underline-offset-2 decoration-2 group-hover:underline cursor-pointer">
@@ -273,7 +266,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                     <p className="text-muted-foreground max-w-prose text-pretty">
                       {publication.description}
                     </p>
-                  </Link>
+                  </DynamicContentLink>
                 </li>
               );
             })}
