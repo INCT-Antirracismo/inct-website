@@ -23,17 +23,15 @@ export default async function Nav({ locale }: NavProps) {
     <>
       <nav className="border-b bg-white h-16 w-full relativ fixed z-10 top-0">
         <div className="container px-4 flex items-center h-full justify-between mx-auto">
-          <div className="flex gap-4 items-center">
-            <Link
-              href="/"
-              title="Instituto Nacional de Ciência e Tecnologia Educação transformadora: Antirracismo, Interseccionalidade e Justiça Social Na América Latina"
-              className="left flex gap-4 items-center"
-            >
-              <img src="/logo.png" alt="INCT Antirracismo" className="h-11" />
-            </Link>
+          <Link
+            href={`/${locale}`}
+            title="Instituto Nacional de Ciência e Tecnologia Educação transformadora: Antirracismo, Interseccionalidade e Justiça Social Na América Latina"
+            className="left flex gap-4 items-center"
+          >
+            <img src="/logo.png" alt="INCT Antirracismo" className="h-11" />
             <div className="h-6 w-0.5 bg-trinidad rotate-6"></div>
             <img src="/cnpq.jpg" alt="Logo CNPq" className="h-5 saturate-0" />
-          </div>
+          </Link>
           <div className="center ">
             <ul className="xl:flex items-center hidden">
               {menu.map((menu) => {

@@ -1,7 +1,6 @@
 import { cn } from '@/lib/utils';
-import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
-import { Media, Event } from '@/payload-types';
-import Link from 'next/link';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
+import { Event, Media } from '@/payload-types';
 import { DataFromCollectionSlug, PaginatedDocs } from 'payload';
 
 export type EventsListProps = {
@@ -43,10 +42,11 @@ export default async function EventsList({ block, items }: EventsListProps) {
         const startDate = new Date(doc.startDate || '');
         const endDate = new Date(doc.endDate || '');
         return (
-          <Link
-            href={createDynamicContentURL(doc?.slug, 'events')}
+          <DynamicContentLink
             key={doc?.slug + '_events'}
             className="grid grid-cols-3 gap-4 md:gap-6 items-center group"
+            slug={doc?.slug}
+            collection="events"
           >
             <div className="h-full md:h-auto md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
               <img
@@ -100,7 +100,7 @@ export default async function EventsList({ block, items }: EventsListProps) {
                 <p className="text-sm text-deep-sea-green">{doc.address}</p>
               )}
             </div>
-          </Link>
+          </DynamicContentLink>
         );
       })}
     </div>

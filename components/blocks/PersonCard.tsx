@@ -1,18 +1,18 @@
 'use client';
 
 import { applyPronounsToDefinedTerm, buildListSentence } from '@/lib/utils';
-import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { DefinedTerm, Organization, Person } from '@/payload-types';
-import Link from 'next/link';
 
 export type PersonCardProps = { person: Person };
 
 export default function PersonCard({ person: doc }: PersonCardProps) {
   const { slug, image, inctPosition, pronouns, inctGroup, memberOf } = doc;
   return (
-    <Link
+    <DynamicContentLink
+      slug={slug}
+      collection="persons"
       className="flex  sm:items-center gap-6 group"
-      href={createDynamicContentURL(slug, 'persons')}
     >
       <div className="relative w-30 h-36 sm:w-36 aspect-square  overflow-hidden rounded border shrink-0">
         {image! && typeof image !== 'string' && image.url && (
@@ -74,6 +74,6 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
           {doc.description!.length > 160 && '...'}
         </p>
       </div>
-    </Link>
+    </DynamicContentLink>
   );
 }

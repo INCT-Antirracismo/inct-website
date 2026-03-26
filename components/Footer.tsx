@@ -1,4 +1,4 @@
-import { createDynamicContentURL } from '@/lib/utils/createDynamicContentURL';
+import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import config from '@payload-config';
 import Link from 'next/link';
 import { getPayload } from 'payload';
@@ -37,38 +37,34 @@ export default async function Footer(props: FooterProps) {
       <div className="container mx-auto md:flex gap-12 flex-wrap md:justify-center my-12">
         {data.mainMenu.map((menu: any) => (
           <div key={menu.label + 'sidebar'} className="mb-8">
-            <Link
-              href={
-                menu.items && menu.items!.length > 0
-                  ? createDynamicContentURL(
-                      (menu.items![0].link!.internalContent as any).value.slug,
-                      (menu.items![0].link!.internalContent as any).relationTo
-                    )
-                  : '#'
+            <DynamicContentLink
+              slug={(menu.items![0].link!.internalContent as any).value.slug}
+              collection={
+                (menu.items![0].link!.internalContent as any).relationTo
               }
+              href={menu.items && menu.items!.length === 0 ? '#' : undefined}
             >
               <p className="font-medium text-xs uppercase tracking-widest text-sun p-3">
                 {menu.label}
               </p>
-            </Link>
+            </DynamicContentLink>
+
             <ul className="grid gap-1">
               {menu.items?.length
                 ? menu.items?.map((item: any) => (
                     <li
                       key={menu.label + item.link!.internalContent!.value!.id}
                     >
-                      <Link
-                        href={createDynamicContentURL(
-                          item.link!.internalContent.value.slug,
-                          item.link!.internalContent.relationTo
-                        )}
+                      <DynamicContentLink
+                        slug={item.link!.internalContent.value.slug}
+                        collection={item.link!.internalContent.relationTo}
                         className="text-lg lg:text-xl font-medium hover:underline p-3 py-1 inline-block"
                       >
                         {item.link.linkType === 'internal'
                           ? item.link!.internalContent!.value!.acronym ||
                             item.link!.internalContent!.value!.name
                           : 'Link Externo'}
-                      </Link>
+                      </DynamicContentLink>
                     </li>
                   ))
                 : null}

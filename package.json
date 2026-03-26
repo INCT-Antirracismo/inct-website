@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production next start",
     "lint": "eslint",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "seedPersons": "payload run ./scripts/seed/persons/index.ts"
+    "dumpDB": "payload run ./scripts/dumpDB.mjs",
+    "restoreDB": "payload run ./scripts/restoreDB.mjs"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.77.0",
