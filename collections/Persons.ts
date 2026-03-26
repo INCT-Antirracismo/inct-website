@@ -36,7 +36,7 @@ export const Persons: CollectionConfig = {
   },
   fields: [
     slugField,
-    nameField,
+    { ...nameField, localized: false } as Field,
     {
       name: 'pronouns',
       label: 'Pronomes',
