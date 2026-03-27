@@ -5229,6 +5229,36 @@ export interface Nav {
   mainMenu: {
     label?: string | null;
     text?: string | null;
+    link?: {
+      linkType?: ('external' | 'internal') | null;
+      url?: string | null;
+      internalContent?:
+        | ({
+            relationTo: 'persons';
+            value: string | Person;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null)
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'researchProjects';
+            value: string | ResearchProject;
+          } | null)
+        | ({
+            relationTo: 'events';
+            value: string | Event;
+          } | null)
+        | ({
+            relationTo: 'organizations';
+            value: string | Organization;
+          } | null);
+      targetBlank?: boolean | null;
+    };
     items?:
       | {
           link?: {
@@ -5292,6 +5322,14 @@ export interface NavSelect<T extends boolean = true> {
     | {
         label?: T;
         text?: T;
+        link?:
+          | T
+          | {
+              linkType?: T;
+              url?: T;
+              internalContent?: T;
+              targetBlank?: T;
+            };
         items?:
           | T
           | {

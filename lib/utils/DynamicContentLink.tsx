@@ -32,12 +32,10 @@ export function DynamicContentLink(props: DynamicContentLinkProps) {
       if (collectionMap[collection] !== undefined) {
         setUrl(`/${lang}${collectionMap[collection]}/${slug}`);
       } else {
-        console.log(collection);
         setUrl(`/${lang}/${collection}/${slug}`);
       }
     }
   }, [lang]);
-  console.log(url);
   return (
     <Link {...props} href={href || url}>
       {children}

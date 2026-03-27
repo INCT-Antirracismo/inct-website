@@ -26,6 +26,7 @@ export const Nav: GlobalConfig = {
       fields: [
         { name: 'label', type: 'text', label: 'Nome', localized: true },
         { name: 'text', type: 'textarea', label: 'Texto', localized: true },
+        linkField,
         {
           name: 'items',
           type: 'array',

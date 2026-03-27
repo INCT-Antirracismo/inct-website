@@ -167,9 +167,11 @@ export default function NavSidebar({ menu: mainMenu }: NavSidebarProps) {
                 <SidebarMenuButton asChild>
                   <DynamicContentLink
                     slug={
+                      (menu.link!.internalContent as any)?.value?.slug ||
                       (menu.items![0].link!.internalContent as any).value.slug
                     }
                     collection={
+                      (menu.link!.internalContent as any)?.relationTo ||
                       (menu.items![0].link!.internalContent as any).relationTo
                     }
                     href={
