@@ -1,16 +1,10 @@
 import CollapsibleBodyContent from '@/components/CollapsibleBodyContent';
 import FacePile from '@/components/Facepile';
 import NotFound from '@/components/NotFound';
-import { CustomRichText } from '@/components/payload/RichTextConverter';
 import { Button } from '@/components/ui/button';
 import { getDocBySlug } from '@/lib/local-api';
 import { applyPronounsToDefinedTerm, buildListSentence } from '@/lib/utils';
-import {
-  DefinedTerm,
-  Organization,
-  Person,
-  ResearchProject
-} from '@/payload-types';
+import { DefinedTerm, Organization, ResearchProject } from '@/payload-types';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -61,7 +55,7 @@ export default async function ResearchProjectPage({
           </h2>
         </Link>
 
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 md:mb-8 text-pretty lg:max-w-5/6 leading-tight">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-5 md:mb-8 text-pretty lg:max-w-5/6 leading-tight">
           {name}
         </h1>
 

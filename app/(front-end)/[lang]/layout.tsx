@@ -68,16 +68,16 @@ export default async function RootLayout({
       </div>
     );
   // MAINTENANCE MODE CODE
-  const { lang: locale } = await params;
+  const { lang } = await params;
   return (
     <html lang="en">
       <body className={`${elza.className} antialiased text-black`}>
         <TooltipProvider>
           <SidebarProvider defaultOpen={false}>
             <div className="wrapper pt-16 w-full">
-              <Nav locale={locale} />
+              <Nav locale={lang} />
               {children}
-              <Footer />
+              <Footer locale={lang} />
             </div>
           </SidebarProvider>
         </TooltipProvider>

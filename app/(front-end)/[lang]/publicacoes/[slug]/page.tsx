@@ -85,7 +85,7 @@ export default async function PublicationPage({
             </h2>
           </Link>
 
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 md:mb-8 text-pretty lg:max-w-5/6 leading-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-5 md:mb-8 text-pretty lg:max-w-5/6 leading-tight">
             {doc.name}
           </h1>
 

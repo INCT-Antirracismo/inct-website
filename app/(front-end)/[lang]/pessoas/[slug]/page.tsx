@@ -11,7 +11,7 @@ import {
   Publication,
   ResearchProject
 } from '@/payload-types';
-import { ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
@@ -56,10 +56,20 @@ export default async function PersonPage({ params }: PersonPageProps) {
     publications,
     id
   } = doc;
+  const isPT = lang === 'pt-BR';
   return (
-    <article className="container py-8 md:py-16 mx-auto max-w-4xl">
-      <div className="flex gap-4 md:gap-6 my-6">
-        <div className="relative w-24 sm:w-1/5 max-w-56 aspect-3/4 overflow-hidden rounded-xl border shrink-0">
+    <article className="container pt-5 md:pt-5 mx-auto max-w-4xl">
+      <Link href={`/${lang}/pesquisadores`}>
+        <h2
+          id="pessoas"
+          className="uppercase text-xs md:text-sm tracking-widest font-medium mb-5 text-trinidad max-w-prose text-balance flex items-center gap-2"
+        >
+          <ArrowLeft className="size-4" />
+          {isPT ? 'Pesquisadoras/es' : 'Investigadores/as'}
+        </h2>
+      </Link>
+      <div className="flex gap-4 md:gap-6">
+        <div className="relative w-24 sm:w-1/5 max-w-56 aspect-3/4 overflow-hidden rounded-xs border shrink-0">
           {image! && typeof image !== 'string' && image.url && (
             <img
               loading="lazy"
@@ -73,7 +83,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
           <p className="text-balance tracking-wide font-medium text-deep-sea-green">
             Núcleo: {inctGroup!.map((group) => (group as DefinedTerm).name)}
           </p>
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold lg:mb-1 text-balance">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold lg:mb-1 text-balance">
             {name}
           </h1>
           {inctPosition.length > 0 &&
@@ -94,7 +104,10 @@ export default async function PersonPage({ params }: PersonPageProps) {
 
           {memberOf!.length > 0 &&
             memberOf?.map((organization) => (
-              <p className="text-sm md:text-base font-medium tracking-wider md:tracking-normal text-trinidad">
+              <p
+                key={organization.id}
+                className="text-sm md:text-base font-medium tracking-wider md:tracking-normal text-trinidad"
+              >
                 {`${buildListSentence(
                   organization.relationType.map((relation) => {
                     return applyPronounsToDefinedTerm(
@@ -185,7 +198,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
       {description ? (
         <section className="my-5 md:my-8 pt-5 md:pt-8 border-t">
           <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
-            Linhas de pesquisa
+            {isPT ? 'Linhas de pesquisa' : 'Líneas de investigación'}
           </h2>
           <p className="text-lg lg:text-2xl text-balance leading-normal! max-w-prose">
             {description}
@@ -206,7 +219,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
       {researchProjects!.length > 0 && (
         <section className="my-10 md:my-16">
           <h2 className="mb-3 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
-            Projetos de Pesquisa
+            {isPT ? 'Projetos de Pesquisa' : 'Proyectos de investigación'}
           </h2>
 
           <ul>
@@ -216,7 +229,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
               return (
                 <li key={researchProject.id}>
                   <p className="mb-1 font-medium text-trinidad">
-                    É{' '}
+                    {isPT ? 'É' : 'És'}{' '}
                     {buildListSentence(
                       researchProject.relationType.map((relation) => {
                         return applyPronounsToDefinedTerm(
@@ -225,7 +238,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                         );
                       })
                     ).toLowerCase()}{' '}
-                    em
+                    {isPT ? 'em' : 'en'}
                   </p>
                   <DynamicContentLink
                     slug={project.slug}
@@ -252,7 +265,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
             id="publicacoes"
             className="uppercase text-sm tracking-widest text-trinidad font-medium mb-5"
           >
-            Publicações
+            {isPT ? 'Publicações' : 'Publicaciones'}
           </h2>
           <ul>
             {publications!.docs?.map((publication) => {

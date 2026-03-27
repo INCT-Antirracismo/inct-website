@@ -4,29 +4,24 @@ import Link from 'next/link';
 import { getPayload } from 'payload';
 const payload = await getPayload({ config });
 
-export type FooterProps = {};
+export type FooterProps = { locale: string };
 
-export default async function Footer(props: FooterProps) {
+export default async function Footer({ locale }: FooterProps) {
   const data = await payload.findGlobal({
     slug: 'nav',
     depth: 1,
-    select: { mainMenu: true }
+    select: { mainMenu: true },
+    locale: locale as any
   });
   return (
     <footer className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
       <div className="container mx-auto mb-12 grid md:flex gap-3 md:gap-6 items-center justify-center">
-        <img src="/icon.png" alt="" className="size-24 mx-auto mb-4 md:m-0" />{' '}
-        <div className="grid text-center md:text-left w-fit">
-          <p className="uppercase text-xs lg:text-sm mb-1 text-sun font-medium tracking-widest">
-            Instituto Nacional de Ciência e Tecnologia
-          </p>
-          <h1 className="text-base md:text-lg lg:text-xl leading-snug font-bold text-pretty">
-            Educação Transformadora: <br className="sm:hidden" />
-            Antirracismo,
-            <br className="hidden sm:inline" /> Interseccionalidade{' '}
-            <br className="sm:hidden" />e Justiça Social Na América Latina
-          </h1>
-        </div>
+        <img
+          src="/logo-full-white.png"
+          alt="INCT Educação Transformadora: Antirracismo,
+Interseccionalidade e Justiça Social Na América Latina"
+          className="h-24 mx-auto mb-4 md:m-0"
+        />
         <div className="h-0.5 w-12 md:h-12 md:w-0.5 bg-trinidad rotate-6 md:mx-4 my-4 mx-auto"></div>
         <img
           src="/cnpq_white.png"
@@ -34,9 +29,12 @@ export default async function Footer(props: FooterProps) {
           className="h-6 md:h-8 lg:h-10 mx-auto md:mx-0"
         />
       </div>
-      <div className="container mx-auto md:flex gap-12 flex-wrap md:justify-center my-12">
+      <div className="container mx-auto grid md:flex gap-8 flex-wrap justify-center my-12">
         {data.mainMenu.map((menu: any) => (
-          <div key={menu.label + 'sidebar'} className="mb-8">
+          <div
+            key={menu.label + 'sidebar'}
+            className="mb-8 md:w-[34%] lg:w-auto text-center md:text-left"
+          >
             <DynamicContentLink
               slug={(menu.items![0].link!.internalContent as any).value.slug}
               collection={
