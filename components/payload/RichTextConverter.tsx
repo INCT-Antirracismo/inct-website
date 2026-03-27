@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { collectionMap } from '@/lib/utils/DynamicContentLink';
 import type {
   DefaultNodeTypes,
   SerializedLinkNode,
@@ -20,7 +21,12 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   if (typeof value !== 'object') {
     throw new Error('Expected value to be an object');
   }
-  return '';
+
+  if (collectionMap[relationTo] !== undefined) {
+    return `${collectionMap[relationTo]}/${value.slug}`;
+  } else {
+    return `/${relationTo}/${value.slug}`;
+  }
   //  return createDynamicContentURL(value.slug as string, relationTo);
 };
 

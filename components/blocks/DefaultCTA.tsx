@@ -76,7 +76,7 @@ export default function DefaultCTA({
           )}
         <div
           className={cn(
-            ' flex items-center justify-center relative z-2 py-10 md:py-16 lg:py-24',
+            ' flex items-center justify-center relative z-2 py-20 lg:py-36 min-h-[45svh]',
             imagePosition === 'left' && 'order-2',
             height === 'full' && 'min-h-[calc(100svh-4rem)]',
             height === '80' && 'min-h-[80svh]'

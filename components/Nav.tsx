@@ -28,8 +28,12 @@ export default async function Nav({ locale }: NavProps) {
             className="left flex gap-4 items-center"
           >
             <img src="/logo.png" alt="INCT Antirracismo" className="h-11" />
-            <div className="h-6 w-0.5 bg-trinidad rotate-6"></div>
-            <img src="/cnpq.jpg" alt="Logo CNPq" className="h-5 saturate-0" />
+            <div className="h-6 w-0.5 bg-trinidad rotate-6 hidden sm:block"></div>
+            <img
+              src="/cnpq.jpg"
+              alt="Logo CNPq"
+              className="h-5 saturate-0 hidden sm:block"
+            />
           </Link>
           <div className="flex gap-6 items-center justify-end">
             <ul className="xl:flex items-center hidden">

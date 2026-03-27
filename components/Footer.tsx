@@ -20,7 +20,7 @@ export default async function Footer({ locale }: FooterProps) {
           src="/logo-full-white.png"
           alt="INCT Educação Transformadora: Antirracismo,
 Interseccionalidade e Justiça Social Na América Latina"
-          className="h-24 mx-auto mb-4 md:m-0"
+          className="w-4/5 sm:w-2/3 md:h-24 md:w-auto mx-auto mb-4 md:m-0"
         />
         <div className="h-0.5 w-12 md:h-12 md:w-0.5 bg-trinidad rotate-6 md:mx-4 my-4 mx-auto"></div>
         <img
@@ -56,7 +56,7 @@ Interseccionalidade e Justiça Social Na América Latina"
                       <DynamicContentLink
                         slug={item.link!.internalContent.value.slug}
                         collection={item.link!.internalContent.relationTo}
-                        className="text-lg lg:text-xl font-medium hover:underline p-3 py-1 inline-block"
+                        className="text-lg lg:text-xl font-medium hover:underline decoration-2 decoration-trinidad underline-offset-2 p-3 py-1 inline-block"
                       >
                         {item.link.linkType === 'internal'
                           ? item.link!.internalContent!.value!.acronym ||

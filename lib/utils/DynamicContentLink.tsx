@@ -14,7 +14,7 @@ type DynamicContentLinkProps = {
   target?: any;
 };
 
-const collectionMap: any = {
+export const collectionMap: any = {
   persons: '/pessoas',
   publications: '/publicacoes',
   researchProjects: '/projetos-de-pesquisa',
