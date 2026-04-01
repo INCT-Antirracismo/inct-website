@@ -37,7 +37,7 @@ export default function DefaultCTA({
   return (
     <div
       className={cn(
-        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center',
+        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center bg-fixed',
         variant === 'dark' && 'bg-trinidad text-white',
         variant === 'sun' && 'bg-trinidad text-white'
       )}

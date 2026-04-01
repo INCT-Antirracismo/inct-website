@@ -1,21 +1,3 @@
-// const collections = [
-//   'researchProjects',
-//   'publications',
-//   'organizations',
-//   'persons',
-//   'pages',
-//   'posts',
-//   'events',
-//   'media',
-//   'files',
-//   'definedTerms',
-//   'users',
-//   'payload-kv',
-//   'payload-locked-documents',
-//   'payload-preferences',
-//   'payload-migrations'
-// ];
-
 import { exec } from 'child_process';
 
 const uri = process.env.DATABASE_URL;

@@ -36,8 +36,12 @@ Interseccionalidade e Justiça Social Na América Latina"
             className="mb-8 md:w-[34%] lg:w-auto text-center md:text-left"
           >
             <DynamicContentLink
-              slug={(menu.items![0].link!.internalContent as any).value.slug}
+              slug={
+                (menu.link!.internalContent as any)?.value?.slug ||
+                (menu.items![0].link!.internalContent as any).value.slug
+              }
               collection={
+                (menu.link!.internalContent as any)?.relationTo ||
                 (menu.items![0].link!.internalContent as any).relationTo
               }
               href={menu.items && menu.items!.length === 0 ? '#' : undefined}

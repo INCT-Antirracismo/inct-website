@@ -1,13 +1,12 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import localFont from 'next/font/local';
+import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 import { SidebarProvider } from '@/components/ui/sidebar';
-import Footer from '@/components/Footer';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import config from '@payload-config';
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import { getPayload } from 'payload';
-import { headers as nextHeaders } from 'next/headers';
+import './globals.css';
 
 const elza = localFont({
   src: [
@@ -58,16 +57,16 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }>) {
   // MAINTENANCE MODE CODE
-  const headers = await nextHeaders();
-  const result = await payload.auth({ headers, canSetHeaders: false });
-  if (process.env.NODE_ENV === 'production' && !result.user)
-    return (
-      <div className="w-full h-svh flex flex-col items-center justify-center text-center">
-        <img src="/logo.png" alt="INCT Antirracismo" className="h-16 mb-3" />
-        Em breve.
-      </div>
-    );
-  // MAINTENANCE MODE CODE
+  // const headers = await nextHeaders();
+  // const result = await payload.auth({ headers, canSetHeaders: false });
+  // if (process.env.NODE_ENV === 'production' && !result.user)
+  //   return (
+  //     <div className="w-full h-svh flex flex-col items-center justify-center text-center">
+  //       <img src="/logo.png" alt="INCT Antirracismo" className="h-16 mb-3" />
+  //       Em breve.
+  //     </div>
+  //   );
+
   const { lang } = await params;
   return (
     <html lang="en">
