@@ -63,7 +63,6 @@ export const Persons: CollectionConfig = {
       type: 'relationship',
       relationTo: 'definedTerms',
       filterOptions: { additionalType: { in: ['occupation'] } },
-      required: true,
       index: true
     },
     {
