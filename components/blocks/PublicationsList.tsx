@@ -43,7 +43,6 @@ export default async function PublicationsList({
   return (
     <div className={cn('grid gap-x-6 gap-y-12 items-center')}>
       {itemsArr.map((doc: Publication) => {
-        const datePublished = new Date(doc.datePublished || '');
         return (
           <article
             key={doc?.slug + '_publications'}
@@ -84,13 +83,6 @@ export default async function PublicationsList({
               <p className="text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
                 {doc.description!.slice(0, 160)}
                 {doc.description!.length > 160 && '...'}
-              </p>
-              <p className="text-sm lg:text-base font-medium text-primary my-2">
-                {datePublished.toLocaleDateString('pt-BR', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                })}
               </p>
               <div className="grid items-center gap-2 mt-5">
                 <p className="text-[10px] tracking-widest text-muted-foreground uppercase">

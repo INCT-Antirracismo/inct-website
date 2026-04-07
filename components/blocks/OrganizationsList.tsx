@@ -50,6 +50,7 @@ export default async function OrganizationsList({
                     loading="lazy"
                     src={
                       (doc.logo as Media)?.sizes?.third?.url ||
+                      (doc.logo as Media)?.sizes?.half?.url ||
                       (doc.logo as Media)?.url ||
                       ''
                     }
