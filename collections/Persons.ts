@@ -63,7 +63,8 @@ export const Persons: CollectionConfig = {
       type: 'relationship',
       relationTo: 'definedTerms',
       filterOptions: { additionalType: { in: ['occupation'] } },
-      required: true
+      required: true,
+      index: true
     },
     {
       name: 'inctGroup',
@@ -71,7 +72,8 @@ export const Persons: CollectionConfig = {
       type: 'relationship',
       hasMany: true,
       relationTo: 'definedTerms',
-      filterOptions: { additionalType: { in: ['inctGroup'] } }
+      filterOptions: { additionalType: { in: ['inctGroup'] } },
+      index: true
     },
     {
       name: 'researchProjects',

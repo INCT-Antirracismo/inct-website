@@ -7,7 +7,8 @@ export const nameField: Field = {
   label: 'Nome',
   name: 'name',
   required: true,
-  type: 'text'
+  type: 'text',
+  index: true
 };
 
 const psf = payloadSlugField({ fieldToUse: 'name' });
@@ -18,7 +19,8 @@ export const slugField: Field = {
     ...psf.admin,
     description:
       'A slug é uma versão do "Nome" somente em letras minúsculas e sem caracteres especiais. Ela é usada como  identificador único do conteúdo legível para humanos, principalmente para a construção de URLs.'
-  }
+  },
+  index: true
 } as Field;
 
 export const descriptionField: Field = {
@@ -33,7 +35,8 @@ export const descriptionField: Field = {
       Field: '@/components/payload/ui/MaxLengthTextArea#MaxLengthTextAreaField'
     },
     rows: 3
-  }
+  },
+  index: true
 };
 
 export const imageField: Field = {
