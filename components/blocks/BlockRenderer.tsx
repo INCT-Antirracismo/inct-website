@@ -48,6 +48,18 @@ export default async function BlockRenderer({
       />
     );
   }
+  if (block.blockType === 'spacerBlock') {
+    return (
+      <div
+        key={`block_${block.id}_${index}`}
+        className={cn(
+          'w-full h-4 md:h-8',
+          block.size === 'M' && 'h-8 md:h-16',
+          block.size === 'G' && 'h-12 md:h-24'
+        )}
+      ></div>
+    );
+  }
 
   return <div className="w-full"></div>;
 }

@@ -67,13 +67,15 @@ export const contentList: Block = {
       label: 'Inserir busca e paginação',
       admin: {
         condition: (data, siblingData, ctx) => {
-          return [
-            'persons',
-            'events',
-            'posts',
-            'researchProjects',
-            'publications'
-          ].includes(siblingData!.collectionSlug);
+          return (
+            [
+              'persons',
+              'events',
+              'posts',
+              'researchProjects',
+              'publications'
+            ].includes(siblingData!.collectionSlug) && siblingData.json
+          );
         }
       }
     }

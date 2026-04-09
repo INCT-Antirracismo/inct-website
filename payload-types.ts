@@ -298,7 +298,7 @@ export interface Person {
   /**
    * Qual a posição dentro da estrutura deste INCT?
    */
-  inctPosition: (string | DefinedTerm)[];
+  inctPosition?: (string | DefinedTerm)[] | null;
   inctGroup?: (string | DefinedTerm)[] | null;
   researchProjects?:
     | {
@@ -4515,6 +4515,12 @@ export interface Page {
             blockName?: string | null;
             blockType: 'contentList';
           }
+        | {
+            size?: ('P' | 'M' | 'G') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'spacerBlock';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -4980,6 +4986,13 @@ export interface PagesSelect<T extends boolean = true> {
               items?: T;
               jsonQuery?: T;
               enableSearch?: T;
+              id?: T;
+              blockName?: T;
+            };
+        spacerBlock?:
+          | T
+          | {
+              size?: T;
               id?: T;
               blockName?: T;
             };

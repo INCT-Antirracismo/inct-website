@@ -51,7 +51,9 @@ export default async function PostsList({ block, items }: PostsListProps) {
               <img
                 src={
                   (doc.image as Media)?.sizes?.thumbnail?.url ||
-                  (doc.image as Media).url ||
+                  (doc.image as Media)?.sizes?.half?.url ||
+                  (doc.image as Media)?.sizes?.third?.url ||
+                  (doc.image as Media)?.url ||
                   ''
                 }
                 className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
@@ -62,7 +64,9 @@ export default async function PostsList({ block, items }: PostsListProps) {
                 style={{
                   backgroundImage: `url(${
                     (doc.image as Media)?.sizes?.thumbnail?.url ||
-                    (doc.image as Media).url ||
+                    (doc.image as Media)?.sizes?.half?.url ||
+                    (doc.image as Media)?.sizes?.third?.url ||
+                    (doc.image as Media)?.url ||
                     ''
                   })`
                 }}

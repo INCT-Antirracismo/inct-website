@@ -9,6 +9,7 @@ import {
 } from './fields/commonFields';
 import { richTextBlock } from './fields/blocks/richTextBlock';
 import { contentList } from './fields/blocks/contentList';
+import { spacerBlock } from './fields/blocks/spacerBlock';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -40,7 +41,7 @@ export const Pages: CollectionConfig = {
       label: 'Conteúdo',
       labels: { singular: 'Bloco', plural: 'Bloco' },
       type: 'blocks',
-      blocks: [defaultCTABlock, richTextBlock, contentList]
+      blocks: [defaultCTABlock, richTextBlock, contentList, spacerBlock]
     }
   ]
 };
