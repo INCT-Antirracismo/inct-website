@@ -45,9 +45,9 @@ export default function DefaultCTA({
         backgroundImage:
           imagePosition === 'background' && !image.url.includes('.mp4')
             ? `url('${image.url}')`
-            : variant === 'dark'
+            : variant === 'dark' && !image?.url
               ? `url('${BGBlue.src}')`
-              : variant === 'sun'
+              : variant === 'sun' && !image?.url
                 ? `url('${BGOrange.src}')`
                 : ''
       }}
