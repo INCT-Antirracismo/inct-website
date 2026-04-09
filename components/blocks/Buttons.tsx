@@ -13,8 +13,8 @@ export default function Buttons({ buttons }: ButtonsProps) {
         return (
           <DynamicContentLink
             key={button.id}
-            slug={button.link.internalContent.value.slug}
-            collection={button.link.internalContent.relationTo}
+            slug={button.link.internalContent?.value?.slug}
+            collection={button.link.internalContent?.relationTo}
             href={
               button.link.linkType === 'external' ? button.link.url : undefined
             }
