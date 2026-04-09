@@ -86,8 +86,7 @@ export default function DefaultCTA({
             <p
               className={cn(
                 'uppercase text-sm md:text-base lg:text-lg xl:text-xl tracking-widest font-medium mb-2 text-muted-foreground dark:text-stone-200 max-w-prose text-balance',
-                variant === 'dark' && 'text-sun-200',
-                variant === 'sun' && 'text-sun-200'
+                variant === 'sun' || (variant === 'dark' && 'text-sun-200')
               )}
             >
               {label}
@@ -95,8 +94,7 @@ export default function DefaultCTA({
             <h1
               className={cn(
                 'max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
-                variant === 'dark' && 'text-trinidad-100',
-                variant === 'sun' && 'text-trinidad-100'
+                variant === 'sun' || (variant === 'dark' && 'text-trinidad-100')
               )}
             >
               {title}
@@ -105,8 +103,7 @@ export default function DefaultCTA({
               <p
                 className={cn(
                   'max-w-prose w-full text-lg text-balance md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-5 lg:max-w-prose tracking-[0.018rem]',
-                  variant === 'dark' && 'text-stone-100',
-                  variant === 'sun' && 'text-stone-100',
+                  variant === 'sun' || (variant === 'dark' && 'text-stone-100'),
                   centered && 'mx-auto'
                 )}
               >
@@ -118,7 +115,9 @@ export default function DefaultCTA({
                 data={content}
                 className={cn(
                   'prose max-w-prose ',
-                  imagePosition === 'background' && '**:text-stone-0!'
+                  imagePosition === 'background' && '**:text-stone-0!',
+                  variant === 'sun' ||
+                    (variant === 'dark' && '**:text-stone-100!')
                 )}
               />
             ) : null}
