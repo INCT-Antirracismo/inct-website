@@ -86,18 +86,17 @@ export default async function PersonPage({ params }: PersonPageProps) {
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold lg:mb-1 text-balance">
             {name}
           </h1>
-          {inctPosition.length > 0 &&
-          inctPosition.map((p: any) => p.name).includes('Nenhum') ? (
+          {inctPosition!.length > 0 &&
+          inctPosition!.map((p: any) => p.name).includes('Nenhum') ? (
             <p className="md:text-lg lg:text-xl mb-3 text-brown">
-              {(inctPosition[0] as DefinedTerm)?.name !== 'Nenhum' &&
-                buildListSentence(
-                  inctPosition.map((position) => {
-                    return applyPronounsToDefinedTerm(
-                      pronouns,
-                      position as DefinedTerm
-                    );
-                  })
-                )}{' '}
+              {buildListSentence(
+                inctPosition!.map((position) => {
+                  return applyPronounsToDefinedTerm(
+                    pronouns,
+                    position as DefinedTerm
+                  );
+                })
+              )}{' '}
               no INCT Antirracismo.
             </p>
           ) : null}
