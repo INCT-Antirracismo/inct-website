@@ -31,7 +31,7 @@ export const navIconMap: Partial<
   nav: Menu,
   pages: AppWindow,
   posts: NotebookPen,
-  info: BadgeInfoIcon,
+  // info: BadgeInfoIcon,
   events: Calendar
 };
 
