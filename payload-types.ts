@@ -114,11 +114,9 @@ export interface Config {
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('pt-BR' | 'es') | ('pt-BR' | 'es')[];
   globals: {
     nav: Nav;
-    info: Info;
   };
   globalsSelect: {
     nav: NavSelect<false> | NavSelect<true>;
-    info: InfoSelect<false> | InfoSelect<true>;
   };
   locale: 'pt-BR' | 'es';
   user: User;
@@ -5315,17 +5313,6 @@ export interface Nav {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "info".
- */
-export interface Info {
-  id: string;
-  name: string;
-  logo?: (string | null) | Media;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "nav_select".
  */
 export interface NavSelect<T extends boolean = true> {
@@ -5359,17 +5346,6 @@ export interface NavSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "info_select".
- */
-export interface InfoSelect<T extends boolean = true> {
-  name?: T;
-  logo?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

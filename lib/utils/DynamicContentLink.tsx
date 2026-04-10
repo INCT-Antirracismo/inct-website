@@ -1,8 +1,8 @@
 'use client';
 
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { RefAttributes, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type DynamicContentLinkProps = {
   slug: string;
@@ -27,12 +27,19 @@ export function DynamicContentLink(props: DynamicContentLinkProps) {
   const { slug, collection, children, href } = props;
   const { lang } = useParams();
   const [url, setUrl] = useState('');
+
   useEffect(() => {
     if (lang && !href) {
       if (collectionMap[collection] !== undefined) {
         setUrl(`/${lang}${collectionMap[collection]}/${slug}`);
       } else {
         setUrl(`/${lang}/${collection}/${slug}`);
+      }
+    } else if (!href) {
+      if (collectionMap[collection] !== undefined) {
+        setUrl(`/pt-BR${collectionMap[collection]}/${slug}`);
+      } else {
+        setUrl(`/pt-BR/${collection}/${slug}`);
       }
     }
   }, [lang]);
