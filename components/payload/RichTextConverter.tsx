@@ -79,7 +79,10 @@ const CustomVideoEmbedComponent: React.FC<{
 }> = ({ node }) => {
   return (
     <div className="aspect-video w-full md:w-[0.83vw]">
-      <ReactPlayer src={node.fields.url || node.fields.image} />
+      <ReactPlayer
+        className="w-full h-full"
+        src={node.fields.url || node.fields.image}
+      />
     </div>
   );
 };

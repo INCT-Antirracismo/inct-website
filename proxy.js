@@ -1,31 +1,33 @@
 import { NextResponse } from 'next/server';
 
-let locales = ['pt-BR', 'es'];
+const locales = ['pt-BR', 'es'];
 
 export function proxy(request) {
-  // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-  if (pathname.includes('/admin')) return;
+
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
 
-  if (pathnameHasLocale || pathname.includes('.') || pathname.includes('/api/'))
-    return;
+  if (pathnameHasLocale) {
+    return NextResponse.next();
+  }
 
-  // Redirect if there is no locale
   const locale = 'pt-BR';
   request.nextUrl.pathname = `/${locale}${pathname}`;
-  // e.g. incoming request is /products
-  // The new URL is now /en-US/products
+
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!_next).*)'
-    // Optional: only run on root (/) URL
-    // '/'
+    /*
+     * Match only pages that:
+     * - don't start with /_next
+     * - don't start with /api
+     * - don't start with /admin
+     * - don't contain a file extension (e.g. .png, .css, .js)
+     */
+    '/((?!_next|api|admin|.*\\..*).*)'
   ]
 };
