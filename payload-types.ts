@@ -276,6 +276,7 @@ export interface Person {
               | 'substack'
               | 'twitter'
               | 'bluesky'
+              | 'flickr'
             )
           | null;
         id?: string | null;
@@ -6494,6 +6495,32 @@ export interface Page {
             blockName?: string | null;
             blockType: 'spacerBlock';
           }
+        | {
+            items?:
+              | {
+                  title?: string | null;
+                  content?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cardsBlock';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -7014,6 +7041,19 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        cardsBlock?:
+          | T
+          | {
+              items?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -7257,6 +7297,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Nav {
   id: string;
   homepage?: (string | null) | Page;
+  socialMedia?:
+    | {
+        url?: string | null;
+        type?:
+          | (
+              | 'instagram'
+              | 'youtube'
+              | 'personalWebsite'
+              | 'facebook'
+              | 'linkedin'
+              | 'tiktok'
+              | 'substack'
+              | 'twitter'
+              | 'bluesky'
+              | 'flickr'
+            )
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   mainMenu: {
     label?: string | null;
     text?: string | null;
@@ -7337,6 +7397,13 @@ export interface Nav {
  */
 export interface NavSelect<T extends boolean = true> {
   homepage?: T;
+  socialMedia?:
+    | T
+    | {
+        url?: T;
+        type?: T;
+        id?: T;
+      };
   mainMenu?:
     | T
     | {

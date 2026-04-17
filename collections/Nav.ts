@@ -1,6 +1,6 @@
 import { authenticated, isEditor } from '@/app/access';
 import { GlobalConfig } from 'payload';
-import { linkField } from './fields/commonFields';
+import { linkField, socialMediaField } from './fields/commonFields';
 
 export const Nav: GlobalConfig = {
   slug: 'nav',
@@ -17,6 +17,7 @@ export const Nav: GlobalConfig = {
       type: 'relationship',
       relationTo: 'pages'
     },
+    socialMediaField,
     {
       label: 'Menu Principal',
       labels: { plural: 'Itens', singular: 'Item' },

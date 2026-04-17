@@ -11,6 +11,7 @@ import { richTextBlock } from './fields/blocks/richTextBlock';
 import { contentList } from './fields/blocks/contentList';
 import { spacerBlock } from './fields/blocks/spacerBlock';
 import { carouselCTABlock } from './fields/blocks/carouselCTA';
+import { cardsBlock } from './fields/blocks/cardsBlock';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -47,7 +48,8 @@ export const Pages: CollectionConfig = {
         defaultCTABlock,
         richTextBlock,
         contentList,
-        spacerBlock
+        spacerBlock,
+        cardsBlock
       ]
     }
   ]

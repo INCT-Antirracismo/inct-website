@@ -39,7 +39,7 @@ export default function DefaultCTA({
     <section
       className={cn(
         'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center ',
-        imagePosition !== 'background' && imagePosition !== 'none' && 'py-12',
+        imagePosition !== 'background' && imagePosition !== 'none' && 'py-6',
         (variant === 'dark' || variant === 'sun') &&
           'bg-trinidad text-white bg-fixed'
       )}

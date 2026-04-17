@@ -15,6 +15,7 @@ import {
   RichText
 } from '@payloadcms/richtext-lexical/react';
 import React, { useEffect, useState } from 'react';
+import SocialMediaBar from '../blocks/socialMedia/SocialMediaBar';
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc!;
@@ -78,9 +79,10 @@ const CustomVideoEmbedComponent: React.FC<{
   node: SerializedUploadNode;
 }> = ({ node }) => {
   return (
-    <div className="aspect-video w-full md:w-[0.83vw]">
+    <div className="aspect-video w-full md:w-[73ch] md:-ml-[4ch] lg:w-[85ch] lg:-ml-[10ch]">
       <ReactPlayer
-        className="w-full h-full"
+        width={'100%'}
+        height={'100%'}
         src={node.fields.url || node.fields.image}
       />
     </div>
@@ -97,20 +99,38 @@ const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
     return <CustomUploadComponent node={node} />;
   },
   blocks: {
-    videoEmbed: ({ node }: any) => <CustomVideoEmbedComponent node={node} />
+    videoEmbed: ({ node }: any) => <CustomVideoEmbedComponent node={node} />,
+    code: ({ node }: any) => {
+      return (
+        <div
+          className="md:min-w-[65ch] w-full"
+          dangerouslySetInnerHTML={{ __html: node.fields.code }}
+        ></div>
+      );
+    },
+    socialMedia: ({ node }: any) => {
+      return (
+        <SocialMediaBar
+          className={'fill-trinidad size-5'}
+          data={node.fields.socialMedia}
+        />
+      );
+    }
   }
 });
 
 export const CustomRichText: React.FC<{
   lexicalData: SerializedEditorState;
-}> = ({ lexicalData }) => {
+  className?: string;
+}> = ({ lexicalData, className }) => {
   return (
     <>
       <RichText
         converters={jsxConverters}
         data={lexicalData}
         className={cn(
-          'text-pretty prose lg:prose-lg xl:prose-xl prose-a:duration-75 prose-a:decoration-trinidad-600 prose-a:hover:text-trinidad-600 prose-a:decoration-[0.2ex] prose-a:underline-offset-[0.2ex]'
+          'text-pretty prose lg:prose-lg xl:prose-xl prose-a:duration-75 prose-a:decoration-trinidad-600 prose-a:hover:text-trinidad-600 prose-a:decoration-[0.2ex] prose-a:underline-offset-[0.2ex] prose-h1:font-bold',
+          className ? className : 'lg:prose-lg xl:prose-xl'
         )}
       />
     </>

@@ -4,6 +4,7 @@ import Buttons from './Buttons';
 import ContentList from './contentList/ContentList';
 import DefaultCTA from './DefaultCTA';
 import CarouselCTABlock from './CarouselCTABlock';
+import Cards from './Cards';
 
 export type BlockRendererProps = {
   block: any;
@@ -63,6 +64,9 @@ export default async function BlockRenderer({
         )}
       ></div>
     );
+  }
+  if (block.blockType === 'cardsBlock') {
+    return <Cards {...block} />;
   }
 
   return <div className="w-full"></div>;

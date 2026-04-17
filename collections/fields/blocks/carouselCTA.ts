@@ -6,7 +6,12 @@ export const carouselCTABlock: Block = {
   labels: { singular: 'Carousel de CTA', plural: 'Carousel de CTAs' },
   slug: 'carouselCTABlock',
   fields: [
-    { name: 'autoplay', label: 'Autoplay?', type: 'checkbox' },
+    {
+      name: 'autoplay',
+      label: 'Autoplay?',
+      type: 'checkbox',
+      defaultValue: true
+    },
     {
       name: 'height',
       label: 'Altura (mínima)',

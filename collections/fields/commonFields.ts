@@ -92,7 +92,8 @@ export const socialMediaField: Field = {
         { label: 'TikTok', value: 'tiktok' },
         { label: 'Substack', value: 'substack' },
         { label: 'Twitter / X', value: 'twitter' },
-        { label: 'Bluesky', value: 'bluesky' }
+        { label: 'Bluesky', value: 'bluesky' },
+        { label: 'Flickr', value: 'flickr' }
       ]
     }
   ]
@@ -225,7 +226,12 @@ export const richTextField: Field = {
           {
             slug: 'videoEmbed',
             fields: [urlField, imageField]
-          }
+          },
+          {
+            slug: 'code',
+            fields: [{ name: 'code', type: 'code', label: 'Código' }]
+          },
+          { slug: 'socialMedia', fields: [socialMediaField] }
         ]
       })
     ]

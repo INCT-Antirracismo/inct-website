@@ -1,6 +1,10 @@
 'use client';
 
-import { type CarouselApi } from '@/components/ui/carousel';
+import {
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi
+} from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import DefaultCTA, { DefaultCTAProps } from './DefaultCTA';
 
@@ -79,6 +83,8 @@ export default function CarouselCTABlock(props: CarouselCTABlockProps) {
           );
         })}
       </div>
+      <CarouselNext className="right-5 bg-background hover:bg-muted" />
+      <CarouselPrevious className="left-5 bg-background hover:bg-muted" />
     </Carousel>
   );
 }
