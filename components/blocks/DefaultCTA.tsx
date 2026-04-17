@@ -7,6 +7,7 @@ import BGOrange from '@/public/bg_orange.jpg';
 import BGBlue from '@/public/bg_blue.jpg';
 
 export type DefaultCTAProps = {
+  id?: string | null;
   title: string | null;
   label?: string | null;
   subtitle?: string | null;
@@ -18,7 +19,7 @@ export type DefaultCTAProps = {
   image?: any | null;
   imagePosition?: 'none' | 'left' | 'right' | 'background' | null;
   content?: any | null;
-  height?: 'auto' | 'full' | '80' | null;
+  height?: 'auto' | 'full' | '50' | '80' | null;
   centered?: boolean;
 };
 
@@ -35,11 +36,12 @@ export default function DefaultCTA({
   centered
 }: DefaultCTAProps) {
   return (
-    <div
+    <section
       className={cn(
-        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center bg-fixed',
-        variant === 'dark' && 'bg-trinidad text-white',
-        variant === 'sun' && 'bg-trinidad text-white'
+        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center ',
+        imagePosition !== 'background' && imagePosition !== 'none' && 'py-12',
+        (variant === 'dark' || variant === 'sun') &&
+          'bg-trinidad text-white bg-fixed'
       )}
       style={{
         backgroundImage:
@@ -52,12 +54,11 @@ export default function DefaultCTA({
                 : ''
       }}
     >
-      <main
+      <div
         className={cn(
-          'flex w-full md:items-center justify-between container mx-auto',
+          'flex w-full md:items-center justify-between container mx-auto ',
           centered &&
             ' md:justify-center md:**:text-center! md:**:mx-auto! md:**-w-min! md:[&_li]:text-left!',
-          imagePosition !== 'background' && 'py-12',
           image &&
             imagePosition !== 'background' &&
             imagePosition !== 'none' &&
@@ -81,10 +82,11 @@ export default function DefaultCTA({
           )}
         <div
           className={cn(
-            ' flex items-center justify-center relative z-2 py-20 lg:py-36 min-h-[45svh]',
+            ' flex items-center justify-center relative z-2 py-20 lg:py-24 min-h-[33svh]',
             imagePosition === 'left' && 'order-2',
             height === 'full' && 'min-h-[calc(100svh-4rem)]',
-            height === '80' && 'min-h-[80svh]'
+            height === '80' && 'min-h-[80svh]',
+            height === '50' && 'min-h-[calc(50svh+4rem)]'
           )}
         >
           <div
@@ -168,7 +170,7 @@ export default function DefaultCTA({
             </div>
           </div>
         ) : null}
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }

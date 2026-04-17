@@ -29,7 +29,8 @@ export const defaultCTABlock: Block = {
           options: [
             { label: 'Automática', value: 'auto' },
             { label: 'Full Screen', value: 'full' },
-            { label: '80% da tela', value: '80' }
+            { label: '80% da tela', value: '80' },
+            { label: '50% da tela', value: '50' }
           ],
           defaultValue: 'auto'
         },
@@ -52,7 +53,11 @@ export const defaultCTABlock: Block = {
         }
       ]
     },
-    { name: 'centered', type: 'checkbox', label: 'Centralizar conteúdo' },
+    {
+      name: 'centered',
+      type: 'checkbox',
+      label: 'Centralizar conteúdo'
+    },
     {
       ...imageField,
       admin: {

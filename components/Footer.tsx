@@ -20,7 +20,7 @@ export default async function Footer({ locale }: FooterProps) {
           src="/logo-full-white.png"
           alt="INCT Educação Transformadora: Antirracismo,
 Interseccionalidade e Justiça Social Na América Latina"
-          className="w-4/5 sm:w-2/3 md:h-24 md:w-auto mx-auto mb-4 md:m-0"
+          className="w-4/5 sm:w-2/3 md:h-20 md:w-auto mx-auto mb-4 md:m-0"
         />
         <div className="h-0.5 w-12 md:h-12 md:w-0.5 bg-trinidad rotate-6 md:mx-4 my-4 mx-auto"></div>
         <img
@@ -60,7 +60,7 @@ Interseccionalidade e Justiça Social Na América Latina"
                       <DynamicContentLink
                         slug={item.link!.internalContent.value.slug}
                         collection={item.link!.internalContent.relationTo}
-                        className="text-lg lg:text-xl font-medium hover:underline decoration-2 decoration-trinidad underline-offset-2 p-3 py-1 inline-block"
+                        className="text-lg xl:text-xl font-medium hover:underline decoration-2 decoration-trinidad underline-offset-2 p-3 py-1 inline-block"
                       >
                         {item.link.linkType === 'internal'
                           ? item.link!.internalContent!.value!.acronym ||
@@ -74,7 +74,8 @@ Interseccionalidade e Justiça Social Na América Latina"
           </div>
         ))}
       </div>
-      <div className="container mx-auto flex items-center justify-end gap-3">
+      <div className="container mx-auto flex items-center gap-3">
+        <img src="/icon.png" className="size-8" alt="" />
         <p className="text-xs text-white/40 tracking-wide text-right text-balance">
           Instituto Nacional de Ciência e Tecnologia Educação Tranformadora:
           Antirracismo, Interseccionalidade e Justiça Social na América Latina.
@@ -89,7 +90,6 @@ Interseccionalidade e Justiça Social Na América Latina"
           </Link>
           . 2026.
         </p>
-        <img src="/icon.png" className="size-8" alt="" />
       </div>
     </footer>
   );

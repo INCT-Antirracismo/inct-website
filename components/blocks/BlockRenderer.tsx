@@ -3,6 +3,7 @@ import { CustomRichText } from '../payload/RichTextConverter';
 import Buttons from './Buttons';
 import ContentList from './contentList/ContentList';
 import DefaultCTA from './DefaultCTA';
+import CarouselCTABlock from './CarouselCTABlock';
 
 export type BlockRendererProps = {
   block: any;
@@ -22,6 +23,9 @@ export default async function BlockRenderer({
 }: BlockRendererProps) {
   if (block.blockType === 'defaultCTABlock') {
     return <DefaultCTA key={`block_${block.id}_${index}`} {...block} />;
+  }
+  if (block.blockType === 'carouselCTABlock') {
+    return <CarouselCTABlock key={`block_${block.id}_${index}`} {...block} />;
   }
   if (block.blockType === 'richTextBlock') {
     return (

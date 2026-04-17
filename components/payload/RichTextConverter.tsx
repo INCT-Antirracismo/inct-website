@@ -1,5 +1,5 @@
 'use client';
-
+import ReactPlayer from 'react-player';
 import { cn } from '@/lib/utils';
 import { collectionMap } from '@/lib/utils/DynamicContentLink';
 import type {
@@ -74,6 +74,16 @@ const CustomUploadComponent: React.FC<{
   );
 };
 
+const CustomVideoEmbedComponent: React.FC<{
+  node: SerializedUploadNode;
+}> = ({ node }) => {
+  return (
+    <div className="aspect-video w-full md:w-[0.83vw]">
+      <ReactPlayer src={node.fields.url || node.fields.image} />
+    </div>
+  );
+};
+
 const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
   defaultConverters
 }) => ({
@@ -82,6 +92,9 @@ const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
   // Override the default upload converter
   upload: ({ node }) => {
     return <CustomUploadComponent node={node} />;
+  },
+  blocks: {
+    videoEmbed: ({ node }: any) => <CustomVideoEmbedComponent node={node} />
   }
 });
 

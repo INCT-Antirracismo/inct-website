@@ -14,6 +14,12 @@ export const contentList: Block = {
   slug: 'contentList',
   fields: [
     { ...nameField, required: false } as Field,
+    {
+      name: 'centered',
+      type: 'checkbox',
+      label: 'Centralizar cabeçalho',
+      defaultValue: true
+    },
     descriptionField,
     buttonsField,
     {
@@ -29,7 +35,6 @@ export const contentList: Block = {
         { value: 'organizations', label: 'Organizações' }
       ]
     },
-    { name: 'json', type: 'checkbox', label: 'Pesquisa personalizada em JSON' },
     {
       name: 'items',
       label: 'Itens',
@@ -51,6 +56,12 @@ export const contentList: Block = {
           return siblingData!.collectionSlug && !siblingData.json;
         }
       }
+    },
+    {
+      name: 'json',
+      type: 'checkbox',
+      label: 'Pesquisa personalizada em JSON',
+      admin: { description: 'https://payloadcms.com/docs/queries/overview' }
     },
     {
       name: 'jsonQuery',
