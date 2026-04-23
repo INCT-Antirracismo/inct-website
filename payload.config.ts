@@ -22,6 +22,8 @@ import { Events } from './collections/Events';
 import { en } from '@payloadcms/translations/languages/en';
 import { pt } from '@payloadcms/translations/languages/pt';
 
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
+
 export default buildConfig({
   plugins: [
     s3Storage({
@@ -38,6 +40,23 @@ export default buildConfig({
         region: process.env.S3_REGION
         // ... Other S3 configuration
       }
+    }),
+    formBuilderPlugin({
+      fields: {
+        text: true,
+        textarea: true,
+        select: true,
+        radio: false,
+        email: true,
+        state: false,
+        country: false,
+        checkbox: false,
+        number: false,
+        message: true,
+        date: false,
+        payment: false
+      },
+      redirectRelationships: ['pages']
     })
   ],
   i18n: {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CustomRichText } from './payload/RichTextConverter';
+import { CustomRichText } from './blocks/RichTextConverter';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';

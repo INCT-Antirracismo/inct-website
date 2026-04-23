@@ -2,7 +2,7 @@ import BlockRenderer from '@/components/blocks/BlockRenderer';
 import CollapsibleBodyContent from '@/components/CollapsibleBodyContent';
 import FacePile from '@/components/Facepile';
 import NotFound from '@/components/NotFound';
-import { CustomRichText } from '@/components/payload/RichTextConverter';
+import { CustomRichText } from '@/components/blocks/RichTextConverter';
 import { Button } from '@/components/ui/button';
 import { getDocBySlug } from '@/lib/local-api';
 import { applyPronounsToDefinedTerm, buildListSentence, cn } from '@/lib/utils';

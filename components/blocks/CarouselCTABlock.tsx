@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
 import {
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
-} from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
-import DefaultCTA, { DefaultCTAProps } from './DefaultCTA';
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import DefaultCTA, { DefaultCTAProps } from "./DefaultCTA";
 
 import {
   Carousel,
   CarouselContent,
-  CarouselItem
-} from '@/components/ui/carousel';
-import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 export type CarouselCTABlockProps = {
   autoplay: boolean;
-  height: 'full' | '80' | '50';
+  height: "full" | "80" | "50";
   items: DefaultCTAProps[];
 };
 
@@ -35,7 +35,7 @@ export default function CarouselCTABlock(props: CarouselCTABlockProps) {
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on('select', () => {
+    api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
@@ -47,8 +47,8 @@ export default function CarouselCTABlock(props: CarouselCTABlockProps) {
         props.autoplay
           ? [
               Autoplay({
-                delay: 5000
-              })
+                delay: 5000,
+              }),
             ]
           : []
       }
@@ -69,22 +69,22 @@ export default function CarouselCTABlock(props: CarouselCTABlockProps) {
         {props.items.map((item, index) => {
           return (
             <div
-              key={'dot' + item.id}
+              key={"dot" + item.id}
               className="p-3 group cursor-pointer"
               onClick={() => api?.scrollTo(index)}
             >
               <div
                 className={cn(
-                  'size-2.5 bg-white border-2 rounded-full group-hover:bg-sun',
-                  index === current - 1 && 'bg-trinidad!'
+                  "size-2.5 bg-white border-2 rounded-full group-hover:bg-sun",
+                  index === current - 1 && "bg-trinidad!",
                 )}
               ></div>
             </div>
           );
         })}
       </div>
-      <CarouselNext className="right-5 bg-background hover:bg-muted" />
-      <CarouselPrevious className="left-5 bg-background hover:bg-muted" />
+      <CarouselNext className="right-5 bg-background hover:bg-muted hidden md:flex" />
+      <CarouselPrevious className="left-5 bg-background hover:bg-muted hidden md:flex" />
     </Carousel>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { CustomRichText } from '../payload/RichTextConverter';
+import { CustomRichText } from './RichTextConverter';
 
 export type CardsProps = {
   id: string;

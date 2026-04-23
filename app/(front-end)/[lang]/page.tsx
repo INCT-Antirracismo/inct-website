@@ -1,7 +1,7 @@
 import BlockRenderer from '@/components/blocks/BlockRenderer';
 import DefaultCTA from '@/components/blocks/DefaultCTA';
 import NotFound from '@/components/NotFound';
-import { CustomRichText } from '@/components/payload/RichTextConverter';
+import { CustomRichText } from '@/components/blocks/RichTextConverter';
 import { getDocBySlug } from '@/lib/local-api';
 import { Page } from '@/payload-types';
 import { Metadata, ResolvingMetadata } from 'next';

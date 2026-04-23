@@ -15,7 +15,7 @@ import {
   RichText
 } from '@payloadcms/richtext-lexical/react';
 import React, { useEffect, useState } from 'react';
-import SocialMediaBar from '../blocks/socialMedia/SocialMediaBar';
+import SocialMediaBar from './socialMedia/SocialMediaBar';
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc!;

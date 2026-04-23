@@ -1,10 +1,11 @@
 import { cn } from '@/lib/utils';
-import { CustomRichText } from '../payload/RichTextConverter';
+import { CustomRichText } from './RichTextConverter';
 import Buttons from './Buttons';
 import ContentList from './contentList/ContentList';
 import DefaultCTA from './DefaultCTA';
 import CarouselCTABlock from './CarouselCTABlock';
 import Cards from './Cards';
+import { FormBlock } from './Form';
 
 export type BlockRendererProps = {
   block: any;
@@ -42,6 +43,12 @@ export default async function BlockRenderer({
     );
   }
 
+  if (block.blockType === 'formBlock') {
+    const { blockName, blockType, form } = block;
+    const formID: string = form && (typeof form === 'string' ? form : form.id);
+    return <FormBlock key={`block_${block.id}_form_${formID}`} {...block} />;
+  }
+
   if (block.blockType === 'contentList') {
     return (
       <ContentList
@@ -69,5 +76,9 @@ export default async function BlockRenderer({
     return <Cards {...block} />;
   }
 
-  return <div className="w-full"></div>;
+  return (
+    <div className="w-full text-xs wrap-break-word">
+      {JSON.stringify(block)}
+    </div>
+  );
 }
