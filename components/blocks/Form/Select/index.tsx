@@ -3,7 +3,6 @@ import type { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form';
 
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import ReactSelect from 'react-select';
 
 import { Error } from '../Error';
 import { Width } from '../Width';
