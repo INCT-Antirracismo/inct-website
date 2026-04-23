@@ -2,7 +2,7 @@
 import type { Form as FormType } from '@payloadcms/plugin-form-builder/types';
 
 import { useRouter } from 'next/navigation';
-import React, { useCallback, useState } from 'react';
+import React, { RefObject, useCallback, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { buildInitialFormState } from './buildInitialFormState';
@@ -17,6 +17,8 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { submitForm } from '@/lib/submitForm';
+import { Turnstile } from 'next-turnstile';
 
 export type Value = unknown;
 
@@ -65,84 +67,86 @@ export const FormBlock: React.FC<
     register,
     setValue
   } = formMethods;
-
+  const [turnstileStatus, setTurnstileStatus] = useState<
+    'success' | 'error' | 'expired' | 'required'
+  >('required');
   const [isLoading, setIsLoading] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>();
   const [error, setError] = useState<
     { message: string; status?: string } | undefined
   >();
   const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = useCallback(
-    (data: Data) => {
-      let loadingTimerID: ReturnType<typeof setTimeout>;
-      const submitForm = async () => {
-        setError(undefined);
+  const onSubmit = (data: Data) => {
+    let loadingTimerID: ReturnType<typeof setTimeout>;
+    const submit = async () => {
+      if (turnstileStatus !== 'success') {
+        setError({ message: 'Please verify you are not a robot' });
+        setIsLoading(false);
+        return;
+      }
 
-        const dataToSend = Object.entries(data).map(([name, value]) => ({
-          field: name,
-          value
-        }));
+      const formData = formRef.current ? new FormData(formRef.current) : null;
+      const token = formData!.get('cf-turnstile-response');
 
-        // delay loading indicator by 1s
-        loadingTimerID = setTimeout(() => {
-          setIsLoading(true);
-        }, 1000);
+      console.log(token);
 
-        try {
-          console.log(dataToSend);
-          const req = await fetch(
-            `${process.env.NEXT_PUBLIC_URL}/api/form-submissions`,
-            {
-              body: JSON.stringify({
-                form: formID,
-                submissionData: dataToSend
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              method: 'POST'
-            }
-          );
+      setError(undefined);
 
-          const res = await req.json();
+      const dataToSend = Object.entries(data).map(([name, value]) => ({
+        field: name,
+        value
+      }));
 
-          clearTimeout(loadingTimerID);
+      // delay loading indicator by 1s
+      loadingTimerID = setTimeout(() => {
+        setIsLoading(true);
+      }, 1000);
 
-          if (req.status >= 400) {
-            setIsLoading(false);
+      try {
+        console.log(dataToSend);
+        const res = await submitForm({
+          dataToSend,
+          formID,
+          token
+        });
 
-            setError({
-              message: res.errors?.[0]?.message || 'Internal Server Error',
-              status: res.status
-            });
+        console.log(res);
+        clearTimeout(loadingTimerID);
 
-            return;
-          }
-
+        if (res.status >= 400) {
           setIsLoading(false);
-          setHasSubmitted(true);
 
-          if (confirmationType === 'redirect' && redirect) {
-            const { url } = redirect;
-
-            const redirectUrl = url;
-
-            if (redirectUrl) router.push(redirectUrl);
-          }
-        } catch (err) {
-          console.warn(err);
-          setIsLoading(false);
           setError({
-            message: 'Something went wrong.'
+            message: res.errors?.[0]?.message || 'Internal Server Error',
+            status: res.status
           });
-        }
-      };
 
-      void submitForm();
-    },
-    [router, formID, redirect, confirmationType]
-  );
+          return;
+        }
+
+        setIsLoading(false);
+        setHasSubmitted(true);
+
+        if (confirmationType === 'redirect' && redirect) {
+          const { url } = redirect;
+
+          const redirectUrl = url;
+
+          if (redirectUrl) router.push(redirectUrl);
+        }
+      } catch (err) {
+        console.warn(err);
+        setIsLoading(false);
+        setError({
+          message: 'Something went wrong.'
+        });
+      }
+    };
+
+    void submit();
+  };
 
   return (
     <section className="w-full flex justify-center px-4 my-12">
@@ -163,8 +167,8 @@ export const FormBlock: React.FC<
           )}
           {!hasSubmitted && (
             // @ts-ignore
-            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-4">
+            <form ref={formRef} id={formID} onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid grid-cols-2 gap-4 mb-4">
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields.map((field, index) => {
@@ -187,6 +191,26 @@ export const FormBlock: React.FC<
                     return null;
                   })}
               </div>
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                retry="auto"
+                refreshExpired="auto"
+                sandbox={process.env.NODE_ENV === 'development'}
+                onError={() => {
+                  setTurnstileStatus('error');
+                  //setError("Security check failed. Please try again.");
+                }}
+                onExpire={() => {
+                  setTurnstileStatus('expired');
+                  //setError("Security check expired. Please verify again.");
+                }}
+                onLoad={() => {
+                  setTurnstileStatus('required');
+                }}
+                onVerify={(token) => {
+                  setTurnstileStatus('success');
+                }}
+              />
               <Button form={formID} className="w-full mt-4">
                 {submitButtonLabel}
               </Button>

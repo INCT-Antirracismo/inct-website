@@ -77,6 +77,9 @@ importers:
       next:
         specifier: 16.2.4
         version: 16.2.4(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4)
+      next-turnstile:
+        specifier: ^1.0.7
+        version: 1.0.7(next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       openai:
         specifier: ^6.34.0
         version: 6.34.0(ws@8.20.0)(zod@4.3.6)
@@ -98,6 +101,12 @@ importers:
       react-fast-marquee:
         specifier: ^1.6.5
         version: 1.6.5(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-google-recaptcha:
+        specifier: ^3.1.0
+        version: 3.1.0(react@19.2.1)
+      react-google-recaptcha-v3:
+        specifier: ^1.11.0
+        version: 1.11.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-hook-form:
         specifier: ^7.73.1
         version: 7.73.1(react@19.2.1)
@@ -116,6 +125,9 @@ importers:
       tailwind-merge:
         specifier: ^3.5.0
         version: 3.5.0
+      uuid:
+        specifier: ^14.0.0
+        version: 14.0.0
       zod:
         specifier: ^4.3.6
         version: 4.3.6
@@ -4484,6 +4496,13 @@ packages:
     resolution: {integrity: sha512-VLkyYr2kmPzVzrmkER9i13RJIdGbjNr855gfh2VvuboO1eYnb9k+nFS+JygfSVgtbo/HMpLz5pEYLK4Xjy7XGg==}
     engines: {node: '>=0.10.0'}
 
+  next-turnstile@1.0.7:
+    resolution: {integrity: sha512-hN0fr5fwOiK0o8draaJmcYElDqsiYBd4OOCy+0IKMlJgjpPzxtoyagojPBoHsyw9i3jVoBpusPZcUMuKuKQsNw==}
+    peerDependencies:
+      next: '>=12'
+      react: '>=16'
+      react-dom: '>=16'
+
   next@16.2.4:
     resolution: {integrity: sha512-kPvz56wF5frc+FxlHI5qnklCzbq53HTwORaWBGdT0vNoKh1Aya9XC8aPauH4NJxqtzbWsS5mAbctm4cr+EkQ2Q==}
     engines: {node: '>=20.9.0'}
@@ -4853,6 +4872,11 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
+  react-async-script@1.2.0:
+    resolution: {integrity: sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q==}
+    peerDependencies:
+      react: '>=16.4.1'
+
   react-datepicker@7.6.0:
     resolution: {integrity: sha512-9cQH6Z/qa4LrGhzdc3XoHbhrxNcMi9MKjZmYgF/1MNNaJwvdSjv3Xd+jjvrEEbKEf71ZgCA3n7fQbdwd70qCRw==}
     peerDependencies:
@@ -4879,6 +4903,17 @@ packages:
     peerDependencies:
       react: '>= 16.8.0 || ^18.0.0'
       react-dom: '>= 16.8.0 || ^18.0.0'
+
+  react-google-recaptcha-v3@1.11.0:
+    resolution: {integrity: sha512-kLQqpz/77m8+trpBwzqcxNtvWZYoZ/YO6Vm2cVTHW8hs80BWUfDpC7RDwuAvpswwtSYApWfaSpIDFWAIBNIYxQ==}
+    peerDependencies:
+      react: ^16.3 || ^17.0 || ^18.0 || ^19.0
+      react-dom: ^17.0 || ^18.0 || ^19.0
+
+  react-google-recaptcha@3.1.0:
+    resolution: {integrity: sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==}
+    peerDependencies:
+      react: '>=16.4.1'
 
   react-hook-form@7.73.1:
     resolution: {integrity: sha512-VAfVYOPcx3piiEVQy95vyFmBwbVUsP/AUIN+mpFG8h11yshDd444nn0VyfaGWSRnhOLVgiDu7HIuBtAIzxn9dA==}
@@ -5454,6 +5489,10 @@ packages:
 
   uuid@11.1.0:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
+  uuid@14.0.0:
+    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
     hasBin: true
 
   vfile-message@4.0.3:
@@ -10676,6 +10715,12 @@ snapshots:
     dependencies:
       xml-char-classes: 1.0.0
 
+  next-turnstile@1.0.7(next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4))(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+    dependencies:
+      next: 16.2.4(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+
   next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.77.4):
     dependencies:
       '@next/env': 16.2.4
@@ -11092,6 +11137,12 @@ snapshots:
 
   range-parser@1.2.1: {}
 
+  react-async-script@1.2.0(react@19.2.1):
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      prop-types: 15.8.1
+      react: 19.2.1
+
   react-datepicker@7.6.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       '@floating-ui/react': 0.27.19(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -11118,6 +11169,18 @@ snapshots:
     dependencies:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
+
+  react-google-recaptcha-v3@1.11.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+
+  react-google-recaptcha@3.1.0(react@19.2.1):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.2.1
+      react-async-script: 1.2.0(react@19.2.1)
 
   react-hook-form@7.73.1(react@19.2.1):
     dependencies:
@@ -11809,6 +11872,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@11.1.0: {}
+
+  uuid@14.0.0: {}
 
   vfile-message@4.0.3:
     dependencies:
