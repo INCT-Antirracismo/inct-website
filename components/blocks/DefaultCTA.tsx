@@ -57,6 +57,8 @@ export default function DefaultCTA({
       <div
         className={cn(
           'flex w-full md:items-center justify-between container mx-auto ',
+          (imagePosition === 'left' || imagePosition === 'right') &&
+            'justify-center',
           centered &&
             imagePosition !== 'left' &&
             imagePosition !== 'right' &&
