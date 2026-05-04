@@ -1,13 +1,5 @@
 import { Block, Field } from 'payload';
-import {
-  buttonsField,
-  descriptionField,
-  imageField,
-  nameField,
-  urlField
-} from '../commonFields';
-import { LUCIDE_ICONS } from '@/lib/lucide-icons';
-import { array } from 'payload/shared';
+import { buttonsField, descriptionField, nameField } from '../commonFields';
 
 export const contentList: Block = {
   labels: { singular: 'Lista de conteúdo', plural: 'Lista de conteúdo' },

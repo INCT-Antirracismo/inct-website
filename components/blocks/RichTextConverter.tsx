@@ -93,7 +93,7 @@ const ButtonsBlock: React.FC<{
   node: SerializedUploadNode;
 }> = ({ node }) => {
   return (
-    <div className="flex items-center gap-2 my-3 not-prose *:text-base flex-wrap">
+    <div className="grid md:flex items-center gap-2 my-3 not-prose *:text-base flex-wrap">
       <Buttons buttons={node.fields.buttons} />
     </div>
   );

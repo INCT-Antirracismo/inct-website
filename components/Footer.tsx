@@ -2,7 +2,6 @@ import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import config from '@payload-config';
 import Link from 'next/link';
 import { getPayload } from 'payload';
-import SocialMediaBar from './blocks/socialMedia/SocialMediaBar';
 import BlockRenderer from './blocks/BlockRenderer';
 const payload = await getPayload({ config });
 
@@ -79,7 +78,7 @@ Interseccionalidade e Justiça Social Na América Latina"
         ))}
       </div>
 
-      <div className=" [&>div]:md:justify-start [&>div]:lg:my-8! [&>div]:lg:mt-0!">
+      <div className=" [&>div]:justify-center [&>div]:lg:justify-start [&>div]:lg:my-8! [&>div]:lg:mt-0! [&_button]:w-full [&_.social-media-bar]:mx-auto [&_.social-media-bar]:md:mx-0">
         {data!.content?.map((block, index) => {
           return (
             <BlockRenderer

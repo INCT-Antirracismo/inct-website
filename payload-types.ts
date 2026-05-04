@@ -6533,6 +6533,37 @@ export interface Page {
             blockName?: string | null;
             blockType: 'formBlock';
           }
+        | {
+            /**
+             * Escolha uma notícia para ficar destacada. Caso não escolha nenhuma, a posição será ocupada pela primeira notícia escolhida entre as opções ou query abaixo.
+             */
+            featured?: {
+              relationTo: 'posts';
+              value: string | Post;
+            } | null;
+            items?:
+              | {
+                  relationTo: 'posts';
+                  value: string | Post;
+                }[]
+              | null;
+            /**
+             * https://payloadcms.com/docs/queries/overview
+             */
+            json?: boolean | null;
+            jsonQuery?:
+              | {
+                  [k: string]: unknown;
+                }
+              | unknown[]
+              | string
+              | number
+              | boolean
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPosts';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -7238,6 +7269,16 @@ export interface PagesSelect<T extends boolean = true> {
               title?: T;
               description?: T;
               form?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPosts?:
+          | T
+          | {
+              featured?: T;
+              items?: T;
+              json?: T;
+              jsonQuery?: T;
               id?: T;
               blockName?: T;
             };

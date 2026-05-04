@@ -6,6 +6,7 @@ import DefaultCTA from './DefaultCTA';
 import CarouselCTABlock from './CarouselCTABlock';
 import Cards from './Cards';
 import { FormBlock } from './Form';
+import FeaturedPosts from './FeaturedPosts';
 
 export type BlockRendererProps = {
   block: any;
@@ -54,6 +55,16 @@ export default async function BlockRenderer({
       <ContentList
         key={`block_${block.id}_${index}`}
         collectionSlug={block.collectionSlug}
+        block={block}
+        params={params}
+        lang={lang}
+      />
+    );
+  }
+  if (block.blockType === 'featuredPosts') {
+    return (
+      <FeaturedPosts
+        key={`block_${block.id}_${index}`}
         block={block}
         params={params}
         lang={lang}

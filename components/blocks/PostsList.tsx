@@ -56,8 +56,8 @@ export default async function PostsList({ block, items }: PostsListProps) {
                   (doc.image as Media)?.url ||
                   ''
                 }
+                alt={(doc.image as Media)?.alt}
                 className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
-                alt=""
               />
               <div
                 className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"

@@ -13,6 +13,7 @@ import { spacerBlock } from './fields/blocks/spacerBlock';
 import { carouselCTABlock } from './fields/blocks/carouselCTA';
 import { cardsBlock } from './fields/blocks/cardsBlock';
 import { formBlock } from './fields/blocks/emailFormBlock';
+import { featuredPosts } from './fields/blocks/featuredPosts';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -51,7 +52,8 @@ export const Pages: CollectionConfig = {
         contentList,
         spacerBlock,
         cardsBlock,
-        formBlock
+        formBlock,
+        featuredPosts
       ]
     }
   ]

@@ -21,6 +21,7 @@ export type DefaultCTAProps = {
   content?: any | null;
   height?: 'auto' | 'full' | '50' | '80' | null;
   centered?: boolean;
+  isSlide?: boolean;
 };
 
 export default function DefaultCTA({
@@ -33,15 +34,19 @@ export default function DefaultCTA({
   image,
   content,
   height,
-  centered
+  centered,
+  isSlide = false
 }: DefaultCTAProps) {
   return (
     <section
       className={cn(
-        'bg-background font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center ',
-        imagePosition !== 'background' && imagePosition !== 'none' && 'py-6',
+        'bg-background min-h-[40svh] flex items-center justify-center font-sans dark:bg-black relative max-w-svw overflow-hidden bg-cover bg-center',
+        imagePosition !== 'background' &&
+          imagePosition !== 'none' &&
+          'py-6 px-4 lg:px-8',
         (variant === 'dark' || variant === 'sun') &&
-          'bg-trinidad text-white bg-fixed'
+          'bg-trinidad text-white bg-fixed',
+        isSlide && 'h-full'
       )}
       style={{
         backgroundImage:
@@ -56,17 +61,13 @@ export default function DefaultCTA({
     >
       <div
         className={cn(
-          'flex w-full md:items-center justify-between container mx-auto ',
-          (imagePosition === 'left' || imagePosition === 'right') &&
-            'justify-center',
+          'grid w-full md:items-center justify-between container mx-auto ',
           centered &&
-            imagePosition !== 'left' &&
-            imagePosition !== 'right' &&
             ' justify-center **:text-center! **:mx-auto! **-w-min! [&_li]:text-left!',
           image &&
             imagePosition !== 'background' &&
             imagePosition !== 'none' &&
-            'px-0! gap-8 md:px-4'
+            'px-0! gap-8 md:px-4 md:grid-cols-2'
         )}
       >
         {imagePosition === 'background' &&
@@ -84,13 +85,15 @@ export default function DefaultCTA({
               </video>
             </div>
           )}
+        {/* Content */}
         <div
           className={cn(
-            ' flex items-center justify-center relative z-2 py-20 lg:py-24 min-h-[33svh]',
-            imagePosition === 'left' && 'order-2',
-            height === 'full' && 'min-h-[calc(100svh-4rem)]',
-            height === '80' && 'min-h-[80svh]',
-            height === '50' && 'min-h-[calc(50svh+4rem)]'
+            'basis-full flex items-center justify-center relative z-2 py-12 md:py-20 lg:py-24 md:min-h-[33svh] order-2 md:order-1',
+            imagePosition === 'left' && 'md:order-2',
+            imagePosition === 'background' && 'py-18',
+            height === 'full' && 'md:min-h-[calc(100svh-4rem)]',
+            height === '80' && 'md:min-h-[80svh]',
+            height === '50' && 'md:min-h-[calc(50svh+4rem)]'
           )}
         >
           <div
@@ -112,7 +115,7 @@ export default function DefaultCTA({
             </p>
             <h1
               className={cn(
-                'max-w-3xl leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
+                'leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
                 (variant === 'sun' || variant === 'dark') && 'text-trinidad-100'
               )}
             >
@@ -123,10 +126,7 @@ export default function DefaultCTA({
                 className={cn(
                   'max-w-prose w-full text-lg text-balance md:text-xl lg:text-2xl leading-snug text-stone-700 dark:text-zinc-100 mt-2 md:mt-3 xl:mt-4 lg:max-w-prose tracking-[0.018rem]',
                   (variant === 'sun' || variant === 'dark') && 'text-stone-100',
-                  centered &&
-                    imagePosition !== 'left' &&
-                    imagePosition !== 'right' &&
-                    'mx-auto'
+                  centered && 'mx-auto'
                 )}
               >
                 {subtitle}
@@ -150,21 +150,22 @@ export default function DefaultCTA({
             )}
           </div>
         </div>
+        {/* Image */}
         {image && imagePosition !== 'background' && imagePosition !== 'none' ? (
           <div
             className={cn(
-              'w-1/4 md:w-1/2  shrink-0 flex justify-center md:p-4 sticky top-0 md:static lg:p-8 ',
-              imagePosition === 'left' && 'order-1',
+              'order-1 md:order-2 px-4 md:px-0',
+              imagePosition === 'left' && 'md:order-1',
               height === 'full' && 'h-svh',
               height === '80' && 'h-[80svh]'
             )}
           >
             <div
               className={cn(
-                'relative  w-full h-full flex items-center justify-center grow overflow-hidden',
+                'relative   grow overflow-hidden',
                 height === 'full' || height === '80'
                   ? ''
-                  : 'md:aspect-square md:max-h-[60svh] md:min-h-96'
+                  : 'max-h-[40svh] md:max-h-[60svh] md:min-h-96'
               )}
             >
               <img
