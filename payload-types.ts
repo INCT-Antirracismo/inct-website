@@ -7593,24 +7593,27 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Nav {
   id: string;
   homepage?: (string | null) | Page;
-  socialMedia?:
+  content?:
     | {
-        url?: string | null;
-        type?:
-          | (
-              | 'instagram'
-              | 'youtube'
-              | 'personalWebsite'
-              | 'facebook'
-              | 'linkedin'
-              | 'tiktok'
-              | 'substack'
-              | 'twitter'
-              | 'bluesky'
-              | 'flickr'
-            )
-          | null;
+        centered?: boolean | null;
+        body?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
         id?: string | null;
+        blockName?: string | null;
+        blockType: 'richTextBlock';
       }[]
     | null;
   mainMenu: {
@@ -7693,12 +7696,17 @@ export interface Nav {
  */
 export interface NavSelect<T extends boolean = true> {
   homepage?: T;
-  socialMedia?:
+  content?:
     | T
     | {
-        url?: T;
-        type?: T;
-        id?: T;
+        richTextBlock?:
+          | T
+          | {
+              centered?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   mainMenu?:
     | T

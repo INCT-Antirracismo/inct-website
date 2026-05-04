@@ -35,7 +35,7 @@ export type SocialMediaBarProps = {
 export default function SocialMediaBar(props: SocialMediaBarProps) {
   const id = useId();
   return (
-    <div className="flex items-center justify-center gap-5 w-fit">
+    <div className="flex items-center justify-center gap-5 w-fit my-5 not-prose">
       {props.data!?.length > 0 &&
         props.data?.map((media) => {
           if (media.type && media.url) {

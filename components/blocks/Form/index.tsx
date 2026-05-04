@@ -90,8 +90,6 @@ export const FormBlock: React.FC<
       const formData = formRef.current ? new FormData(formRef.current) : null;
       const token = formData!.get('cf-turnstile-response');
 
-      console.log(token);
-
       setError(undefined);
 
       const dataToSend = Object.entries(data).map(([name, value]) => ({
@@ -105,14 +103,12 @@ export const FormBlock: React.FC<
       }, 1000);
 
       try {
-        console.log(dataToSend);
         const res = await submitForm({
           dataToSend,
           formID,
           token
         });
 
-        console.log(res);
         clearTimeout(loadingTimerID);
 
         if (res.status >= 400) {

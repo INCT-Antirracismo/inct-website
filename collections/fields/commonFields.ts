@@ -231,7 +231,12 @@ export const richTextField: Field = {
             slug: 'code',
             fields: [{ name: 'code', type: 'code', label: 'Código' }]
           },
-          { slug: 'socialMedia', fields: [socialMediaField] }
+          { slug: 'socialMedia', fields: [socialMediaField] },
+          {
+            slug: 'buttons',
+            labels: { singular: 'Botões', plural: 'Botões' },
+            fields: [{ ...buttonsField }]
+          }
         ]
       })
     ]

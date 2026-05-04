@@ -3,6 +3,7 @@ import config from '@payload-config';
 import Link from 'next/link';
 import { getPayload } from 'payload';
 import SocialMediaBar from './blocks/socialMedia/SocialMediaBar';
+import BlockRenderer from './blocks/BlockRenderer';
 const payload = await getPayload({ config });
 
 export type FooterProps = { locale: string };
@@ -11,12 +12,12 @@ export default async function Footer({ locale }: FooterProps) {
   const data = await payload.findGlobal({
     slug: 'nav',
     depth: 1,
-    select: { mainMenu: true, socialMedia: true },
+    select: { mainMenu: true, content: true },
     locale: locale as any
   });
   return (
     <footer className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
-      <div className="container mx-auto mb-12 flex-col flex md:flex-row items-center justify-center md:justify-between gap-8">
+      <div className="container mx-auto mb-8 flex-col flex md:flex-row items-center justify-center md:justify-between gap-8">
         <div className="grid md:flex gap-3 md:gap-6 items-center">
           <img
             src="/logo-full-white.png"
@@ -31,15 +32,8 @@ Interseccionalidade e Justiça Social Na América Latina"
             className="h-6 md:h-8 lg:h-10 mx-auto md:mx-0"
           />
         </div>
-
-        {data.socialMedia!?.length > 0 && (
-          <SocialMediaBar
-            className={'fill-sun duration-75 hover:fill-sun-300 size-5'}
-            data={data.socialMedia}
-          />
-        )}
       </div>
-      <div className="container mx-auto grid md:flex gap-8 flex-wrap my-12">
+      <div className="container mx-auto grid md:flex gap-8 flex-wrap mt-12 mb-4">
         {data.mainMenu.map((menu: any) => (
           <div
             key={menu.label + 'sidebar'}
@@ -83,6 +77,19 @@ Interseccionalidade e Justiça Social Na América Latina"
             </ul>
           </div>
         ))}
+      </div>
+
+      <div className=" [&>div]:md:justify-start [&>div]:lg:my-8! [&>div]:lg:mt-0!">
+        {data!.content?.map((block, index) => {
+          return (
+            <BlockRenderer
+              key={'footer' + index + 'block' + block.id}
+              block={block}
+              index={index}
+              lang={locale}
+            />
+          );
+        })}
       </div>
       <div className="container mx-auto flex items-center gap-3">
         <img src="/icon.png" className="size-8" alt="" />

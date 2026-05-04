@@ -1,6 +1,7 @@
 import { authenticated, isEditor } from '@/app/access';
 import { GlobalConfig } from 'payload';
 import { linkField, socialMediaField } from './fields/commonFields';
+import { richTextBlock } from './fields/blocks/richTextBlock';
 
 export const Nav: GlobalConfig = {
   slug: 'nav',
@@ -17,7 +18,14 @@ export const Nav: GlobalConfig = {
       type: 'relationship',
       relationTo: 'pages'
     },
-    socialMediaField,
+
+    {
+      name: 'content',
+      label: 'Conteúdo',
+      labels: { singular: 'Bloco', plural: 'Blocos' },
+      type: 'blocks',
+      blocks: [richTextBlock]
+    },
     {
       label: 'Menu Principal',
       labels: { plural: 'Itens', singular: 'Item' },

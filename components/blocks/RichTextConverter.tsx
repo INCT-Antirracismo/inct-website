@@ -16,6 +16,7 @@ import {
 } from '@payloadcms/richtext-lexical/react';
 import React, { useEffect, useState } from 'react';
 import SocialMediaBar from './socialMedia/SocialMediaBar';
+import Buttons from './Buttons';
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { relationTo, value } = linkNode.fields.doc!;
@@ -28,7 +29,6 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   } else {
     return `/${relationTo}/${value.slug}`;
   }
-  //  return createDynamicContentURL(value.slug as string, relationTo);
 };
 
 // Custom upload converter component that uses next/image
@@ -89,6 +89,16 @@ const CustomVideoEmbedComponent: React.FC<{
   );
 };
 
+const ButtonsBlock: React.FC<{
+  node: SerializedUploadNode;
+}> = ({ node }) => {
+  return (
+    <div className="flex items-center gap-2 my-3 not-prose *:text-base flex-wrap">
+      <Buttons buttons={node.fields.buttons} />
+    </div>
+  );
+};
+
 const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
   defaultConverters
 }) => ({
@@ -115,6 +125,9 @@ const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
           data={node.fields.socialMedia}
         />
       );
+    },
+    buttons: ({ node }: any) => {
+      return <ButtonsBlock node={node} />;
     }
   }
 });

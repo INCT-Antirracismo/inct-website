@@ -3,10 +3,17 @@
 import { DynamicContentLink } from '@/lib/utils/DynamicContentLink';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { Button } from '../ui/button';
+import { useParams } from 'next/navigation';
 
 export type ButtonsProps = { buttons: any };
 
 export default function Buttons({ buttons }: ButtonsProps) {
+  const { lang } = useParams();
+  if (typeof buttons[0].label === 'object') {
+    buttons = buttons.map((button: any) => {
+      return { ...button, label: lang ? button.label[lang as any] : '' };
+    });
+  }
   return (
     <>
       {buttons?.map((button: any, index: number) => {
