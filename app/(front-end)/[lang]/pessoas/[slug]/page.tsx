@@ -58,7 +58,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
   } = doc;
   const isPT = lang === 'pt-BR';
   return (
-    <article className="container pt-5 md:pt-5 mx-auto max-w-4xl">
+    <article className="container pt-5 md:pt-5 mx-auto max-w-4xl mb-16 lg:mb-24">
       <Link href={`/${lang}/pesquisadores`}>
         <h2
           id="pessoas"
@@ -81,7 +81,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
         </div>
         <div className="w-full self-center h-fit">
           <p className="text-balance tracking-wide font-medium text-deep-sea-green">
-            Núcleo: {inctGroup!.map((group) => (group as DefinedTerm).name)}
+            Núcleo: {inctGroup?.map((group) => (group as DefinedTerm).name)}
           </p>
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold lg:mb-1 text-balance">
             {name}
@@ -165,11 +165,11 @@ export default async function PersonPage({ params }: PersonPageProps) {
               })}
           </div>
 
-          {/* {inctGroup!.length > 0 && (
+          {/* {inctGroup?.length > 0 && (
                       <p className="text-xs uppercase text-muted-foreground tracking-wide">
-                        {inctGroup!.length === 1 ? 'Núcleo' : 'Núcleos'}:{' '}
+                        {inctGroup?.length === 1 ? 'Núcleo' : 'Núcleos'}:{' '}
                         {buildListSentence(
-                          inctGroup!.map((group) => {
+                          inctGroup?.map((group) => {
                             return applyPronounsToDefinedTerm(
                               pronouns,
                               group as DefinedTerm
@@ -179,7 +179,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
                       </p>
                     )} */}
 
-          {/* {inctGroup!.map((group) => {
+          {/* {inctGroup?.map((group) => {
                       group = group as DefinedTerm;
                       return (
                         <div

@@ -1,8 +1,9 @@
 import BlockRenderer from '@/components/blocks/BlockRenderer';
+import PersonCard from '@/components/blocks/PersonCard';
 import NotFound from '@/components/NotFound';
 import { getDocBySlug } from '@/lib/local-api';
 import { cn } from '@/lib/utils';
-import { Media, Post } from '@/payload-types';
+import { Media, Person, Post } from '@/payload-types';
 import { ArrowLeft } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -97,7 +98,7 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
       </header>
 
-      <main className="container py-5 mx-auto max-w-4xl">
+      <main className="container py-5 mx-auto max-w-4xl mb-16 lg:mb-24">
         {doc!.content?.map((block, index) => {
           return (
             <BlockRenderer
@@ -108,6 +109,22 @@ export default async function PostPage({ params }: PostPageProps) {
             />
           );
         })}
+        {doc?.author && doc?.author?.length > 0 ? (
+          <div>
+            <h3 className="text-muted-foreground text-xs tracking-widest uppercase mb-5">
+              Autoria
+            </h3>
+            {doc.author.map((author: Person | string, index) => {
+              if (typeof author === 'string') return null;
+              return (
+                <PersonCard
+                  key={`postAuthor-${(author as Person).id}`}
+                  person={author as Person}
+                />
+              );
+            })}
+          </div>
+        ) : null}
       </main>
     </>
   );

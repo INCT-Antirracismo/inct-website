@@ -76,11 +76,13 @@ export default async function PostsList({ block, items }: PostsListProps) {
               <h2 className="font-bold text-lg md:text-2xl lg:text-3xl mb-1 lg:mb-2 leading-tight text-balance decoration-trinidad underline-offset-2 decoration-2 group-hover:underline">
                 {doc.name}
               </h2>
-              <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
-                {' '}
-                {doc.description!.slice(0, 160)}
-                {doc.description!.length > 160 && '...'}
-              </p>
+              {doc.description ? (
+                <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
+                  {doc.description?.slice(0, 160)}
+                  {doc.description?.length > 160 && '...'}
+                </p>
+              ) : null}
+
               <p className="text-xs lg:text-sm text-muted-foreground mt-2">
                 Postado em{' '}
                 {createdAt.toLocaleDateString('pt-BR', {

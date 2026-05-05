@@ -65,6 +65,7 @@ export const Persons: CollectionConfig = {
       filterOptions: { additionalType: { in: ['occupation'] } },
       index: true
     },
+    { name: 'inctPositionId', type: 'text', virtual: 'inctPosition.id' },
     {
       name: 'inctGroup',
       label: 'Núcleo no INCT',

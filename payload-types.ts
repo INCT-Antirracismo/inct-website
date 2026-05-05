@@ -305,6 +305,7 @@ export interface Person {
    * Qual a posição dentro da estrutura deste INCT?
    */
   inctPosition?: (string | DefinedTerm)[] | null;
+  inctPositionId?: string[] | null;
   inctGroup?: (string | DefinedTerm)[] | null;
   researchProjects?:
     | {
@@ -7096,6 +7097,7 @@ export interface PersonsSelect<T extends boolean = true> {
       };
   body?: T;
   inctPosition?: T;
+  inctPositionId?: T;
   inctGroup?: T;
   researchProjects?:
     | T

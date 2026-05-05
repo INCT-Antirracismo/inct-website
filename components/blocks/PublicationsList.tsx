@@ -81,8 +81,8 @@ export default async function PublicationsList({
                 </h2>
               </DynamicContentLink>
               <p className="text-base lg:text-lg md:leading-relaxed text-pretty max-w-prose">
-                {doc.description!.slice(0, 160)}
-                {doc.description!.length > 160 && '...'}
+                {doc.description?.slice(0, 160)}
+                {doc.description?.length > 160 && '...'}
               </p>
               <div className="grid items-center gap-2 mt-5">
                 <p className="text-[10px] tracking-widest text-muted-foreground uppercase">

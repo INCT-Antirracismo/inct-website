@@ -75,8 +75,8 @@ export default async function EventsList({ block, items }: EventsListProps) {
               </h2>
               <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
                 {' '}
-                {doc.description!.slice(0, 160)}
-                {doc.description!.length > 160 && '...'}
+                {doc.description?.slice(0, 160)}
+                {doc.description?.length > 160 && '...'}
               </p>
               <p className="text-sm lg:text-base font-medium text-primary mt-2">
                 {startDate.toLocaleDateString('pt-BR', {

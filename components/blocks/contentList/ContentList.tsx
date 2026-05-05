@@ -85,11 +85,11 @@ export default async function ContentList({
                     ]
                   }
                 }
-              : {} // Tem query, mas não de persons
+              : {} // Tem query, mas outra
           : {}) // Não tem query
       })
     : false;
-
+  console.log(query, block.jsonQuery);
   return (
     <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
       <div className="container mx-auto px-4 lg:px-8 py-8 lg:pb-8 lg:pt-16 grid">

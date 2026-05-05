@@ -15,7 +15,7 @@ export default async function Footer({ locale }: FooterProps) {
     locale: locale as any
   });
   return (
-    <footer className="bg-dark-blue text-background py-12 w-full block relative mt-16 lg:mt-24">
+    <footer className="bg-dark-blue text-background py-12 w-full block relative">
       <div className="container mx-auto mb-8 flex-col flex md:flex-row items-center justify-center md:justify-between gap-8">
         <div className="grid md:flex gap-3 md:gap-6 items-center">
           <img

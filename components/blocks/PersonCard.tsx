@@ -26,7 +26,8 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
       </div>
       <div className="w-full max-w-prose">
         <p className="text-xs font-medium tracking-wider text-trinidad uppercase mb-1 sm:mb-1.5">
-          {memberOf!.length > 0 &&
+          {memberOf &&
+            memberOf.length > 0 &&
             memberOf
               ?.map((organization) => {
                 let occupations = `${buildListSentence(
@@ -47,9 +48,9 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
         <h3 className="font-semibold text-lg lg:text-xl group-hover:underline underline-offset-2 decoration-2 decoration-trinidad">
           {doc.name}{' '}
         </h3>
-        {inctGroup!.length > 0 && (
+        {inctGroup && inctGroup.length > 0 && (
           <p className="text-balance tracking-wide">
-            Núcleo: {inctGroup!.map((group) => (group as DefinedTerm).name)}
+            Núcleo: {inctGroup?.map((group) => (group as DefinedTerm).name)}
           </p>
         )}
 
@@ -71,10 +72,12 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
                 no INCT Antirracismo
               </p>
             )} */}
-        <p className="text-sm text-muted-foreground max-w-prose mt-3 text-balance">
-          {doc.description!.slice(0, 160)}
-          {doc.description!.length > 160 && '...'}
-        </p>
+        {doc.description ? (
+          <p className="text-sm text-muted-foreground max-w-prose mt-3 text-balance">
+            {doc.description?.slice(0, 160)}
+            {doc.description?.length > 160 && '...'}
+          </p>
+        ) : null}
       </div>
     </DynamicContentLink>
   );

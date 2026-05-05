@@ -88,7 +88,7 @@ export default function DefaultCTA({
         {/* Content */}
         <div
           className={cn(
-            'basis-full flex items-center justify-center relative z-2 py-12 md:py-20 lg:py-24 md:min-h-[33svh] order-2 md:order-1',
+            'flex items-center md:justify-center relative z-2 pt-8 pb-12 md:py-20 lg:py-24 md:min-h-[33svh] order-2 md:order-1 w-full',
             imagePosition === 'left' && 'md:order-2',
             imagePosition === 'background' && 'py-18',
             height === 'full' && 'md:min-h-[calc(100svh-4rem)]',
@@ -115,7 +115,7 @@ export default function DefaultCTA({
             </p>
             <h1
               className={cn(
-                'leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
+                'leading-[1.2]! text-3xl md:text-4xl md:max-w-4xl lg:text-5xl lg:max-w-7xl  tracking-tight text-dark-blue dark:text-zinc-50 text-balance font-bold',
                 (variant === 'sun' || variant === 'dark') && 'text-trinidad-100'
               )}
             >
@@ -154,7 +154,7 @@ export default function DefaultCTA({
         {image && imagePosition !== 'background' && imagePosition !== 'none' ? (
           <div
             className={cn(
-              'order-1 md:order-2 px-4 md:px-0',
+              'order-1 md:order-2 px-4 md:px-0 h-full',
               imagePosition === 'left' && 'md:order-1',
               height === 'full' && 'h-svh',
               height === '80' && 'h-[80svh]'
@@ -162,8 +162,8 @@ export default function DefaultCTA({
           >
             <div
               className={cn(
-                'relative   grow overflow-hidden',
-                height === 'full' || height === '80'
+                'relative h-full overflow-hidden',
+                height === 'full' || height === '80' || height === '50'
                   ? ''
                   : 'max-h-[40svh] md:max-h-[60svh] md:min-h-96'
               )}

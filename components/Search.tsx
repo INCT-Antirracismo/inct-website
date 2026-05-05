@@ -21,12 +21,6 @@ export const Search: React.FC = () => {
   const debouncedValue = useDebounce(value);
 
   useEffect(() => {
-    if (value !== prevValue) {
-      setPrevValue;
-    }
-  }, [value]);
-
-  useEffect(() => {
     if (q && !value) {
       setValue(q);
     }
@@ -35,6 +29,12 @@ export const Search: React.FC = () => {
   useEffect(() => {
     if (prevValue !== 'XXX') router.push(`${path}?q=${debouncedValue}`);
   }, [debouncedValue, router]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPrevValue('');
+    }, 2000);
+  }, []);
 
   return (
     <div className="filters mb-8">

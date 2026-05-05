@@ -116,7 +116,7 @@ export default async function PublicationPage({
         </div>
       </header>
 
-      <main className="container py-5 mx-auto max-w-4xl">
+      <main className="container py-5 mx-auto max-w-4xl mb-16 lg:mb-24">
         <section className="my-5 md:my-8 pt-5 md:pt-8 border-t">
           <p className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
             Autoria

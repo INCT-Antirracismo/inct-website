@@ -94,7 +94,7 @@ export default async function EventPage({ params }: EventPageProps) {
         </div>
       </header>
 
-      <main className="container py-5 mx-auto max-w-4xl">
+      <main className="container py-5 mx-auto max-w-4xl mb-16 lg:mb-24">
         {Boolean(doc!.address) ? (
           <section className="my-10 md:my-16">
             <h2 className="mb-1 font-medium text-deep-sea-green uppercase tracking-widest text-xs">

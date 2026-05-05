@@ -43,7 +43,7 @@ export default async function ResearchProjectPage({
     doc;
 
   return (
-    <main className="container py-8 md:py-16 mx-auto max-w-4xl">
+    <main className="container py-8 md:py-16 mx-auto max-w-4xl mb-16 lg:mb-24">
       <header>
         <Link href="/projetos-de-pesquisa">
           <h2
