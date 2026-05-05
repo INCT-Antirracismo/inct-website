@@ -79,7 +79,7 @@ export default async function PostsList({ block, items }: PostsListProps) {
               {doc.description ? (
                 <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
                   {doc.description?.slice(0, 160)}
-                  {doc.description?.length > 160 && '...'}
+                  {doc.description && doc.description?.length > 160 && '...'}
                 </p>
               ) : null}
 

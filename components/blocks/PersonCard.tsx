@@ -75,7 +75,7 @@ export default function PersonCard({ person: doc }: PersonCardProps) {
         {doc.description ? (
           <p className="text-sm text-muted-foreground max-w-prose mt-3 text-balance">
             {doc.description?.slice(0, 160)}
-            {doc.description?.length > 160 && '...'}
+            {doc.description && doc.description?.length > 160 && '...'}
           </p>
         ) : null}
       </div>
