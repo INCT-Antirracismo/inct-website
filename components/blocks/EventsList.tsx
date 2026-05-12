@@ -48,33 +48,22 @@ export default async function EventsList({ block, items }: EventsListProps) {
             slug={doc?.slug}
             collection="events"
           >
-            <div className="h-full md:h-auto md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
+            <div className="h-full md:h-auto md:aspect-3/2 bg-white rounded-xs flex items-center justify-center overflow-hidden relative p-0.5">
               <img
                 src={
                   (doc.image as Media)?.sizes?.thumbnail?.url ||
                   (doc.image as Media).url ||
                   ''
                 }
-                className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
+                className="relative z-2 w-full h-full object-cover group-hover:scale-102 duration-300 rounded-xs"
                 alt=""
               />
-              <div
-                className="absolute z-0 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
-                style={{
-                  backgroundImage: `url(${
-                    (doc.image as Media)?.sizes?.thumbnail?.url ||
-                    (doc.image as Media).url ||
-                    ''
-                  })`
-                }}
-              ></div>
             </div>
             <div className="col-span-2">
               <h2 className="font-bold text-lg md:text-2xl lg:text-3xl mb-1 lg:mb-2 leading-tight text-balance decoration-trinidad underline-offset-2 decoration-2 group-hover:underline">
                 {doc.name}
               </h2>
               <p className="text-sm md:text-base lg:text-lg md:leading-relaxed text-pretty">
-                {' '}
                 {doc.description?.slice(0, 160)}
                 {doc.description && doc.description?.length > 160 && '...'}
               </p>

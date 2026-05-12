@@ -65,9 +65,7 @@ export default async function ContentList({
                   ]
                 }
               }
-            : ['publications', 'researchProjects', 'events', 'posts'].includes(
-                  collectionSlug
-                )
+            : collectionSlug === 'posts'
               ? // Query se for PUBLICATIONS, RESEARCH PROJECTS, EVENTS OU POSTS
                 {
                   where: {
@@ -81,15 +79,42 @@ export default async function ContentList({
                         description: {
                           like: query
                         }
+                      },
+                      {
+                        'tags.name': {
+                          like: query
+                        }
                       }
                     ]
                   }
                 }
-              : {} // Tem query, mas outra
+              : [
+                    'publications',
+                    'researchProjects',
+                    'events',
+                    'posts'
+                  ].includes(collectionSlug)
+                ? // Query se for PUBLICATIONS, RESEARCH PROJECTS, EVENTS OU POSTS
+                  {
+                    where: {
+                      or: [
+                        {
+                          name: {
+                            like: query
+                          }
+                        },
+                        {
+                          description: {
+                            like: query
+                          }
+                        }
+                      ]
+                    }
+                  }
+                : {} // Tem query, mas outra
           : {}) // Não tem query
       })
     : false;
-  console.log(query, block.jsonQuery);
   return (
     <div className={cn('', collectionSlug === 'organizations' && 'bg-white')}>
       <div className="container mx-auto px-4 lg:px-8 py-8 lg:pb-8 lg:pt-16 grid">

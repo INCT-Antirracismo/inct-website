@@ -45,7 +45,8 @@ export const Events: CollectionConfig = {
       },
       type: 'array',
       admin: {
-        description: 'Pessoas e instituições responsáveis pelo evento.'
+        description: 'Pessoas e instituições responsáveis pelo evento.',
+        hidden: true
       },
       fields: [
         {
@@ -98,7 +99,8 @@ export const Events: CollectionConfig = {
           type: 'upload',
           relationTo: 'files'
         }
-      ]
+      ],
+      admin: { hidden: true }
     },
     {
       name: 'content',
@@ -112,7 +114,9 @@ export const Events: CollectionConfig = {
       label: 'Tags',
       type: 'relationship',
       relationTo: 'definedTerms',
-      filterOptions: { additionalType: { in: ['tag'] } }
+      filterOptions: { additionalType: { in: ['tag'] } },
+      admin: { hidden: true },
+      hasMany: true
     }
   ]
 };

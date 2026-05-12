@@ -52,7 +52,8 @@ export const Posts: CollectionConfig = {
       label: 'Tags',
       type: 'relationship',
       relationTo: 'definedTerms',
-      filterOptions: { additionalType: { in: ['tag'] } }
+      filterOptions: { additionalType: { in: ['tag'] } },
+      hasMany: true
     }
   ]
 };

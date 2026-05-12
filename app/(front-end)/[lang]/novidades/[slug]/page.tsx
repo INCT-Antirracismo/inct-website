@@ -1,9 +1,10 @@
 import BlockRenderer from '@/components/blocks/BlockRenderer';
 import PersonCard from '@/components/blocks/PersonCard';
 import NotFound from '@/components/NotFound';
+import { Badge } from '@/components/ui/badge';
 import { getDocBySlug } from '@/lib/local-api';
 import { cn } from '@/lib/utils';
-import { Media, Person, Post } from '@/payload-types';
+import { DefinedTerm, Media, Person, Post } from '@/payload-types';
 import { ArrowLeft } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -123,6 +124,20 @@ export default async function PostPage({ params }: PostPageProps) {
                 />
               );
             })}
+          </div>
+        ) : null}
+        {doc.tags && doc.tags.length > 0 ? (
+          <div className="my-5">
+            <h3 className="text-muted-foreground text-xs tracking-widest uppercase mb-5">
+              Tags
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {doc.tags.map((tag) => (
+                <Badge key={`tag-${(tag as DefinedTerm).id}`}>
+                  {(tag as DefinedTerm).name}
+                </Badge>
+              ))}
+            </div>
           </div>
         ) : null}
       </main>

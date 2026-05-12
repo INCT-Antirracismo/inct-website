@@ -6611,7 +6611,7 @@ export interface Post {
         blockType: 'richTextBlock';
       }[]
     | null;
-  tags?: (string | null) | DefinedTerm;
+  tags?: (string | DefinedTerm)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -6690,7 +6690,7 @@ export interface Event {
         blockType: 'richTextBlock';
       }[]
     | null;
-  tags?: (string | null) | DefinedTerm;
+  tags?: (string | DefinedTerm)[] | null;
   updatedAt: string;
   createdAt: string;
 }
