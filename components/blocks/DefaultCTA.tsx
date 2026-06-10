@@ -81,7 +81,7 @@ export default function DefaultCTA({
                 muted
                 playsInline
               >
-                <source src={image.url} type="video/mp4" />
+                <source key={image.url} src={image.url} type="video/mp4" />
               </video>
             </div>
           )}

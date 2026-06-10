@@ -142,7 +142,7 @@ export const CustomRichText: React.FC<{
         converters={jsxConverters}
         data={lexicalData}
         className={cn(
-          'text-pretty prose lg:prose-lg xl:prose-xl prose-a:duration-75 prose-a:decoration-trinidad-600 prose-a:hover:text-trinidad-600 prose-a:decoration-[0.2ex] prose-a:underline-offset-[0.2ex] prose-h1:font-bold',
+          'text-pretty prose lg:prose-lg xl:prose-xl prose-a:duration-75 prose-a:decoration-trinidad-600 prose-a:hover:text-trinidad-600 prose-a:decoration-[0.2ex] prose-a:underline-offset-[0.2ex] prose-h1:font-bold prose-a:break-all',
           className ? className : 'lg:prose-lg xl:prose-xl'
         )}
       />

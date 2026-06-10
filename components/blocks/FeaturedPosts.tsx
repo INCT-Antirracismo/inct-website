@@ -93,7 +93,7 @@ export default async function FeaturedPosts({
                 collection="posts"
                 key={`featured-${post.id}`}
                 className={cn(
-                  'grid gap-8 md:flex items-center group',
+                  'grid gap-4 lg:gap-8 md:flex items-center group',
                   index + 1 === itemsArr.length &&
                     itemsArr.length % 2 === 1 &&
                     'xl:hidden'
