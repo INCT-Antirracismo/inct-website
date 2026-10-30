@@ -7,6 +7,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { getPayload } from 'payload';
 import './globals.css';
+import { WebVitals } from '@/components/WebVitals';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const elza = localFont({
   src: [
@@ -80,6 +82,10 @@ export default async function RootLayout({
             </div>
           </SidebarProvider>
         </TooltipProvider>
+        {/* Google Analytics - @next/third-parties optimized - loads after hydration */}
+        <GoogleAnalytics />
+        {/* Core Web Vitals Tracking */}
+        <WebVitals />
       </body>
     </html>
   );
