@@ -15,14 +15,14 @@ export default async function Footer({ locale }: FooterProps) {
     locale: locale as any
   });
   return (
-    <footer className="bg-dark-blue text-background py-12 w-full block relative">
+    <footer className="bg-dark-blue text-background pt-12 pb-8 w-full block relative">
       <div className="container mx-auto mb-8 flex-col flex md:flex-row items-center justify-center md:justify-between gap-8">
         <div className="grid md:flex gap-3 md:gap-6 items-center">
           <img
             src="/logo-full-white.png"
             alt="INCT Educação Transformadora: Antirracismo,
 Interseccionalidade e Justiça Social Na América Latina"
-            className="w-4/5 sm:w-2/3 md:h-20 md:w-auto md:mx-0 mx-auto mb-4 md:m-0"
+            className="w-4/5 sm:w-2/3 md:h-24 md:w-auto md:mx-0 mx-auto mb-4 md:m-0"
           />
           <div className="h-0.5 w-12 md:h-12 md:w-0.5 bg-trinidad rotate-6 my-4 mx-auto md:mx-0"></div>
           <img
@@ -90,21 +90,25 @@ Interseccionalidade e Justiça Social Na América Latina"
           );
         })}
       </div>
-      <div className="container mx-auto flex items-center gap-3">
-        <img src="/icon.png" className="size-8" alt="" />
-        <p className="text-xs text-white/40 tracking-wide text-balance">
-          Instituto Nacional de Ciência e Tecnologia Educação Tranformadora:
-          Antirracismo, Interseccionalidade e Justiça Social na América Latina.
-          <br />
+      <div className="container grid gap-8 lg:flex justify-between items-center">
+        <div className=" flex items-center gap-3">
+          <img src="/icon.png" className="size-8" alt="" />
+          <p className="uppercase text-xs tracking-wide text-balance">
+            Instituto Nacional de Ciência e Tecnologia Educação Tranformadora:
+            Antirracismo, Interseccionalidade e Justiça Social na América
+            Latina.
+          </p>
+        </div>
+        <p className="text-[10px] text-white/40 tracking-widest uppercase shrink-0 text-right">
           Desenvolvido por{' '}
           <Link
             href="https://viniciusofp.com.br"
-            className="font-semibold hover:underline hover:text-white duration-150"
+            className="font-semibold hover:underline decoration-sun duration-150 text-white"
             target="_blank"
           >
             viniciusofp
           </Link>
-          . 2026.
+          , 2026.
         </p>
       </div>
     </footer>

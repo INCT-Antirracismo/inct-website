@@ -216,12 +216,12 @@ export default async function PersonPage({ params }: PersonPageProps) {
 
       {/* Projetos */}
       {researchProjects!.length > 0 && (
-        <section className="my-10 md:my-16">
+        <section className="my-10 md:my-16 pt-10 md:pt-16 border-t">
           <h2 className="mb-3 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
             {isPT ? 'Projetos de Pesquisa' : 'Proyectos de investigación'}
           </h2>
 
-          <ul>
+          <ul className="grid gap-8">
             {researchProjects?.map((researchProject) => {
               const project = researchProject.relationTo
                 .value as ResearchProject;
@@ -259,14 +259,12 @@ export default async function PersonPage({ params }: PersonPageProps) {
       )}
       {/* Publicações */}
       {publications!.docs!.length > 0 && (
-        <section className="my-16">
-          <h2
-            id="publicacoes"
-            className="uppercase text-sm tracking-widest text-trinidad font-medium mb-5"
-          >
-            {isPT ? 'Publicações' : 'Publicaciones'}
+        <section className="my-16 pt-16 border-t">
+          <h2 className="mb-3 font-medium text-deep-sea-green uppercase tracking-widest text-xs">
+            {isPT ? 'Publicações' : 'Publicaciones'}{' '}
           </h2>
-          <ul>
+
+          <ul className="grid gap-8">
             {publications!.docs?.map((publication) => {
               publication = publication as Publication;
               return (

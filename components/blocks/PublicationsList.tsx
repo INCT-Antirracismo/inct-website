@@ -48,29 +48,45 @@ export default async function PublicationsList({
             key={doc?.slug + '_publications'}
             className="grid grid-cols-3 gap-4 md:gap-6 group"
           >
-            <div className="h-full md:h-auto md:aspect-3/2 bg-white rounded flex items-center justify-center overflow-hidden relative p-0.5">
-              <DynamicContentLink slug={doc?.slug} collection="publications">
-                <img
-                  src={
-                    (doc.image as Media)?.thumbnailURL ||
-                    (doc.image as Media).url ||
-                    ''
-                  }
-                  className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
-                  alt=""
-                />
-              </DynamicContentLink>
-              <div
-                className="absolute z-1 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
-                style={{
-                  backgroundImage: `url('${
-                    (doc.image as Media)?.thumbnailURL ||
-                    (doc.image as Media).url ||
-                    ''
-                  }')`
-                }}
-              ></div>
+            <div className="h-full md:h-auto md:aspect-3/2 bg-sun rounded flex items-center justify-center overflow-hidden relative p-0.5">
+              {doc.image ? (
+                <>
+                  <DynamicContentLink
+                    slug={doc?.slug}
+                    collection="publications"
+                  >
+                    <img
+                      src={
+                        (doc.image as Media)?.thumbnailURL ||
+                        (doc.image as Media).url ||
+                        ''
+                      }
+                      className="relative z-2 w-full h-full object-contain group-hover:scale-102 duration-300"
+                      alt=""
+                    />
+                  </DynamicContentLink>
+                  <div
+                    className="absolute z-1 top-0 left-0 h-full w-full bg-cover bg-center blur-lg opacity-50"
+                    style={{
+                      backgroundImage: `url('${
+                        (doc.image as Media)?.thumbnailURL ||
+                        (doc.image as Media).url ||
+                        ''
+                      }')`
+                    }}
+                  ></div>{' '}
+                </>
+              ) : (
+                <DynamicContentLink slug={doc?.slug} collection="publications">
+                  <img
+                    src={'/logo.png'}
+                    className="relative z-2 w-3/4 md:w-1/2 mx-auto group-hover:scale-102 duration-300"
+                    alt=""
+                  />
+                </DynamicContentLink>
+              )}
             </div>
+
             <div className="col-span-2">
               <p className="text-xs md:text-sm uppercase font-medium text-primary mb-2 tracking-widest">
                 {(doc.type as DefinedTerm).name}
